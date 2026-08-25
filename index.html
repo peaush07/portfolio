@@ -442,17 +442,52 @@
   <!-- FOOTER -->
   <footer id="footer" class="relative-z">
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-top-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 2px dashed var(--border-color);">
+        <!-- Column 1: Brand & Copyright -->
         <div>
-          <div style="font-weight: 800; font-size: 1.2rem;">PEAUSH PAUL • PORTFOLIO</div>
-          <div style="font-size: 0.9rem; color: var(--text-muted);">
+          <div style="font-weight: 800; font-size: 1.3rem; margin-bottom: 0.5rem; text-transform: uppercase;">PEAUSH PAUL • PORTFOLIO</div>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Full Stack & Systems Developer pursuing BCA at Techno Main Salt Lake, Kolkata. Building high-performance distributed systems, AI tools, and open-source applications.
+          </p>
+          <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-main);">
             © <span id="current-year">2026</span> Peaush Paul (@peaush07). All rights reserved.
           </div>
         </div>
 
-        <button id="back-to-top-btn" class="brutal-btn brutal-btn-outline hover-lift">
-          ↑ BACK TO TOP
-        </button>
+        <!-- Column 2: Terms & Legal Info -->
+        <div>
+          <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.75rem; text-transform: uppercase;">TERMS & LEGAL NOTICE</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            All open-source projects showcased on this site are distributed under their respective open-source licenses (MIT/Apache 2.0). Personal assets, bio, and custom graphics are copyrighted.
+          </p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button id="open-terms-btn" class="brutal-btn brutal-btn-yellow hover-lift" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+              📜 TERMS & CONDITIONS
+            </button>
+            <button id="open-privacy-btn" class="brutal-btn brutal-btn-cyan hover-lift" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+              🔒 PRIVACY POLICY
+            </button>
+          </div>
+        </div>
+
+        <!-- Column 3: Quick Back To Top -->
+        <div style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.75rem; text-transform: uppercase;">LOCATION & AVAILABILITY</div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem;">
+              📍 Kolkata, West Bengal, India 🇮🇳<br>
+              💼 Open for Internship & Engineering Opportunities
+            </p>
+          </div>
+
+          <button id="back-to-top-btn" class="brutal-btn brutal-btn-outline hover-lift" style="margin-top: 1rem;">
+            ↑ BACK TO TOP
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align: center; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+        Designed & Developed with Neo-Brutalist Aesthetics by <strong>Peaush Paul</strong>. Hosted on Vercel & GitHub Pages.
       </div>
     </div>
   </footer>
@@ -476,6 +511,45 @@
           LOAD REPOSITORIES ⚡
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- TERMS & CONDITIONS MODAL -->
+  <div id="terms-modal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 680px; max-height: 85vh; overflow-y: auto;">
+      <button id="close-terms-modal" class="modal-close">✕</button>
+      <div class="brutal-badge badge-yellow" style="margin-bottom: 1rem;">LEGAL STATEMENT</div>
+      <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem;">Terms & Conditions</h3>
+      
+      <div style="font-size: 0.95rem; color: var(--text-main); line-height: 1.7; display: flex; flex-direction: column; gap: 1rem;">
+        <p><strong>1. Acceptance of Terms:</strong> By accessing and viewing this developer portfolio (peaush.is-a.dev), you agree to comply with all copyright, open-source license, and usage terms outlined herein.</p>
+        <p><strong>2. Intellectual Property & Copyright:</strong> All custom code, design layouts, graphics, branding, and written content contained in this website are © 2026 Peaush Paul (@peaush07). Unauthorized duplication or scraping without attribution is prohibited.</p>
+        <p><strong>3. Open-Source Code & Repositories:</strong> Source code featured in the projects section is licensed under their respective repository licenses (MIT / Apache 2.0 / GPL). You are free to inspect, fork, and contribute to public repositories in accordance with their respective open-source licenses.</p>
+        <p><strong>4. Disclaimer of Liability:</strong> All projects, demos, and code samples provided on this portfolio are offered for educational and demonstration purposes. No guarantee or warranty is provided for third-party production deployments.</p>
+      </div>
+
+      <button id="accept-terms-btn" class="brutal-btn brutal-btn-yellow hover-lift" style="width: 100%; margin-top: 1.5rem;">
+        I UNDERSTAND & AGREE 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div id="privacy-modal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 680px; max-height: 85vh; overflow-y: auto;">
+      <button id="close-privacy-modal" class="modal-close">✕</button>
+      <div class="brutal-badge badge-cyan" style="margin-bottom: 1rem;">PRIVACY STATEMENT</div>
+      <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem;">Privacy & Data Disclosure</h3>
+      
+      <div style="font-size: 0.95rem; color: var(--text-main); line-height: 1.7; display: flex; flex-direction: column; gap: 1rem;">
+        <p><strong>1. Data Collection:</strong> This portfolio does not place tracking cookies, run invasive third-party telemetry, or monetize user browsing data.</p>
+        <p><strong>2. Contact Form Submissions:</strong> When you send a message through the contact form, your name, email, and message content are securely processed via serverless backend API (`/api/contact`) solely for the purpose of communicating with Peaush Paul.</p>
+        <p><strong>3. Hosting & Infrastructure:</strong> This website is hosted on Vercel Edge Network and GitHub Pages. Standard web server access logs (IP address, user agent) are processed strictly for security and operational diagnostics by Vercel and GitHub.</p>
+      </div>
+
+      <button id="accept-privacy-btn" class="brutal-btn brutal-btn-cyan hover-lift" style="width: 100%; margin-top: 1.5rem;">
+        CLOSE PRIVACY NOTICE 🔒
+      </button>
     </div>
   </div>
 

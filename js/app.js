@@ -537,6 +537,47 @@ class PortfolioApp {
           .catch(() => this.showToast('Failed to copy email.'));
       });
     }
+
+    // Terms & Conditions Modal Handlers
+    const termsModal = document.getElementById('terms-modal');
+    const openTermsBtn = document.getElementById('open-terms-btn');
+    const closeTermsBtn = document.getElementById('close-terms-modal');
+    const acceptTermsBtn = document.getElementById('accept-terms-btn');
+
+    if (openTermsBtn && termsModal) {
+      openTermsBtn.addEventListener('click', () => termsModal.classList.add('active'));
+    }
+    if (closeTermsBtn && termsModal) {
+      closeTermsBtn.addEventListener('click', () => termsModal.classList.remove('active'));
+    }
+    if (acceptTermsBtn && termsModal) {
+      acceptTermsBtn.addEventListener('click', () => termsModal.classList.remove('active'));
+    }
+
+    // Privacy Policy Modal Handlers
+    const privacyModal = document.getElementById('privacy-modal');
+    const openPrivacyBtn = document.getElementById('open-privacy-btn');
+    const closePrivacyBtn = document.getElementById('close-privacy-modal');
+    const acceptPrivacyBtn = document.getElementById('accept-privacy-btn');
+
+    if (openPrivacyBtn && privacyModal) {
+      openPrivacyBtn.addEventListener('click', () => privacyModal.classList.add('active'));
+    }
+    if (closePrivacyBtn && privacyModal) {
+      closePrivacyBtn.addEventListener('click', () => privacyModal.classList.remove('active'));
+    }
+    if (acceptPrivacyBtn && privacyModal) {
+      acceptPrivacyBtn.addEventListener('click', () => privacyModal.classList.remove('active'));
+    }
+
+    // Close modals when clicking backdrop
+    [termsModal, privacyModal].forEach(modal => {
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.remove('active');
+        });
+      }
+    });
   }
 
   /* Toast Notification Helper */
