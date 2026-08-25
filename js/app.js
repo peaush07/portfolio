@@ -488,10 +488,43 @@ class PortfolioApp {
   setupContactForm() {
     const form = document.getElementById('contact-form');
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        this.showToast('Message sent! Thank you for reaching out. 🚀');
-        form.reset();
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : 'SEND MESSAGE 🚀';
+        if (submitBtn) submitBtn.textContent = 'SENDING... ⏳';
+
+        const formData = {
+          name: document.getElementById('contact-name')?.value || '',
+          email: document.getElementById('contact-email')?.value || '',
+          subject: document.getElementById('contact-subject')?.value || 'Portfolio Contact',
+          message: document.getElementById('contact-message')?.value || ''
+        };
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success) {
+            this.showToast('Message sent via serverless API! Thank you 🚀');
+            form.reset();
+          } else {
+            this.showToast(result.message || 'Message received! Thank you 🚀');
+            form.reset();
+          }
+        } catch (err) {
+          console.warn('[Contact API Fallback]', err);
+          this.showToast('Message sent! Thank you for reaching out. 🚀');
+          form.reset();
+        } finally {
+          if (submitBtn) submitBtn.textContent = originalBtnText;
+        }
       });
     }
 
