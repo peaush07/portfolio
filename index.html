@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peaush Paul | Full Stack & Systems Developer Portfolio</title>
+  <meta name="description" content="Peaush Paul (peaush07) - Full Stack & Systems Developer portfolio showcasing open-source projects, cloud native tools, AI dashboards, and software engineering.">
+  <meta name="keywords" content="Peaush Paul, peaush07, Developer, Open Source, Portfolio, JavaScript, React, Python, Go, C++, Web Developer, Full Stack">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Peaush Paul | Developer Portfolio">
+  <meta property="og:description" content="Showcasing projects, skills, and open-source contributions by Peaush Paul (@peaush07).">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Fixed Navigation Bar -->
+  <nav id="main-nav" class="relative-z">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#hero" class="logo">
+          <span>PEAUSH PAUL</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action Controls -->
+        <div class="nav-actions">
+          <!-- GitHub Profile Loader Button -->
+          <button id="open-gh-modal-btn" class="github-input-btn hover-lift" title="GitHub Username: peaush07">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle-btn" class="theme-toggle hover-lift" title="Toggle Light/Dark Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav" class="mobile-nav">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative-z">
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="brutal-badge badge-rotate" style="margin-bottom: 1.25rem;">
+              ⚡ @peaush07 • OPEN SOURCE & SYSTEMS DEVELOPER
+            </div>
+            
+            <h1 class="hero-title">
+              HEY, I'M <span id="hero-name" class="hero-highlight">PEAUSH PAUL</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              A passionate <span id="role-text" class="role-typewriter">Full Stack & Systems Developer</span> building high-impact open-source projects, cloud native tools, microservices, and AI dashboards.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#projects" class="brutal-btn brutal-btn-primary hover-lift">
+                VIEW MY PROJECTS ↗
+              </a>
+              <a href="#contact" class="brutal-btn brutal-btn-cyan hover-lift">
+                GET IN TOUCH
+              </a>
+            </div>
+
+            <!-- Social Links (GitHub, LinkedIn, Codeforces, Dev.to, Email - NO TWITTER) -->
+            <div class="social-links">
+              <!-- GitHub -->
+              <a href="https://github.com/peaush07" id="social-gh" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub (@peaush07)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com/in/peaush-paul" id="social-linkedin" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+              </a>
+
+              <!-- Codeforces / Competitive Programming -->
+              <a href="https://codeforces.com/profile/peaush07" id="social-codeforces" target="_blank" rel="noopener noreferrer" class="social-icon" title="Codeforces Profile">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5zm9 7.5A1.5 1.5 0 0 1 24 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5V12a1.5 1.5 0 0 1 1.5-1.5z"/>
+                </svg>
+              </a>
+
+              <!-- Dev.to -->
+              <a href="https://dev.to/peaush07" id="social-devto" target="_blank" rel="noopener noreferrer" class="social-icon" title="Dev.to Profile">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H5.2v4.37h1.33c.4 0 .69-.08.87-.25.18-.17.27-.44.27-.81V10.86c.01-.36-.07-.63-.25-.81zM0 3.6v16.8h24V3.6H0zm8.8 11.23c0 .88-.31 1.57-.93 2.07-.62.5-1.51.75-2.67.75H2.4V8.35h3.69c1.17 0 2.06.25 2.68.75.62.5.93 1.19.93 2.07v3.66zm6.18 2.82h-4.8V8.35h4.8v1.6h-3.2v2.24h2.72v1.6h-2.72v2.24h3.2v1.6zm6.62-7.55l-2.02 7.55h-1.58l-2.02-7.55h1.7l1.11 4.79 1.11-4.79h1.7z"/>
+                </svg>
+              </a>
+
+              <!-- Email -->
+              <a href="mailto:peaushpaul99@gmail.com" class="social-icon" title="Send Email (peaushpaul99@gmail.com)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Avatar Image Frame -->
+          <div class="hero-image-wrapper">
+            <div class="avatar-frame hover-lift">
+              <img id="user-avatar" src="https://avatars.githubusercontent.com/u/231284231?v=4" alt="Peaush Paul Avatar" class="avatar-img">
+            </div>
+            <div class="avatar-decor-1"></div>
+            <div class="avatar-decor-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFINITE SKILLS MARQUEE -->
+    <div class="marquee-container container-marquee">
+      <div class="marquee-track">
+        <div class="marquee-item"><span>GO / GOLANG</span></div>
+        <div class="marquee-item"><span>TYPESCRIPT</span></div>
+        <div class="marquee-item"><span>NEXT.JS</span></div>
+        <div class="marquee-item"><span>PYTHON</span></div>
+        <div class="marquee-item"><span>C++</span></div>
+        <div class="marquee-item"><span>FLUTTER & DART</span></div>
+        <div class="marquee-item"><span>REACT</span></div>
+        <div class="marquee-item"><span>MICROSERVICES</span></div>
+        <div class="marquee-item"><span>KUBERNETES & MCP</span></div>
+        <div class="marquee-item"><span>TAILWIND CSS</span></div>
+        <!-- Duplicate for infinite seamless scroll -->
+        <div class="marquee-item"><span>GO / GOLANG</span></div>
+        <div class="marquee-item"><span>TYPESCRIPT</span></div>
+        <div class="marquee-item"><span>NEXT.JS</span></div>
+        <div class="marquee-item"><span>PYTHON</span></div>
+        <div class="marquee-item"><span>C++</span></div>
+        <div class="marquee-item"><span>FLUTTER & DART</span></div>
+        <div class="marquee-item"><span>REACT</span></div>
+        <div class="marquee-item"><span>MICROSERVICES</span></div>
+        <div class="marquee-item"><span>KUBERNETES & MCP</span></div>
+        <div class="marquee-item"><span>TAILWIND CSS</span></div>
+      </div>
+    </div>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about">
+      <div class="container">
+        <div style="text-align: center;">
+          <h2 class="section-title">ABOUT ME</h2>
+        </div>
+
+        <div class="brutal-card-lg about-card">
+          <div class="brutal-badge badge-rotate" style="margin-bottom: 1.5rem;">MY STORY</div>
+          <p class="about-text">
+            Hailing from the vibrant tech and cultural hub of Kolkata, West Bengal, India, my journey began with a curiosity for how complex systems communicate beneath the surface. That drive led me to <strong>Techno Main Salt Lake</strong>, where I am currently pursuing my Bachelor of Computer Applications (<strong>BCA, Class of 2024–2028</strong>). From the outset, I treated my academic curriculum not as a boundary, but as a launchpad. While coursework laid the foundation for data structures and core algorithms, the global open-source community taught me how resilient software thrives in production.
+          </p>
+          <p class="about-text">
+            Early in my development path, I recognized that robust applications depend on thoughtful system architecture—low-latency database design, modular component structure, and streamlined deployment pipelines. Eager to build beyond classroom sandboxes, I immersed myself in the open-source ecosystem.
+          </p>
+          <p class="about-text">
+            Contributing to open-source projects fundamentally sharpened my engineering philosophy. It pushed me to navigate large, unfamiliar codebases, adhere to rigorous testing and documentation standards, and collaborate asynchronously with engineers worldwide. Every merged pull request and code review reinforced the importance of writing clean, maintainable, and high-performance code.
+          </p>
+          <p class="about-text" style="margin-bottom: 0;">
+            Today, my focus sits at the intersection of full-stack engineering, cloud deployments, and distributed systems. Whether architecting database schemas, optimizing web performance, or shipping meaningful contributions to community repositories, I approach engineering with a problem-solver’s mindset.
+          </p>
+        </div>
+
+        <!-- Highlights Grid -->
+        <div class="highlights-grid">
+          <div class="brutal-card highlight-card hover-lift">
+            <div class="highlight-icon">💻</div>
+            <h3 class="highlight-title">Systems & Backend</h3>
+            <p class="highlight-desc">Building high-performance distributed key-value stores, Raft consensus nodes, and asynchronous C++ engines.</p>
+          </div>
+
+          <div class="brutal-card highlight-card hover-lift">
+            <div class="highlight-icon">💡</div>
+            <h3 class="highlight-title">Full Stack & AI</h3>
+            <p class="highlight-desc">Creating AI analytics dashboards, responsive web interfaces, and modern full-stack web architectures.</p>
+          </div>
+
+          <div class="brutal-card highlight-card hover-lift">
+            <div class="highlight-icon">🚀</div>
+            <h3 class="highlight-title">Cloud Native & MCP</h3>
+            <p class="highlight-desc">Developing Model Context Protocol (MCP) servers and contributing to open-source cloud native tools.</p>
+          </div>
+
+          <div class="brutal-card highlight-card hover-lift">
+            <div class="highlight-icon">📱</div>
+            <h3 class="highlight-title">Mobile & Cross-Platform</h3>
+            <p class="highlight-desc">Designing microservice-backed crypto wallet applications using Flutter and Dart.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX -->
+    <section id="skills">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <h2 class="section-title" style="background-color: var(--accent-cyan);">SKILLS & TOOLS</h2>
+        </div>
+
+        <!-- Languages -->
+        <h3 class="skills-category-title">⚡ Languages</h3>
+        <div class="skills-grid">
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🔵</span>
+            <span class="skill-name">Go (Golang)</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🔷</span>
+            <span class="skill-name">TypeScript</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">⚙️</span>
+            <span class="skill-name">C++ / C</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🐍</span>
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🎯</span>
+            <span class="skill-name">Dart</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🟨</span>
+            <span class="skill-name">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Web & Frameworks -->
+        <h3 class="skills-category-title">🎨 Web & Frameworks</h3>
+        <div class="skills-grid">
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">▲</span>
+            <span class="skill-name">Next.js</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">⚛️</span>
+            <span class="skill-name">React</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">📱</span>
+            <span class="skill-name">Flutter</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">💨</span>
+            <span class="skill-name">Tailwind CSS</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🟢</span>
+            <span class="skill-name">Node.js</span>
+          </div>
+        </div>
+
+        <!-- Infrastructure & Tools -->
+        <h3 class="skills-category-title">🛠️ Infrastructure & Tools</h3>
+        <div class="skills-grid">
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🐙</span>
+            <span class="skill-name">Git & GitHub</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">☸️</span>
+            <span class="skill-name">Kubernetes</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🔌</span>
+            <span class="skill-name">MCP Servers</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🐧</span>
+            <span class="skill-name">Linux CLI</span>
+          </div>
+          <div class="skill-tile hover-lift">
+            <span style="font-size: 2rem;">🐳</span>
+            <span class="skill-name">Docker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB PROJECTS SHOWCASE -->
+    <section id="projects">
+      <div class="container">
+        <div style="text-align: center;">
+          <h2 class="section-title" style="background-color: var(--accent-pink); color: #FFFFFF;">HERE IS MY PROJECTS</h2>
+        </div>
+
+        <!-- Controls: Search & Language Filters -->
+        <div class="projects-controls">
+          <div class="search-box">
+            <input type="text" id="project-search-input" class="brutal-input" placeholder="🔍 Search Peaush's repositories...">
+          </div>
+
+          <div id="language-filter-container" class="filter-tags">
+            <button class="filter-btn active" data-lang="all">ALL</button>
+            <button class="filter-btn" data-lang="TypeScript">TypeScript</button>
+            <button class="filter-btn" data-lang="Go">Go</button>
+            <button class="filter-btn" data-lang="Python">Python</button>
+            <button class="filter-btn" data-lang="C++">C++</button>
+            <button class="filter-btn" data-lang="Dart">Dart</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div id="projects-grid" class="projects-grid">
+          <!-- Dynamically populated from GitHub API @peaush07 -->
+        </div>
+
+        <!-- GitHub Stats Overview -->
+        <div class="stats-banner">
+          <div>
+            <div id="stat-repos-count" class="stat-box-number">9+</div>
+            <div class="stat-box-label">Public Repositories</div>
+          </div>
+          <div>
+            <div id="stat-stars-count" class="stat-box-number">100+</div>
+            <div class="stat-box-label">Total Stars Earned</div>
+          </div>
+          <div>
+            <div id="stat-followers-count" class="stat-box-number">24</div>
+            <div class="stat-box-label">GitHub Followers</div>
+          </div>
+          <div>
+            <div id="stat-top-lang" class="stat-box-number">TypeScript / Go</div>
+            <div class="stat-box-label">Primary Languages</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="container">
+        <div style="text-align: center;">
+          <h2 class="section-title" style="background-color: var(--accent-mint);">GET IN TOUCH WITH PEAUSH</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- Contact Details -->
+          <div class="contact-info">
+            <div class="brutal-card contact-card">
+              <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1rem;">Let's Build Together!</h3>
+              <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem;">
+                Have an open-source project, systems engineering role, or collaboration idea? Reach out directly!
+              </p>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">✉️</div>
+                <div>
+                  <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Direct Email</div>
+                  <div id="email-address-text" style="font-weight: 700;">peaushpaul99@gmail.com</div>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="contact-method-icon">📍</div>
+                <div>
+                  <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">GitHub Profile</div>
+                  <div style="font-weight: 700;">github.com/peaush07</div>
+                </div>
+              </div>
+
+              <button id="copy-email-btn" class="brutal-btn brutal-btn-outline hover-lift" style="width: 100%; margin-top: 1rem;">
+                📋 COPY EMAIL ADDRESS
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="brutal-card-lg contact-form-card">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">YOUR NAME</label>
+                <input type="text" id="contact-name" class="brutal-input" placeholder="e.g. Alex Johnson" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">YOUR EMAIL</label>
+                <input type="email" id="contact-email" class="brutal-input" placeholder="alex@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">YOUR MESSAGE</label>
+                <textarea id="contact-message" class="brutal-input brutal-textarea" placeholder="Tell me about your project or opportunity..." required></textarea>
+              </div>
+
+              <button type="submit" class="brutal-btn brutal-btn-primary hover-lift" style="width: 100%;">
+                SEND MESSAGE TO PEAUSH 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="relative-z">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div style="font-weight: 800; font-size: 1.2rem;">PEAUSH PAUL • PORTFOLIO</div>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            © <span id="current-year">2026</span> Peaush Paul (@peaush07). All rights reserved.
+          </div>
+        </div>
+
+        <button id="back-to-top-btn" class="brutal-btn brutal-btn-outline hover-lift">
+          ↑ BACK TO TOP
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GITHUB USERNAME MODAL -->
+  <div id="gh-modal" class="modal-backdrop">
+    <div class="modal-content">
+      <button id="close-gh-modal" class="modal-close">✕</button>
+      <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">GitHub Profile Switcher</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Currently displaying repositories for <strong>@peaush07</strong>. You can switch to any other GitHub username below:
+      </p>
+
+      <form id="gh-username-form">
+        <div class="form-group">
+          <label for="gh-username-input" class="form-label">GITHUB USERNAME</label>
+          <input type="text" id="gh-username-input" class="brutal-input" value="peaush07" placeholder="peaush07" required>
+        </div>
+
+        <button type="submit" class="brutal-btn brutal-btn-cyan hover-lift" style="width: 100%;">
+          LOAD REPOSITORIES ⚡
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-notification" class="toast">
+    <span id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <!-- Application Entry Scripts -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
