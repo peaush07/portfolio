@@ -1267,3 +1267,27 @@ a[href*="netlify.com"] {
   height: 0 !important;
   width: 0 !important;
 }
+
+/* 120Hz High Refresh Rate GPU Acceleration & Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.project-card,
+.brutal-btn,
+.nav-link,
+.social-icon,
+.github-input-btn,
+.avatar-frame,
+#bg-canvas,
+.about-card,
+.stat-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

@@ -147,10 +147,20 @@ export class SquaresCanvas {
     ctx.fillRect(0, 0, width, height);
   }
 
-  render() {
+  render(timestamp) {
     if (this.isPaused) return;
 
-    const r = Math.max(this.speed, 0.1);
+    if (!this.lastTimestamp) {
+      this.lastTimestamp = timestamp || performance.now();
+    }
+    const current = timestamp || performance.now();
+    const delta = current - this.lastTimestamp;
+    this.lastTimestamp = current;
+
+    // Normalize delta time relative to 60fps baseline for 120Hz/144Hz displays
+    const dt = Math.min(Math.max(delta / 16.666, 0.1), 3);
+
+    const r = Math.max(this.speed, 0.1) * dt;
     const s = this.squareSize;
 
     switch (this.direction) {
@@ -180,6 +190,7 @@ export class SquaresCanvas {
   start() {
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
     this.isPaused = false;
+    this.lastTimestamp = null;
     this.animationFrameId = requestAnimationFrame(this.render);
   }
 
