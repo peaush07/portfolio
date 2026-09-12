@@ -1284,20 +1284,35 @@ html, body {
   }
 }
 
-/* Hide Netlify Drawer & Powered by Netlify Floating Badge */
+/* Hide Netlify Drawer, Floating Badges, and "Get your own badge" links */
 #netlify-badge,
 .netlify-badge,
 [data-netlify-drawer],
 [id*="netlify"],
 [class*="netlify-drawer"],
 iframe[src*="netlify"],
-a[href*="netlify.com"] {
+a[href*="netlify.com"],
+a[href*="badge"],
+a[href*="counter"],
+a[href*="hits"],
+a[href*="hitwebcounter"],
+a[href*="freevisitorcounters"],
+a[href*="visitor-badge"],
+a[href*="get-badge"],
+a[href*="goatcounter"],
+a[href*="count.getloli"],
+[id*="badge-frame"],
+[class*="badge-frame"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
-  height: 0 !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
   width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* 120Hz High Refresh Rate GPU Acceleration & Smooth Scrolling */

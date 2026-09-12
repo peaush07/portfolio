@@ -24,6 +24,7 @@ class PortfolioApp {
     this.setupGitHubModal();
     this.setupContactForm();
     this.setupProjectFilters();
+    this.removeInjectedBadges();
 
     // Fetch initial GitHub data
     await this.loadGitHubData(this.currentUsername);
@@ -646,6 +647,40 @@ class PortfolioApp {
       setTimeout(() => {
         toast.classList.remove('show');
       }, 3500);
+    }
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /* Remove Injected Badges & "Get your own badge" Links                       */
+  /* -------------------------------------------------------------------------- */
+  removeInjectedBadges() {
+    const purgeBadges = () => {
+      // Remove any node containing "Get your own badge"
+      const elements = Array.from(document.querySelectorAll('a, div, span, p, iframe, small, footer, button, b, strong'));
+      elements.forEach(el => {
+        const text = (el.innerText || el.textContent || '').trim().toLowerCase();
+        if (text.includes('get your own badge') || text === 'get your own badge') {
+          el.remove();
+        }
+      });
+
+      // Remove third-party visitor/counter links that are not internal UI badges
+      document.querySelectorAll('a[href*="badge"], a[href*="counter"], a[href*="hits"], a[href*="hitwebcounter"], a[href*="freevisitorcounters"], a[href*="netlify.com"]').forEach(link => {
+        if (!link.classList.contains('brutal-badge') && !link.classList.contains('social-icon') && !link.classList.contains('nav-link') && !link.classList.contains('brutal-btn')) {
+          link.remove();
+        }
+      });
+    };
+
+    purgeBadges();
+    setTimeout(purgeBadges, 300);
+    setTimeout(purgeBadges, 1000);
+    setTimeout(purgeBadges, 3000);
+
+    // Watch for dynamically injected elements
+    if (window.MutationObserver) {
+      const observer = new MutationObserver(() => purgeBadges());
+      observer.observe(document.body, { childList: true, subtree: true });
     }
   }
 }
