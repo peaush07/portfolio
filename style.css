@@ -607,9 +607,23 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.skill-tile svg, .skill-tile img {
-  width: 36px;
-  height: 36px;
+.skill-tile svg, .skill-tile img, .skill-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.skill-tile:hover .skill-icon {
+  transform: scale(1.18);
+}
+
+[data-theme="dark"] .skill-tile img.invert-dark {
+  filter: invert(1);
+}
+
+.skill-tile:hover img.invert-dark {
+  filter: invert(0) !important;
 }
 
 .skill-name {
