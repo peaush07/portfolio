@@ -202,6 +202,12 @@ class PortfolioApp {
       avatarEl.src = profile.avatar_url;
     }
 
+    // Dynamic favicon update to match live GitHub profile avatar
+    const faviconEl = document.getElementById('favicon');
+    if (faviconEl && profile.avatar_url) {
+      faviconEl.href = profile.avatar_url;
+    }
+
     // Update social GitHub link
     const ghSocialEl = document.getElementById('social-gh');
     if (ghSocialEl && profile.html_url) {
