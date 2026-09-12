@@ -16,6 +16,7 @@ class PortfolioApp {
   }
 
   async init() {
+    this.setupSmoothScroll();
     this.setupTheme();
     this.setupBackgroundCanvas();
     this.setupNavigation();
@@ -101,12 +102,58 @@ class PortfolioApp {
       });
     }
 
+    // Lenis Smooth Scroll integration for all navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const targetId = anchor.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            if (window.__lenis) {
+              window.__lenis.scrollTo(targetEl, { offset: -70, duration: 1.2 });
+            } else {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      });
+    });
+
     // Back to top button
     const backToTopBtn = document.getElementById('back-to-top-btn');
     if (backToTopBtn) {
       backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
+    }
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /* Lenis Smooth Physics Inertia Scrolling                                    */
+  /* -------------------------------------------------------------------------- */
+  setupSmoothScroll() {
+    if (typeof window.Lenis !== 'undefined') {
+      const lenis = new window.Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+      });
+
+      window.__lenis = lenis;
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
     }
   }
 
