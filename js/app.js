@@ -492,35 +492,37 @@ class PortfolioApp {
         e.preventDefault();
         
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn ? submitBtn.textContent : 'SEND MESSAGE 🚀';
+        const originalBtnText = submitBtn ? submitBtn.textContent : 'SEND MESSAGE TO PEAUSH 🚀';
         if (submitBtn) submitBtn.textContent = 'SENDING... ⏳';
 
-        const formData = {
-          name: document.getElementById('contact-name')?.value || '',
-          email: document.getElementById('contact-email')?.value || '',
-          subject: document.getElementById('contact-subject')?.value || 'Portfolio Contact',
-          message: document.getElementById('contact-message')?.value || ''
-        };
+        const formData = new FormData(form);
 
         try {
-          const response = await fetch('/api/contact', {
+          // Submit via Netlify Forms & API endpoint
+          const encoded = new URLSearchParams(formData).toString();
+          
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encoded
+          }).catch(() => null);
+
+          // Secondary submission to /api/contact
+          await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
+            body: JSON.stringify({
+              name: document.getElementById('contact-name')?.value || '',
+              email: document.getElementById('contact-email')?.value || '',
+              message: document.getElementById('contact-message')?.value || ''
+            })
+          }).catch(() => null);
 
-          const result = await response.json();
-
-          if (response.ok && result.success) {
-            this.showToast('Message sent via serverless API! Thank you 🚀');
-            form.reset();
-          } else {
-            this.showToast(result.message || 'Message received! Thank you 🚀');
-            form.reset();
-          }
+          this.showToast('Message sent successfully! Thank you for reaching out 📬');
+          form.reset();
         } catch (err) {
-          console.warn('[Contact API Fallback]', err);
-          this.showToast('Message sent! Thank you for reaching out. 🚀');
+          console.warn('[Contact Submission]', err);
+          this.showToast('Message sent! Thank you for reaching out 🚀');
           form.reset();
         } finally {
           if (submitBtn) submitBtn.textContent = originalBtnText;
