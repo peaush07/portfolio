@@ -655,12 +655,17 @@ body {
 
 .search-box {
   flex: 1;
-  min-width: 250px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .brutal-input {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -1201,14 +1206,37 @@ html, body {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-box input.brutal-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .filter-tags {
+    display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding-bottom: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    box-sizing: border-box;
   }
 
   .filter-tags::-webkit-scrollbar {
@@ -1217,8 +1245,9 @@ html, body {
 
   .filter-btn {
     flex-shrink: 0;
-    min-height: 44px;
-    padding: 0.5rem 1rem;
+    min-height: 42px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
   }
 
   .projects-grid {
@@ -1227,23 +1256,74 @@ html, body {
   }
 
   .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.75rem;
   }
 
   .about-card {
-    padding: 1.5rem;
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .about-text {
     font-size: 1rem;
     line-height: 1.7;
   }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-card {
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .contact-form-card {
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .contact-method {
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .contact-method div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 1rem;
+    padding: 0 0.85rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .brutal-card-lg,
+  .projects-controls,
+  .contact-card,
+  .contact-form-card {
+    box-shadow: 4px 4px 0px var(--border-color);
   }
 
   .hero-ctas {
@@ -1268,6 +1348,7 @@ html, body {
 
   .project-card {
     min-height: auto;
+    padding: 1.25rem 1rem;
   }
 
   .project-title {
@@ -1279,8 +1360,26 @@ html, body {
   }
 
   .social-icon {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .skill-tile {
+    padding: 0.85rem 0.5rem;
+  }
+
+  .skill-tile svg, .skill-tile img, .skill-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .skill-name {
+    font-size: 0.8rem;
   }
 }
 
