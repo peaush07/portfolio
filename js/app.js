@@ -135,16 +135,20 @@ class PortfolioApp {
   }
 
   /* -------------------------------------------------------------------------- */
-  /* Lenis Smooth Physics Inertia Scrolling                                    */
+  /* Lenis Smooth Physics Inertia Scrolling (120Hz Mobile & Desktop)            */
   /* -------------------------------------------------------------------------- */
   setupSmoothScroll() {
     if (typeof window.Lenis !== 'undefined') {
       const lenis = new window.Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
         smoothWheel: true,
+        smoothTouch: false, // Allows native 120Hz GPU touch fling on mobile touchscreens
         wheelMultiplier: 1.0,
-        touchMultiplier: 1.5,
+        touchMultiplier: 2.0,
+        infinite: false,
       });
 
       window.__lenis = lenis;

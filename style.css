@@ -1417,11 +1417,16 @@ a[href*="count.getloli"],
 /* 120Hz High Refresh Rate GPU Acceleration & Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 *, *::before, *::after {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
 }
 
 .project-card,
@@ -1432,7 +1437,9 @@ html {
 .avatar-frame,
 #bg-canvas,
 .about-card,
-.stat-card {
+.stat-card,
+.skill-tile,
+.projects-controls {
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
