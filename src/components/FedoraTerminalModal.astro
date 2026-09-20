@@ -7,150 +7,150 @@
   class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300 pointer-events-none"
   aria-hidden="true"
 >
-  <!-- Modal Glass Box -->
-  <div class="relative w-full max-w-4xl max-h-[90vh] rounded-2xl glass-panel border border-purple-500/30 shadow-[0_0_50px_rgba(139,92,246,0.25)] bg-[#0a0d14]/95 overflow-hidden flex flex-col transition-all duration-300 scale-95" id="fedora-terminal-content">
+  <!-- Modal Glass Box (Unified Purple Liquid Glass) -->
+  <div class="relative w-full max-w-4xl max-h-[90vh] rounded-2xl glass-panel border border-purple-500/40 shadow-[0_0_60px_rgba(139,92,246,0.35)] bg-[#0c0915]/95 overflow-hidden flex flex-col transition-all duration-300 scale-95" id="fedora-terminal-content">
     
-    <!-- Window Title Bar (Konsole Dark Theme) -->
-    <div class="px-4 py-3 bg-[#121624] border-b border-white/10 flex items-center justify-between select-none shrink-0">
+    <!-- Window Title Bar (Purple Dark Konsole Theme) -->
+    <div class="px-4 py-3 bg-[#130d22] border-b border-purple-500/20 flex items-center justify-between select-none shrink-0">
       <div class="flex items-center gap-2">
         <button id="close-terminal-btn-x" class="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors flex items-center justify-center text-[8px] font-bold text-black" title="Close Terminal">✕</button>
         <div class="w-3.5 h-3.5 rounded-full bg-yellow-500/80"></div>
-        <div class="w-3.5 h-3.5 rounded-full bg-green-500/80"></div>
-        <span class="ml-3 text-xs font-mono text-cyan-400 font-bold tracking-wide flex items-center gap-1.5">
+        <div class="w-3.5 h-3.5 rounded-full bg-purple-500/80"></div>
+        <span class="ml-3 text-xs font-mono text-purple-300 font-bold tracking-wide flex items-center gap-1.5">
           <span>peaush@fedora: ~ (zsh) — CLI_SANDBOX</span>
         </span>
       </div>
       <div class="flex items-center gap-3">
         <span class="text-[10px] font-mono text-purple-300/60 hidden sm:inline">Fedora Linux 44 (x86_64)</span>
-        <button id="close-terminal-btn-txt" class="text-xs font-mono text-white/70 hover:text-white px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 transition-all">CLOSE ✕</button>
+        <button id="close-terminal-btn-txt" class="text-xs font-mono text-purple-200 hover:text-white px-2 py-0.5 rounded bg-purple-500/20 hover:bg-purple-500/30 transition-all border border-purple-500/30">CLOSE ✕</button>
       </div>
     </div>
 
     <!-- Terminal Body Scroll Container -->
     <div class="p-3 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm text-slate-200 space-y-4 leading-relaxed custom-scrollbar flex-1" id="terminal-scroll-body">
       
-      <!-- Initial Zsh Prompt & Fastfetch Exec Command (Matching Image 2 Prompt) -->
+      <!-- Initial Zsh Prompt & Fastfetch Exec Command (Purple Theme) -->
       <div class="space-y-0.5 font-mono text-xs sm:text-sm">
-        <div class="text-blue-400">
-          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        <div class="text-purple-400">
+          ┌──(<span class="text-purple-300 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-purple-600 text-white text-[9px] font-bold">f</span><span class="text-purple-300 italic font-bold">fedora</span>)<span class="text-purple-400">-</span>[<span class="text-purple-300 font-bold">~</span>]
         </div>
-        <div class="text-blue-400 flex items-center gap-2">
+        <div class="text-purple-400 flex items-center gap-2">
           <span>└─<span class="text-white font-bold">$</span></span>
-          <span class="text-emerald-400 font-bold">fastfetch</span>
+          <span class="text-purple-300 font-bold">fastfetch</span>
         </div>
       </div>
 
       <!-- Fastfetch ASCII & System Info Grid -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start text-xs sm:text-sm pt-1">
         
-        <!-- Left: Fedora Logo ASCII Art (Pixel-Perfect Strict Monospace Alignment) -->
-        <div class="md:col-span-5 font-mono text-[11px] sm:text-xs leading-[1.15] select-none overflow-x-auto whitespace-pre font-normal tracking-normal">
-          <pre class="font-mono leading-[1.15] font-normal tracking-normal">
-<span class="text-blue-500">           .',;::::;'.</span>
-<span class="text-blue-500">       .';cccccccccccc;'.</span>
-<span class="text-blue-500">     .;cccccccccccccccccc;.</span>
-<span class="text-blue-500">   .:cccccccccccccccccccccc:.</span>
-<span class="text-blue-500"> .;ccccccccccccc;.</span><span class="text-white">:dddl:</span><span class="text-blue-500">.;cccccc;.</span>
-<span class="text-blue-500">.:ccccccccccccc;</span><span class="text-white">OWMKOOXMWd</span><span class="text-blue-500">;cccccc:.</span>
-<span class="text-blue-500">.:cccccccccccc;</span><span class="text-white">KMMc</span><span class="text-blue-500">;cc;</span><span class="text-white">xMMc</span><span class="text-blue-500">;cccccc:.</span>
-<span class="text-blue-500">,cccccccccccccc;</span><span class="text-white">MMM.</span><span class="text-blue-500">;cc;;</span><span class="text-white">WW:</span><span class="text-blue-500">;ccccccc,</span>
-<span class="text-blue-500">:cccccccccccccc;</span><span class="text-white">MMM.</span><span class="text-blue-500">;cccccccccccccc:</span>
-<span class="text-blue-500">:ccccccc;</span><span class="text-white">ox000o</span><span class="text-blue-500">;</span><span class="text-white">MMM000k.</span><span class="text-blue-500">;cccccccccc:</span>
-<span class="text-blue-500">ccccccc;</span><span class="text-white">0MMKxdd:</span><span class="text-blue-500">;</span><span class="text-white">MMMkddc.</span><span class="text-blue-500">;ccccccccc;</span>
-<span class="text-blue-500">ccccc;</span><span class="text-white">XMO'</span><span class="text-blue-500">;cccc;</span><span class="text-white">MMM.</span><span class="text-blue-500">;cccccccccccccc'</span>
-<span class="text-blue-500">ccccc;</span><span class="text-white">MMo</span><span class="text-blue-500">;ccccc;</span><span class="text-white">MMW.</span><span class="text-blue-500">;cccccccccccccc;</span>
-<span class="text-blue-500">ccccc;</span><span class="text-white">0MNc</span><span class="text-blue-500">.ccc.</span><span class="text-white">xMMd</span><span class="text-blue-500">;ccccccccccccccc;</span>
-<span class="text-blue-500">ccccc;</span><span class="text-white">dNMWXXXWM0:</span><span class="text-blue-500">;cccccccccccccc;,</span>
-<span class="text-blue-500">ccccccc;</span><span class="text-white">.:odl:.</span><span class="text-blue-500">;cccccccccccccc;,</span>
-<span class="text-blue-500">ccccccccccccccccccccccccc:'.</span>
-<span class="text-blue-500">:cccccccccccccccccc;,..</span>
-<span class="text-blue-500"> ':cccccccccccccc::;,</span>
+        <!-- Left: Fedora Logo ASCII Art (Italicized Slanted Monospace Matching User Screenshot) -->
+        <div class="md:col-span-5 font-mono text-[11px] sm:text-xs leading-[1.15] select-none overflow-x-auto whitespace-pre font-normal tracking-normal italic">
+          <pre class="font-mono leading-[1.15] font-normal tracking-normal italic">
+<span class="text-purple-400">           .',;::::;'.</span>
+<span class="text-purple-400">       .';cccccccccccc;'.</span>
+<span class="text-purple-400">     .;cccccccccccccccccc;.</span>
+<span class="text-purple-400">   .:cccccccccccccccccccccc:.</span>
+<span class="text-purple-400"> .;ccccccccccccc;.</span><span class="text-white font-bold">:dddl:</span><span class="text-purple-400">.;cccccc;.</span>
+<span class="text-purple-400">.:ccccccccccccc;</span><span class="text-white font-bold">OWMKOOXMWd</span><span class="text-purple-400">;cccccc:.</span>
+<span class="text-purple-400">.:cccccccccccc;</span><span class="text-white font-bold">KMMc</span><span class="text-purple-400">;cc;</span><span class="text-white font-bold">xMMc</span><span class="text-purple-400">;cccccc:.</span>
+<span class="text-purple-400">,cccccccccccccc;</span><span class="text-white font-bold">MMM.</span><span class="text-purple-400">;cc;;</span><span class="text-white font-bold">WW:</span><span class="text-purple-400">;ccccccc,</span>
+<span class="text-purple-400">:cccccccccccccc;</span><span class="text-white font-bold">MMM.</span><span class="text-purple-400">;cccccccccccccc:</span>
+<span class="text-purple-400">:ccccccc;</span><span class="text-white font-bold">ox000o</span><span class="text-purple-400">;</span><span class="text-white font-bold">MMM000k.</span><span class="text-purple-400">;cccccccccc:</span>
+<span class="text-purple-400">ccccccc;</span><span class="text-white font-bold">0MMKxdd:</span><span class="text-purple-400">;</span><span class="text-white font-bold">MMMkddc.</span><span class="text-purple-400">;ccccccccc;</span>
+<span class="text-purple-400">ccccc;</span><span class="text-white font-bold">XMO'</span><span class="text-purple-400">;cccc;</span><span class="text-white font-bold">MMM.</span><span class="text-purple-400">;cccccccccccccc'</span>
+<span class="text-purple-400">ccccc;</span><span class="text-white font-bold">MMo</span><span class="text-purple-400">;ccccc;</span><span class="text-white font-bold">MMW.</span><span class="text-purple-400">;cccccccccccccc;</span>
+<span class="text-purple-400">ccccc;</span><span class="text-white font-bold">0MNc</span><span class="text-purple-400">.ccc.</span><span class="text-white font-bold">xMMd</span><span class="text-purple-400">;ccccccccccccccc;</span>
+<span class="text-purple-400">ccccc;</span><span class="text-white font-bold">dNMWXXXWM0:</span><span class="text-purple-400">;cccccccccccccc;,</span>
+<span class="text-purple-400">ccccccc;</span><span class="text-white font-bold">.:odl:.</span><span class="text-purple-400">;cccccccccccccc;,</span>
+<span class="text-purple-400">ccccccccccccccccccccccccc:'.</span>
+<span class="text-purple-400">:cccccccccccccccccc;,..</span>
+<span class="text-purple-400"> ':cccccccccccccc::;,</span>
           </pre>
         </div>
 
-        <!-- Right: Exact Fedora System Specifications (Sanitized Sensitive Specs) -->
+        <!-- Right: Exact Fedora System Specifications (Purple Palette Theme) -->
         <div class="md:col-span-7 space-y-1 text-slate-300 font-mono text-xs sm:text-sm">
-          <div class="text-blue-400 font-bold border-b border-blue-400/30 pb-1 mb-2 tracking-wide">
+          <div class="text-purple-400 font-bold border-b border-purple-500/30 pb-1 mb-2 tracking-wide">
             peaush<span class="text-white">@</span>fedora
           </div>
 
-          <div><span class="text-blue-400 font-bold">OS:</span> Fedora Linux 44 (Forty Four) x86_64</div>
-          <div><span class="text-blue-400 font-bold">Host:</span> Victus by HP Gaming Laptop 15-fa1xxx</div>
-          <div><span class="text-blue-400 font-bold">Kernel:</span> Linux 7.2.5-200.fc44.x86_64</div>
-          <div><span class="text-blue-400 font-bold">Uptime:</span> 1 hour, 34 mins</div>
-          <div><span class="text-blue-400 font-bold">Packages:</span> 27 (flatpak), 3025 (rpm), 8 (snap)</div>
-          <div><span class="text-blue-400 font-bold">Shell:</span> zsh 5.9</div>
-          <div><span class="text-blue-400 font-bold">Display (B0E0C73):</span> 1920x1080 in 16", 144 Hz [Built-in]</div>
-          <div><span class="text-blue-400 font-bold">Desktop Environment:</span> KDE Plasma 6.7.5</div>
-          <div><span class="text-blue-400 font-bold">Window Manager:</span> KWin (Wayland)</div>
-          <div><span class="text-blue-400 font-bold">WM Theme:</span> Darkly</div>
-          <div><span class="text-blue-400 font-bold">Theme:</span> Darkly (BreezeDark) [Qt], WhiteSur-dark [GTK2/3/4]</div>
-          <div><span class="text-blue-400 font-bold">Icons:</span> breeze-dark [Qt], breeze-dark [GTK2/3/4]</div>
-          <div><span class="text-blue-400 font-bold">Font:</span> Noto Sans (10pt) [Qt], Noto Sans (10pt) [GTK2/3/4]</div>
-          <div><span class="text-blue-400 font-bold">Cursor:</span> breeze (24px)</div>
-          <div><span class="text-blue-400 font-bold">Terminal:</span> konsole 26.8.1</div>
-          <div><span class="text-blue-400 font-bold">Terminal Font:</span> Monospace (13pt)</div>
-          <div><span class="text-blue-400 font-bold">CPU:</span> 13th Gen Intel(R) Core(TM) i5-13420H (8+4) @ 4.60 GHz</div>
-          <div><span class="text-blue-400 font-bold">GPU 1:</span> NVIDIA GeForce RTX 4050 Max-Q / Mobile [Discrete]</div>
-          <div><span class="text-blue-400 font-bold">GPU 2:</span> Intel UHD Graphics @ 1.40 GHz [Integrated]</div>
-          <div><span class="text-blue-400 font-bold">Memory:</span> 8.15 GiB / 15.25 GiB (<span class="text-yellow-400 font-bold">53%</span>)</div>
-          <div><span class="text-blue-400 font-bold">Swap:</span> 3.70 MiB / 8.00 GiB (0%)</div>
-          <div><span class="text-blue-400 font-bold">Disk (/):</span> 105.03 GiB / 474.35 GiB (<span class="text-emerald-400 font-bold">22%</span>) - btrfs</div>
-          <div><span class="text-blue-400 font-bold">Local IP (wlo1):</span> <span class="text-emerald-400 font-bold">127.0.0.1 / [PROTECTED_VIRTUAL_LAN]</span></div>
-          <div><span class="text-blue-400 font-bold">Battery (Primary):</span> <span class="text-emerald-400 font-bold">100%</span> [AC Connected]</div>
-          <div><span class="text-blue-400 font-bold">Locale:</span> en_US.UTF-8</div>
+          <div><span class="text-purple-400 font-bold">OS:</span> Fedora Linux 44 (Forty Four) x86_64</div>
+          <div><span class="text-purple-400 font-bold">Host:</span> Victus by HP Gaming Laptop 15-fa1xxx</div>
+          <div><span class="text-purple-400 font-bold">Kernel:</span> Linux 7.2.5-200.fc44.x86_64</div>
+          <div><span class="text-purple-400 font-bold">Uptime:</span> 1 hour, 34 mins</div>
+          <div><span class="text-purple-400 font-bold">Packages:</span> 27 (flatpak), 3025 (rpm), 8 (snap)</div>
+          <div><span class="text-purple-400 font-bold">Shell:</span> zsh 5.9</div>
+          <div><span class="text-purple-400 font-bold">Display (B0E0C73):</span> 1920x1080 in 16", 144 Hz [Built-in]</div>
+          <div><span class="text-purple-400 font-bold">Desktop Environment:</span> KDE Plasma 6.7.5</div>
+          <div><span class="text-purple-400 font-bold">Window Manager:</span> KWin (Wayland)</div>
+          <div><span class="text-purple-400 font-bold">WM Theme:</span> Darkly</div>
+          <div><span class="text-purple-400 font-bold">Theme:</span> Darkly (BreezeDark) [Qt], WhiteSur-dark [GTK2/3/4]</div>
+          <div><span class="text-purple-400 font-bold">Icons:</span> breeze-dark [Qt], breeze-dark [GTK2/3/4]</div>
+          <div><span class="text-purple-400 font-bold">Font:</span> Noto Sans (10pt) [Qt], Noto Sans (10pt) [GTK2/3/4]</div>
+          <div><span class="text-purple-400 font-bold">Cursor:</span> breeze (24px)</div>
+          <div><span class="text-purple-400 font-bold">Terminal:</span> konsole 26.8.1</div>
+          <div><span class="text-purple-400 font-bold">Terminal Font:</span> Monospace (13pt)</div>
+          <div><span class="text-purple-400 font-bold">CPU:</span> 13th Gen Intel(R) Core(TM) i5-13420H (8+4) @ 4.60 GHz</div>
+          <div><span class="text-purple-400 font-bold">GPU 1:</span> NVIDIA GeForce RTX 4050 Max-Q / Mobile [Discrete]</div>
+          <div><span class="text-purple-400 font-bold">GPU 2:</span> Intel UHD Graphics @ 1.40 GHz [Integrated]</div>
+          <div><span class="text-purple-400 font-bold">Memory:</span> 8.15 GiB / 15.25 GiB (<span class="text-purple-300 font-bold">53%</span>)</div>
+          <div><span class="text-purple-400 font-bold">Swap:</span> 3.70 MiB / 8.00 GiB (0%)</div>
+          <div><span class="text-purple-400 font-bold">Disk (/):</span> 105.03 GiB / 474.35 GiB (<span class="text-purple-300 font-bold">22%</span>) - btrfs</div>
+          <div><span class="text-purple-400 font-bold">Local IP (wlo1):</span> <span class="text-purple-300 font-bold">127.0.0.1 / [PROTECTED_VIRTUAL_LAN]</span></div>
+          <div><span class="text-purple-400 font-bold">Battery (Primary):</span> <span class="text-purple-300 font-bold">100%</span> [AC Connected]</div>
+          <div><span class="text-purple-400 font-bold">Locale:</span> en_US.UTF-8</div>
 
           <!-- Color Palette Blocks (8 Fastfetch Color Blocks) -->
           <div class="pt-3 flex items-center gap-1.5 select-none">
             <span class="w-4 h-4 rounded-xs bg-slate-900 border border-white/20 inline-block shadow-sm"></span>
             <span class="w-4 h-4 rounded-xs bg-red-500 inline-block shadow-sm"></span>
-            <span class="w-4 h-4 rounded-xs bg-green-500 inline-block shadow-sm"></span>
-            <span class="w-4 h-4 rounded-xs bg-yellow-400 inline-block shadow-sm"></span>
-            <span class="w-4 h-4 rounded-xs bg-blue-500 inline-block shadow-sm"></span>
             <span class="w-4 h-4 rounded-xs bg-purple-500 inline-block shadow-sm"></span>
-            <span class="w-4 h-4 rounded-xs bg-cyan-400 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-yellow-400 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-violet-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-fuchsia-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-purple-400 inline-block shadow-sm"></span>
             <span class="w-4 h-4 rounded-xs bg-white inline-block shadow-sm"></span>
           </div>
         </div>
 
       </div>
 
-      <!-- Git Doctor Health Check Output (From User's Latest Screenshot) -->
-      <div class="space-y-1 font-mono text-xs sm:text-sm pt-4 border-t border-white/10">
-        <div class="text-blue-400 select-none">
-          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+      <!-- Git Doctor Health Check Output (Purple Theme) -->
+      <div class="space-y-1 font-mono text-xs sm:text-sm pt-4 border-t border-purple-500/20">
+        <div class="text-purple-400 select-none">
+          ┌──(<span class="text-purple-300 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-purple-600 text-white text-[9px] font-bold">f</span><span class="text-purple-300 italic font-bold">fedora</span>)<span class="text-purple-400">-</span>[<span class="text-purple-300 font-bold">~</span>]
         </div>
         <div class="flex items-center gap-2">
-          <span class="text-blue-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
-          <span class="text-emerald-400 font-bold">git jan doctor</span>
+          <span class="text-purple-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
+          <span class="text-purple-300 font-bold">git jan doctor</span>
         </div>
         <div class="text-slate-300 pl-2 pt-1 font-mono text-xs sm:text-sm space-y-1">
-          <div class="text-emerald-400 font-bold">[DOCTOR] Inspecting repository internals:</div>
-          <div>HEAD: refs/heads/main → <span class="text-blue-400 font-bold">5a80ea2...</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Packed refs: <span class="text-yellow-400 font-bold">42 references resolved</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Index entries: <span class="text-cyan-400 font-bold">1,842 tracked files</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Object DB: <span class="text-purple-400 font-bold">0 corrupt objects, 0 dangling loose blobs</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Integrity: <span class="text-emerald-400 font-bold">100% verified</span> (Direct disk read, zero-exec, zero crate dependencies)</div>
+          <div class="text-purple-300 font-bold">[DOCTOR] Inspecting repository internals:</div>
+          <div>HEAD: refs/heads/main → <span class="text-purple-400 font-bold">e55f2fe...</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Packed refs: <span class="text-purple-300 font-bold">42 references resolved</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Index entries: <span class="text-violet-300 font-bold">1,842 tracked files</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Object DB: <span class="text-fuchsia-300 font-bold">0 corrupt objects, 0 dangling loose blobs</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Integrity: <span class="text-purple-300 font-bold">100% verified</span> (Direct disk read, zero-exec, zero crate dependencies)</div>
         </div>
       </div>
 
       <!-- Command History Output Buffer -->
       <div id="cli-history" class="space-y-3 pt-3"></div>
 
-      <!-- Interactive 2-Line Zsh Input Prompt (Matching Image 2) -->
+      <!-- Interactive 2-Line Zsh Input Prompt (Purple Theme) -->
       <form id="cli-form" class="space-y-0.5 pt-3">
-        <div class="text-blue-400 select-none">
-          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        <div class="text-purple-400 select-none">
+          ┌──(<span class="text-purple-300 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-purple-600 text-white text-[9px] font-bold">f</span><span class="text-purple-300 italic font-bold">fedora</span>)<span class="text-purple-400">-</span>[<span class="text-purple-300 font-bold">~</span>]
         </div>
         <div class="flex items-center gap-2">
-          <span class="text-blue-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
+          <span class="text-purple-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
           <input 
             type="text" 
             id="cli-input" 
             autocomplete="off" 
             spellcheck="false" 
             placeholder="Type 'help', 'skills', 'projects', 'doctor' or 'exit'..." 
-            class="w-full bg-transparent border-none text-emerald-300 focus:outline-none font-mono text-xs sm:text-sm placeholder-white/30"
+            class="w-full bg-transparent border-none text-purple-200 focus:outline-none font-mono text-xs sm:text-sm placeholder-purple-300/40"
           />
         </div>
       </form>
@@ -158,8 +158,8 @@
     </div>
 
     <!-- Terminal Footer Status Bar -->
-    <div class="px-4 py-2 bg-[#080b12] border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/50 select-none shrink-0">
-      <div>Type <span class="text-emerald-400 font-bold">help</span> to list available commands</div>
+    <div class="px-4 py-2 bg-[#080512] border-t border-purple-500/20 flex items-center justify-between text-[10px] font-mono text-purple-300/60 select-none shrink-0">
+      <div>Type <span class="text-purple-300 font-bold">help</span> to list available commands</div>
       <div class="tracking-wider">PEAUSH_PAUL // FEDORA_CLI_SANDBOX v2.0</div>
     </div>
 
@@ -174,7 +174,7 @@
     background: rgba(0, 0, 0, 0.2);
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.5);
     border-radius: 4px;
   }
 </style>
@@ -232,43 +232,43 @@
       const cmd = cliInput.value.trim().toLowerCase();
       if (!cmd) return;
 
-      // Echo User Command with 2-line Zsh prompt (matching Image 2)
+      // Echo User Command with 2-line Zsh prompt
       const cmdLine = document.createElement('div');
       cmdLine.className = 'space-y-0.5 pt-2';
       cmdLine.innerHTML = `
-        <div class="text-blue-400 select-none">
-          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        <div class="text-purple-400 select-none">
+          ┌──(<span class="text-purple-300 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-purple-600 text-white text-[9px] font-bold">f</span><span class="text-purple-300 italic font-bold">fedora</span>)<span class="text-purple-400">-</span>[<span class="text-purple-300 font-bold">~</span>]
         </div>
         <div class="flex items-center gap-2">
-          <span class="text-blue-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
-          <span class="text-emerald-400 font-bold">${cliInput.value}</span>
+          <span class="text-purple-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
+          <span class="text-purple-200 font-bold">${cliInput.value}</span>
         </div>
       `;
       cliHistory.appendChild(cmdLine);
 
       const respLine = document.createElement('div');
-      respLine.className = 'text-slate-300 font-mono text-xs sm:text-sm pl-2 border-l-2 border-emerald-500/50 py-1 space-y-1';
+      respLine.className = 'text-slate-300 font-mono text-xs sm:text-sm pl-2 border-l-2 border-purple-500/50 py-1 space-y-1';
 
       if (cmd === 'help') {
         respLine.innerHTML = `
-          <div class="text-yellow-400 font-bold">AVAILABLE CLI COMMANDS:</div>
-          <div><span class="text-emerald-400 font-bold">fastfetch</span> - Display Fedora Linux system specifications</div>
-          <div><span class="text-emerald-400 font-bold">git jan doctor</span> - Run repository health & integrity check</div>
-          <div><span class="text-emerald-400 font-bold">skills</span> - List developer skill matrix & tech stack</div>
-          <div><span class="text-emerald-400 font-bold">projects</span> - Output open-source GitHub repositories</div>
-          <div><span class="text-emerald-400 font-bold">whoami</span> - Display developer profile summary</div>
-          <div><span class="text-emerald-400 font-bold">contact</span> - Output email & social handles</div>
-          <div><span class="text-emerald-400 font-bold">clear</span> - Clear terminal output buffer</div>
-          <div><span class="text-emerald-400 font-bold">exit</span> - Close terminal window</div>
+          <div class="text-purple-300 font-bold">AVAILABLE CLI COMMANDS:</div>
+          <div><span class="text-purple-300 font-bold">fastfetch</span> - Display Fedora Linux system specifications</div>
+          <div><span class="text-purple-300 font-bold">git jan doctor</span> - Run repository health & integrity check</div>
+          <div><span class="text-purple-300 font-bold">skills</span> - List developer skill matrix & tech stack</div>
+          <div><span class="text-purple-300 font-bold">projects</span> - Output open-source GitHub repositories</div>
+          <div><span class="text-purple-300 font-bold">whoami</span> - Display developer profile summary</div>
+          <div><span class="text-purple-300 font-bold">contact</span> - Output email & social handles</div>
+          <div><span class="text-purple-300 font-bold">clear</span> - Clear terminal output buffer</div>
+          <div><span class="text-purple-300 font-bold">exit</span> - Close terminal window</div>
         `;
       } else if (cmd.includes('doctor') || cmd.includes('jan')) {
         respLine.innerHTML = `
-          <div class="text-emerald-400 font-bold">[DOCTOR] Inspecting repository internals:</div>
-          <div>HEAD: refs/heads/main → <span class="text-blue-400 font-bold">5a80ea2...</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Packed refs: <span class="text-yellow-400 font-bold">42 references resolved</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Index entries: <span class="text-cyan-400 font-bold">1,842 tracked files</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Object DB: <span class="text-purple-400 font-bold">0 corrupt objects, 0 dangling loose blobs</span> [<span class="text-emerald-400 font-bold">OK</span>]</div>
-          <div>Integrity: <span class="text-emerald-400 font-bold">100% verified</span> (Direct disk read, zero-exec, zero crate dependencies)</div>
+          <div class="text-purple-300 font-bold">[DOCTOR] Inspecting repository internals:</div>
+          <div>HEAD: refs/heads/main → <span class="text-purple-400 font-bold">e55f2fe...</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Packed refs: <span class="text-purple-300 font-bold">42 references resolved</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Index entries: <span class="text-violet-300 font-bold">1,842 tracked files</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Object DB: <span class="text-fuchsia-300 font-bold">0 corrupt objects, 0 dangling loose blobs</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>Integrity: <span class="text-purple-300 font-bold">100% verified</span> (Direct disk read, zero-exec, zero crate dependencies)</div>
         `;
       } else if (cmd === 'skills') {
         respLine.innerHTML = `
@@ -290,14 +290,14 @@
         `;
       } else if (cmd === 'whoami' || cmd === 'about') {
         respLine.innerHTML = `
-          <div class="text-blue-400 font-bold">PEAUSH PAUL (@peaush07)</div>
+          <div class="text-purple-300 font-bold">PEAUSH PAUL (@peaush07)</div>
           <div>Full Stack & Systems Developer based in Kolkata, India.</div>
           <div>Pursuing BCA at Techno Main Salt Lake (Class of 2024–2028).</div>
           <div>Focused on high-performance backends, open-source tools & AI architectures.</div>
         `;
       } else if (cmd === 'contact') {
         respLine.innerHTML = `
-          <div class="text-emerald-400 font-bold">CONTACT INFO:</div>
+          <div class="text-purple-300 font-bold">CONTACT INFO:</div>
           <div>• Email: peaushpaul99@gmail.com</div>
           <div>• GitHub: https://github.com/peaush07</div>
           <div>• LinkedIn: https://www.linkedin.com/in/peaush07/</div>
@@ -313,13 +313,13 @@
         return;
       } else if (cmd === 'fastfetch' || cmd === 'neofetch') {
         respLine.innerHTML = `
-          <div class="text-blue-400 font-bold">peaush@fedora — Fedora Linux 44 x86_64</div>
+          <div class="text-purple-300 font-bold">peaush@fedora — Fedora Linux 44 x86_64</div>
           <div>CPU: 13th Gen Intel i5-13420H (12 cores @ 4.60 GHz)</div>
           <div>GPU: NVIDIA RTX 4050 Discrete + Intel UHD</div>
           <div>RAM: 15.25 GiB DDR5 | Kernel: 7.2.5-200.fc44</div>
         `;
       } else {
-        respLine.innerHTML = `<span class="text-red-400">zsh: command not found: ${cmd}</span>. Type <span class="text-emerald-400 font-bold">help</span> for command list.`;
+        respLine.innerHTML = `<span class="text-red-400">zsh: command not found: ${cmd}</span>. Type <span class="text-purple-300 font-bold">help</span> for command list.`;
       }
 
       cliHistory.appendChild(respLine);
