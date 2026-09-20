@@ -66,20 +66,39 @@
 
 /* Ambient Fluid Gradient Mesh Animations */
 @keyframes fluidOrb1 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(60px, -80px) scale(1.15); }
-  66% { transform: translate(-40px, 50px) scale(0.9); }
+  0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  33% { transform: translate(70px, -90px) scale(1.2) rotate(120deg); }
+  66% { transform: translate(-50px, 60px) scale(0.88) rotate(240deg); }
 }
 
 @keyframes fluidOrb2 {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(-70px, 60px) scale(1.2); }
-  66% { transform: translate(50px, -60px) scale(0.95); }
+  0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  33% { transform: translate(-80px, 70px) scale(1.25) rotate(-120deg); }
+  66% { transform: translate(60px, -70px) scale(0.92) rotate(-240deg); }
 }
 
 @keyframes fluidOrb3 {
   0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(80px, 40px) scale(1.1); }
+  50% { transform: translate(90px, 50px) scale(1.15); }
+}
+
+/* Shimmering Border Animation for Badges & Highlights */
+@keyframes borderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Levitation Effect for Headers & Badges */
+@keyframes floatLevitate {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Glowing Pulsating Aura */
+@keyframes pulseAura {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
 }
 
 .fluid-bg-container {
@@ -98,38 +117,38 @@
 .fluid-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.45;
+  filter: blur(95px);
+  opacity: 0.55;
   will-change: transform;
 }
 
 .fluid-orb-1 {
   top: -10%;
   left: 15%;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   background: radial-gradient(circle, var(--orb-1, #8B5CF6) 0%, rgba(139,92,246,0) 70%);
-  animation: fluidOrb1 20s infinite ease-in-out;
+  animation: fluidOrb1 18s infinite ease-in-out;
   transition: background 0.6s ease;
 }
 
 .fluid-orb-2 {
   top: 45%;
   right: 10%;
-  width: 550px;
-  height: 550px;
+  width: 600px;
+  height: 600px;
   background: radial-gradient(circle, var(--orb-2, #A78BFA) 0%, rgba(167,139,250,0) 70%);
-  animation: fluidOrb2 25s infinite ease-in-out;
+  animation: fluidOrb2 22s infinite ease-in-out;
   transition: background 0.6s ease;
 }
 
 .fluid-orb-3 {
   bottom: -10%;
   left: 30%;
-  width: 600px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   background: radial-gradient(circle, var(--orb-3, #C084FC) 0%, rgba(192,132,252,0) 70%);
-  animation: fluidOrb3 22s infinite ease-in-out;
+  animation: fluidOrb3 20s infinite ease-in-out;
   transition: background 0.6s ease;
 }
 
@@ -141,25 +160,7 @@
   --orb-3: #C084FC;
 }
 
-[data-bg-theme="emerald"] {
-  --orb-1: #2ED573;
-  --orb-2: #8B5CF6;
-  --orb-3: #A8FF78;
-}
-
-[data-bg-theme="solar"] {
-  --orb-1: #FFE600;
-  --orb-2: #8B5CF6;
-  --orb-3: #FF758C;
-}
-
-[data-bg-theme="velvet"] {
-  --orb-1: #7C3AED;
-  --orb-2: #A78BFA;
-  --orb-3: #C084FC;
-}
-
-/* Glassmorphism Cards & Panels */
+/* Glassmorphism Cards & Panels with Dynamic Hover Physics */
 [data-style="liquid-glass"] .brutal-card,
 [data-style="liquid-glass"] .bento-card,
 [data-style="liquid-glass"] .about-card {
@@ -167,22 +168,23 @@
   backdrop-filter: blur(28px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.38) !important;
   border-radius: 24px !important;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 16px 40px 0 rgba(0, 0, 0, 0.45) !important;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), 0 16px 40px 0 rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  will-change: transform;
 }
 
 [data-style="liquid-glass"] .brutal-card:hover,
 [data-style="liquid-glass"] .bento-card:hover,
 [data-style="liquid-glass"] .about-card:hover {
-  transform: translateY(-5px) scale(1.01) !important;
-  border-color: rgba(167, 139, 250, 0.6) !important;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4), 0 20px 48px 0 rgba(139, 92, 246, 0.3) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(192, 132, 252, 0.75) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5), 0 24px 50px 0 rgba(139, 92, 246, 0.38) !important;
 }
 
 [data-style="liquid-glass"] #main-nav {
-  background: rgba(7, 9, 14, 0.75) !important;
+  background: rgba(7, 9, 14, 0.78) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
@@ -191,7 +193,22 @@
 
 [data-style="liquid-glass"] .header-line-fill {
   background: linear-gradient(90deg, #8B5CF6, #A78BFA, #C084FC) !important;
-  box-shadow: 0 0 14px #8B5CF6 !important;
+  box-shadow: 0 0 16px #8B5CF6, 0 0 28px #C084FC !important;
+}
+
+/* Floating Badges with Shimmer Border */
+.badge-shimmer {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.2), rgba(192, 132, 252, 0.4), rgba(139, 92, 246, 0.2));
+  background-size: 200% 200%;
+  animation: borderShimmer 4s ease infinite;
+}
+
+.float-levitate {
+  animation: floatLevitate 5s infinite ease-in-out;
+}
+
+.aura-pulse {
+  animation: pulseAura 4s infinite ease-in-out;
 }
 
 /* Fallback for browsers without backdrop-filter support */
@@ -218,31 +235,10 @@ html, body {
 }
 
 .hover-lift {
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 .hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* Cat Legs Running Animation */
-@keyframes legMoveForward {
-  0% { transform: rotate(-25deg); }
-  100% { transform: rotate(25deg); }
-}
-
-@keyframes legMoveBackward {
-  0% { transform: rotate(25deg); }
-  100% { transform: rotate(-25deg); }
-}
-
-.leg-f1, .leg-b2 {
-  transform-origin: 44px 26px;
-  animation: legMoveForward 0.18s infinite alternate ease-in-out;
-}
-
-.leg-f2, .leg-b1 {
-  transform-origin: 40px 26px;
-  animation: legMoveBackward 0.18s infinite alternate ease-in-out;
+  transform: translateY(-6px) scale(1.02);
 }
 
 /* Canvas background positioning */
