@@ -13,9 +13,15 @@
     <!-- Window Title Bar (Purple Dark Konsole Theme) -->
     <div class="px-4 py-3 bg-[#130d22] border-b border-purple-500/20 flex items-center justify-between select-none shrink-0">
       <div class="flex items-center gap-2">
-        <button id="close-terminal-btn-x" class="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors flex items-center justify-center text-[8px] font-bold text-black" title="Close Terminal">✕</button>
-        <div class="w-3.5 h-3.5 rounded-full bg-yellow-500/80"></div>
-        <div class="w-3.5 h-3.5 rounded-full bg-purple-500/80"></div>
+        <button id="close-terminal-btn-x" class="group w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors flex items-center justify-center text-[8px] font-bold text-black" title="Close Terminal (Esc)">
+          <span class="opacity-0 group-hover:opacity-100 transition-opacity">✕</span>
+        </button>
+        <button id="min-terminal-btn" class="group w-3.5 h-3.5 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors flex items-center justify-center text-[9px] font-bold text-black" title="Clear History / Minimize">
+          <span class="opacity-0 group-hover:opacity-100 transition-opacity">−</span>
+        </button>
+        <button id="max-terminal-btn" class="group w-3.5 h-3.5 rounded-full bg-purple-500/80 hover:bg-purple-500 transition-colors flex items-center justify-center text-[8px] font-bold text-white" title="Toggle Fullscreen">
+          <span class="opacity-0 group-hover:opacity-100 transition-opacity">⤢</span>
+        </button>
         <span class="ml-3 text-xs font-mono text-purple-300 font-bold tracking-wide flex items-center gap-1.5">
           <span>peaush@fedora: ~ (zsh) — CLI_SANDBOX</span>
         </span>
@@ -174,6 +180,8 @@
   const modalContent = document.getElementById('fedora-terminal-content');
   const closeBtnX = document.getElementById('close-terminal-btn-x');
   const closeBtnTxt = document.getElementById('close-terminal-btn-txt');
+  const minBtn = document.getElementById('min-terminal-btn');
+  const maxBtn = document.getElementById('max-terminal-btn');
   const cliForm = document.getElementById('cli-form');
   const cliInput = document.getElementById('cli-input') as HTMLInputElement;
   const cliHistory = document.getElementById('cli-history');
@@ -201,6 +209,28 @@
 
   if (closeBtnX) closeBtnX.addEventListener('click', closeTerminalModal);
   if (closeBtnTxt) closeBtnTxt.addEventListener('click', closeTerminalModal);
+
+  // Yellow Button: Clear history & reset prompt buffer
+  if (minBtn) {
+    minBtn.addEventListener('click', () => {
+      if (cliHistory) cliHistory.innerHTML = '';
+      if (cliInput) cliInput.value = '';
+    });
+  }
+
+  // Purple Button: Toggle Fullscreen / Maximize Mode
+  if (maxBtn && modalContent) {
+    maxBtn.addEventListener('click', () => {
+      modalContent.classList.toggle('max-w-4xl');
+      modalContent.classList.toggle('max-h-[90vh]');
+      modalContent.classList.toggle('rounded-2xl');
+      modalContent.classList.toggle('w-full');
+      modalContent.classList.toggle('h-full');
+      modalContent.classList.toggle('max-w-none');
+      modalContent.classList.toggle('max-h-none');
+      modalContent.classList.toggle('rounded-none');
+    });
+  }
 
   if (modal) {
     modal.addEventListener('click', (e) => {
