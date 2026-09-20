@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Peaush — Liquid Glass Portfolio | Full-Stack & Glass UI Architect",
+  description = "Next-Gen 100% Pure Liquid Glassmorphism Portfolio for Peaush. VisionOS & iOS 27 design system, 120Hz smooth scroll, and robust full-stack web engineering."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-style="liquid-glass" data-theme="nebula" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Peaush, Liquid Glass, Portfolio, Astro, React, Glassmorphism, Web Development, UI Architecture" />
+    <meta name="theme-color" content="#030712" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#030712] text-slate-100 font-sans antialiased overflow-x-hidden relative min-h-screen">
+    
+    <!-- Ambient Fluid Mesh Background -->
+    <div class="fluid-mesh-bg">
+      <div class="fluid-orb orb-1"></div>
+      <div class="fluid-orb orb-2"></div>
+      <div class="fluid-orb orb-3"></div>
+    </div>
+
+    <!-- Interactive Canvas Grid -->
+    <canvas id="squares-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Main App Content -->
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <!-- Lenis & Canvas Initialization Scripts -->
+    <script>
+      import Lenis from 'lenis';
+      import { initAmbientSquaresCanvas } from '../scripts/squares-canvas.js';
+
+      // 120Hz Lenis Smooth Scroll
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.0
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      // Initialize ambient square grid canvas
+      initAmbientSquaresCanvas('squares-canvas');
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,138 @@
+---
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <div class="max-w-5xl w-full mx-auto relative z-10">
+    
+    <!-- Hero Glass Card -->
+    <div class="glass-panel p-8 sm:p-12 md:p-16 rounded-[2.5rem] relative shadow-2xl border border-white/20 backdrop-blur-3xl text-center flex flex-col items-center">
+      
+      <!-- Specular Highlight Top Glow -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-white/70 to-transparent"></div>
+
+      <!-- Live Status Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-mono text-white/90 mb-8 shadow-inner backdrop-blur-md hover:scale-105 transition-transform duration-300">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 absolute"></span>
+        <span class="pl-3">Available for Next-Gen Projects</span>
+      </div>
+
+      <!-- Profile Avatar Container with Liquid Glass Ring -->
+      <div class="relative mb-8 group">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-fuchsia-500 blur-lg opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+        <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 glass-panel border border-white/40 shadow-2xl overflow-hidden flex items-center justify-center bg-black/30">
+          <img 
+            src="https://avatars.githubusercontent.com/u/1000000?v=4" 
+            alt="Peaush Profile Avatar" 
+            class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- Name Header -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4">
+        Hi, I'm <span class="bg-gradient-to-r from-cyan-300 via-white to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">Peaush</span>
+      </h1>
+
+      <!-- Typewriter Subtitle -->
+      <div class="h-10 sm:h-12 flex items-center justify-center mb-8">
+        <p class="text-lg sm:text-2xl font-medium text-white/80 font-mono">
+          <span id="hero-typewriter" class="text-cyan-300"></span>
+          <span class="animate-pulse text-white">|</span>
+        </p>
+      </div>
+
+      <!-- Description -->
+      <p class="max-w-2xl text-sm sm:text-base text-white/70 leading-relaxed mb-10 font-normal">
+        Architecting fluid digital experiences with 100% pure glassmorphism, responsive performance, 
+        and robust backend integrations. Crafting web apps that look, feel, and run like futuristic OS interfaces.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
+        <a 
+          href="#projects" 
+          class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-semibold text-sm border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+        >
+          <span>Explore Featured Work</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+
+        <a 
+          href="#contact" 
+          class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-black/20 hover:bg-white/10 text-white/90 hover:text-white font-medium text-sm border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+        >
+          <span>Get In Touch</span>
+        </a>
+      </div>
+
+      <!-- Stat Badges Ribbon -->
+      <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full">
+        <div class="flex flex-col items-center">
+          <span class="text-2xl sm:text-3xl font-bold text-white font-mono">5+</span>
+          <span class="text-xs text-white/60">Years Coding</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-2xl sm:text-3xl font-bold text-cyan-300 font-mono">30+</span>
+          <span class="text-xs text-white/60">Projects Shipped</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-2xl sm:text-3xl font-bold text-fuchsia-300 font-mono">99.9%</span>
+          <span class="text-xs text-white/60">Code Optimization</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-2xl sm:text-3xl font-bold text-emerald-300 font-mono">100%</span>
+          <span class="text-xs text-white/60">Liquid Glass</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Hero Typewriter Script
+  const roles = [
+    'Full-Stack Web Engineer',
+    'Liquid Glass UI Architect',
+    'Astro & React Specialist',
+    'Node.js & Systems Developer',
+    'Creative Frontend Designer'
+  ];
+
+  let roleIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  const target = document.getElementById('hero-typewriter');
+
+  function type() {
+    if (!target) return;
+    const currentRole = roles[roleIdx];
+
+    if (isDeleting) {
+      target.textContent = currentRole.substring(0, charIdx - 1);
+      charIdx--;
+    } else {
+      target.textContent = currentRole.substring(0, charIdx + 1);
+      charIdx++;
+    }
+
+    let speed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIdx === currentRole.length) {
+      speed = 2000; // Pause at end
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      roleIdx = (roleIdx + 1) % roles.length;
+      speed = 500;
+    }
+
+    setTimeout(type, speed);
+  }
+
+  document.addEventListener('DOMContentLoaded', type);
+</script>

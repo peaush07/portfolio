@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   THEME DESIGN TOKENS & CSS VARIABLES
+   ========================================================================== */
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --text-main: #000000;
+  --text-muted: #555555;
+  --border-color: #000000;
+  --card-bg: #FFFFFF;
+  --accent-yellow: #FFE600;
+  --accent-cyan: #00F0FF;
+  --accent-magenta: #FF5757;
+  --accent-green: #76FBD9;
+  --accent-purple: #C8ACD6;
+  --border-width: 3px;
+  --border-width-lg: 4px;
+  --shadow-sm: 3px 3px 0px #000000;
+  --shadow-md: 5px 5px 0px #000000;
+  --shadow-lg: 8px 8px 0px #000000;
+  --radius-card: 0px;
+  --radius-pill: 999px;
+  --transition-normal: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --text-main: #FFFFFF;
+  --text-muted: #A0A0A0;
+  --border-color: #FFFFFF;
+  --card-bg: #1A1A1A;
+  --accent-yellow: #FFEA20;
+  --accent-cyan: #00F0FF;
+  --accent-magenta: #FF4757;
+  --accent-green: #2ED573;
+  --accent-purple: #9B59B6;
+  --shadow-sm: 3px 3px 0px #FFFFFF;
+  --shadow-md: 5px 5px 0px #FFFFFF;
+  --shadow-lg: 8px 8px 0px #FFFFFF;
+}
+
+/* -------------------------------------------------------------------------- */
+/* VisionOS & iOS 27 Liquid Glass Flagship Aesthetics                        */
+/* -------------------------------------------------------------------------- */
+
+[data-style="liquid-glass"] {
+  --bg-primary: #07090e;
+  --bg-secondary: #0f121d;
+  --text-main: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --border-color: rgba(255, 255, 255, 0.22);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --border-width: 1px;
+  --border-width-lg: 1px;
+  --radius-card: 24px;
+  --shadow-sm: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Ambient Fluid Gradient Mesh Animations */
+@keyframes fluidOrb1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(60px, -80px) scale(1.15); }
+  66% { transform: translate(-40px, 50px) scale(0.9); }
+}
+
+@keyframes fluidOrb2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-70px, 60px) scale(1.2); }
+  66% { transform: translate(50px, -60px) scale(0.95); }
+}
+
+@keyframes fluidOrb3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(80px, 40px) scale(1.1); }
+}
+
+.fluid-bg-container {
+  display: none;
+}
+
+[data-style="liquid-glass"] .fluid-bg-container {
+  display: block;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fluid-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.fluid-orb-1 {
+  top: -10%;
+  left: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--orb-1, #00F0FF) 0%, rgba(0,240,255,0) 70%);
+  animation: fluidOrb1 20s infinite ease-in-out;
+  transition: background 0.6s ease;
+}
+
+.fluid-orb-2 {
+  top: 45%;
+  right: 10%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--orb-2, #9B59B6) 0%, rgba(155,89,182,0) 70%);
+  animation: fluidOrb2 25s infinite ease-in-out;
+  transition: background 0.6s ease;
+}
+
+.fluid-orb-3 {
+  bottom: -10%;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--orb-3, #76FBD9) 0%, rgba(118,251,217,0) 70%);
+  animation: fluidOrb3 22s infinite ease-in-out;
+  transition: background 0.6s ease;
+}
+
+/* Background Theme Showcase Presets */
+[data-bg-theme="nebula"] {
+  --orb-1: #00F0FF;
+  --orb-2: #9B59B6;
+  --orb-3: #76FBD9;
+}
+
+[data-bg-theme="emerald"] {
+  --orb-1: #2ED573;
+  --orb-2: #00F0FF;
+  --orb-3: #A8FF78;
+}
+
+[data-bg-theme="solar"] {
+  --orb-1: #FFE600;
+  --orb-2: #FF4757;
+  --orb-3: #FF758C;
+}
+
+[data-bg-theme="velvet"] {
+  --orb-1: #4A00E0;
+  --orb-2: #8E2DE2;
+  --orb-3: #00D2FF;
+}
+
+/* Glassmorphism Cards & Panels */
+[data-style="liquid-glass"] .brutal-card,
+[data-style="liquid-glass"] .bento-card,
+[data-style="liquid-glass"] .about-card {
+  background: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 24px !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 16px 40px 0 rgba(0, 0, 0, 0.45) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+[data-style="liquid-glass"] .brutal-card:hover,
+[data-style="liquid-glass"] .bento-card:hover,
+[data-style="liquid-glass"] .about-card:hover {
+  transform: translateY(-5px) scale(1.01) !important;
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4), 0 20px 48px 0 rgba(0, 240, 255, 0.25) !important;
+}
+
+[data-style="liquid-glass"] #main-nav {
+  background: rgba(7, 9, 14, 0.75) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-style="liquid-glass"] .header-line-fill {
+  background: linear-gradient(90deg, #00F0FF, #76FBD9, #FF5757) !important;
+  box-shadow: 0 0 14px #00F0FF !important;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(1px)) {
+  [data-style="liquid-glass"] .brutal-card,
+  [data-style="liquid-glass"] .bento-card,
+  [data-style="liquid-glass"] .about-card {
+    background: rgba(18, 22, 34, 0.95) !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* General Reset & Performance Utilities                                     */
+/* -------------------------------------------------------------------------- */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Cat Legs Running Animation */
+@keyframes legMoveForward {
+  0% { transform: rotate(-25deg); }
+  100% { transform: rotate(25deg); }
+}
+
+@keyframes legMoveBackward {
+  0% { transform: rotate(25deg); }
+  100% { transform: rotate(-25deg); }
+}
+
+.leg-f1, .leg-b2 {
+  transform-origin: 44px 26px;
+  animation: legMoveForward 0.18s infinite alternate ease-in-out;
+}
+
+.leg-f2, .leg-b1 {
+  transform-origin: 40px 26px;
+  animation: legMoveBackward 0.18s infinite alternate ease-in-out;
+}
+
+/* Canvas background positioning */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.relative-z {
+  position: relative;
+  z-index: 10;
+}
