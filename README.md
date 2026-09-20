@@ -2,7 +2,7 @@
 
 > **Modern Liquid Glass UI Portfolio** with interactive **Fedora CLI System Modal**, smooth Lenis scrolling, dynamic project showcase, and clean purple aesthetic.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-8b5cf6?style=for-the-badge&logo=github)](https://peaush07.github.io/portfolio/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-peaush.is--a.dev-8b5cf6?style=for-the-badge&logo=github)](https://peaush.is-a.dev/)
 [![Astro 7](https://img.shields.io/badge/Astro-v7.3-ff5d01?style=for-the-badge&logo=astro)](https://astro.build/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v3.4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
@@ -21,7 +21,7 @@
   - Inertia-free smooth scrolling powered by Lenis.
   - Zero cutoff on mobile and desktop viewports.
 - 🚀 **Automated CI/CD Deployment**:
-  - Fully automated GitHub Actions workflow (`.github/workflows/deploy.yml`) publishing directly to GitHub Pages.
+  - Fully automated GitHub Actions workflow (`.github/workflows/deploy.yml`) publishing directly to custom domain `peaush.is-a.dev`.
 
 ---
 
@@ -31,6 +31,7 @@
 - **Styling**: Tailwind CSS + Custom CSS Variables & Glassmorphism Utilities
 - **Smooth Scroll**: [Lenis](https://lenis.darkroom.engineering/)
 - **Icons**: Lucide Icons
+- **Domain**: [peaush.is-a.dev](https://peaush.is-a.dev/)
 - **Deployment**: GitHub Pages (Actions)
 
 ---
@@ -56,7 +57,7 @@ npm run build
 
 ## 📬 Contact & Connect
 
-- **Portfolio**: [peaush07.github.io/portfolio](https://peaush07.github.io/portfolio/)
+- **Portfolio**: [peaush.is-a.dev](https://peaush.is-a.dev/)
 - **GitHub**: [@peaush07](https://github.com/peaush07)
 - **LinkedIn**: [peaush07](https://www.linkedin.com/in/peaush07/)
 - **Twitter / X**: [@peaush07](https://x.com/peaush07)
