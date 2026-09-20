@@ -1,6 +1,6 @@
-// High-Performance Rhythmic Pattern Flow & Gravitational Cyber Mesh Canvas
-// Features 60 FPS optimized batch rendering, harmonic diagonal wave flow,
-// elastic grid node deformation, and structured pulse cascades.
+// Clean, Elegant Cyber Grid Canvas with Pure 60 FPS Optimization
+// Features smooth continuous grid drift, subtle mouse hover glow,
+// constellation particles, and zero distracting pattern cascades.
 
 export function initAmbientSquaresCanvas(canvasId) {
   const canvas = document.getElementById(canvasId);
@@ -11,8 +11,9 @@ export function initAmbientSquaresCanvas(canvasId) {
   let dpr = 1;
   let animationFrameId;
 
-  const squareSize = 50;
-  const speed = 0.38; // Continuous pattern drift speed
+  const squareSize = 48;
+  const speedX = 0.35; // Smooth continuous horizontal drift
+  const speedY = 0.35; // Smooth continuous vertical drift
 
   let gridOffsetX = 0;
   let gridOffsetY = 0;
@@ -20,7 +21,7 @@ export function initAmbientSquaresCanvas(canvasId) {
   let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
   let ripples = [];
 
-  // Floating Cyber Particles
+  // Floating Cyber Constellation Particles
   const numParticles = 35;
   const particles = [];
 
@@ -44,7 +45,7 @@ export function initAmbientSquaresCanvas(canvasId) {
         vx: (Math.random() - 0.5) * 0.5,
         vy: (Math.random() - 0.5) * 0.5,
         radius: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.5 + 0.35
+        alpha: Math.random() * 0.45 + 0.25
       });
     }
   }
@@ -63,8 +64,8 @@ export function initAmbientSquaresCanvas(canvasId) {
       x: e.clientX,
       y: e.clientY,
       radius: 10,
-      maxRadius: 320,
-      alpha: 0.9
+      maxRadius: 280,
+      alpha: 0.8
     });
   });
 
@@ -73,21 +74,21 @@ export function initAmbientSquaresCanvas(canvasId) {
     mouse.x += (mouse.targetX - mouse.x) * 0.14;
     mouse.y += (mouse.targetY - mouse.y) * 0.14;
 
-    // Continuous diagonal grid pattern drift
-    gridOffsetX = (gridOffsetX + speed) % squareSize;
-    gridOffsetY = (gridOffsetY + speed) % squareSize;
+    // Continuous smooth grid drifting offset
+    gridOffsetX = (gridOffsetX + speedX) % squareSize;
+    gridOffsetY = (gridOffsetY + speedY) % squareSize;
 
     ctx.clearRect(0, 0, width, height);
 
-    const time = Date.now() * 0.0012;
+    const time = Date.now() * 0.001;
     const cols = Math.ceil(width / squareSize) + 2;
     const rows = Math.ceil(height / squareSize) + 2;
 
     // --- 1. Draw Shockwave Ripples ---
     for (let i = ripples.length - 1; i >= 0; i--) {
       const r = ripples[i];
-      r.radius += 10;
-      r.alpha = (1 - r.radius / r.maxRadius) * 0.85;
+      r.radius += 9;
+      r.alpha = (1 - r.radius / r.maxRadius) * 0.8;
 
       if (r.radius >= r.maxRadius) {
         ripples.splice(i, 1);
@@ -96,7 +97,7 @@ export function initAmbientSquaresCanvas(canvasId) {
         ctx.strokeStyle = `rgba(192, 132, 252, ${r.alpha})`;
         ctx.lineWidth = 2;
         ctx.shadowColor = '#8B5CF6';
-        ctx.shadowBlur = 16;
+        ctx.shadowBlur = 14;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.stroke();
@@ -104,83 +105,50 @@ export function initAmbientSquaresCanvas(canvasId) {
       }
     }
 
-    // --- 2. Rhythmic Pattern Grid Batch Render ---
-    ctx.lineWidth = 1;
-
-    // Step A: Fill Rhythmic Cascade Squares
-    const activePatternIndex = Math.floor((time * 2.5) % 8);
+    // --- 2. Optimized Grid Line Rendering & Subtle Mouse Glow ---
+    const maxHoverDist = 240;
 
     for (let i = -1; i < cols; i++) {
       for (let j = -1; j < rows; j++) {
         const x = i * squareSize + gridOffsetX;
         const y = j * squareSize + gridOffsetY;
 
-        const cellPattern = (i + j) % 8;
         const dx = mouse.x - (x + squareSize / 2);
         const dy = mouse.y - (y + squareSize / 2);
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Hover Fill Glow
-        if (dist < 220) {
-          const hoverAlpha = (1 - dist / 220) * 0.18;
-          ctx.fillStyle = `rgba(139, 92, 246, ${hoverAlpha})`;
-          ctx.fillRect(x + 1, y + 1, squareSize - 2, squareSize - 2);
+        let lineAlpha = 0.04;
+        let hoverGlow = 0;
+
+        if (dist < maxHoverDist) {
+          const factor = 1 - dist / maxHoverDist;
+          lineAlpha = 0.04 + factor * 0.26;
+          hoverGlow = factor;
         }
 
-        // Structured Rhythmic Pattern Wave Fill
-        if (cellPattern === activePatternIndex) {
-          const waveAlpha = Math.sin(time * 3) * 0.04 + 0.06;
-          ctx.fillStyle = `rgba(192, 132, 252, ${waveAlpha})`;
+        const wave = Math.sin(time * 1.8 + (i * 0.25 + j * 0.25)) * 0.012;
+        lineAlpha = Math.max(0.02, lineAlpha + wave);
+
+        // Draw Grid Line
+        ctx.strokeStyle = `rgba(167, 139, 250, ${lineAlpha})`;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x, y, squareSize, squareSize);
+
+        // Soft Mouse Hover Fill Glow
+        if (hoverGlow > 0.04) {
+          ctx.fillStyle = `rgba(139, 92, 246, ${hoverGlow * 0.14})`;
           ctx.fillRect(x + 1, y + 1, squareSize - 2, squareSize - 2);
-        }
-      }
-    }
 
-    // Step B: Single Path Batch Lines for Ultra Performance (60 FPS)
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(167, 139, 250, 0.07)';
-
-    for (let i = -1; i < cols; i++) {
-      for (let j = -1; j < rows; j++) {
-        const baseX = i * squareSize + gridOffsetX;
-        const baseY = j * squareSize + gridOffsetY;
-
-        // Harmonic wave calculation for dynamic opacity
-        const wave = (Math.sin(time * 1.5 + (i * 0.2 + j * 0.2)) + 1) * 0.5;
-        
-        ctx.moveTo(baseX, baseY);
-        ctx.lineTo(baseX + squareSize, baseY);
-        ctx.moveTo(baseX, baseY);
-        ctx.lineTo(baseX, baseY + squareSize);
-      }
-    }
-    ctx.stroke();
-
-    // Step C: Interactive Elastic Nodes Near Mouse
-    for (let i = -1; i < cols; i++) {
-      for (let j = -1; j < rows; j++) {
-        let nx = i * squareSize + gridOffsetX;
-        let ny = j * squareSize + gridOffsetY;
-
-        const mdx = mouse.x - nx;
-        const mdy = mouse.y - ny;
-        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-
-        if (mdist < 180) {
-          const factor = (1 - mdist / 180);
-          // Flex node location towards cursor
-          nx += (mdx / mdist) * factor * 14;
-          ny += (mdy / mdist) * factor * 14;
-
-          ctx.fillStyle = `rgba(192, 132, 252, ${factor * 0.85})`;
+          // Glowing intersection node dots
+          ctx.fillStyle = `rgba(192, 132, 252, ${hoverGlow * 0.8})`;
           ctx.beginPath();
-          ctx.arc(nx, ny, 2.2, 0, Math.PI * 2);
+          ctx.arc(x, y, 2.2, 0, Math.PI * 2);
           ctx.fill();
         }
       }
     }
 
-    // --- 3. Floating Cyber Constellation Particles & Vector Links ---
+    // --- 3. Draw Floating Cyber Constellation Particles & Links ---
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -216,7 +184,7 @@ export function initAmbientSquaresCanvas(canvasId) {
         }
       }
 
-      // Connect to mouse cursor
+      // Connect particle to mouse cursor
       const mdx = mouse.x - p.x;
       const mdy = mouse.y - p.y;
       const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
