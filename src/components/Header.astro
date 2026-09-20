@@ -36,43 +36,12 @@
           href="https://github.com/peaush07" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="hidden sm:inline-flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white items-center gap-1.5 transition-all"
+          class="inline-flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white items-center gap-1.5 transition-all"
           title="GitHub Profile @peaush07"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>@peaush07</span>
         </a>
-
-        <!-- Theme Selector Dropdown -->
-        <div class="relative group">
-          <button 
-            id="theme-toggle-btn"
-            type="button" 
-            aria-label="Switch Theme" 
-            class="glass-pill-button py-1 px-2.5 text-xs inline-flex items-center gap-1.5 text-white/90 hover:text-white"
-          >
-            <svg class="w-3.5 h-3.5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-23"></path>
-            </svg>
-            <span id="theme-label" class="hidden lg:inline text-[11px] uppercase tracking-wider font-mono">Violet</span>
-          </button>
-
-          <!-- Dropdown Menu -->
-          <div class="absolute right-0 top-full mt-2 w-36 rounded-2xl glass-panel p-2 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-white/20 z-50">
-            <button data-theme-set="nebula" class="theme-opt-btn w-full text-left px-3 py-1.5 text-xs text-white/80 hover:text-white rounded-xl hover:bg-white/15 flex items-center gap-2 transition-colors">
-              <span class="w-2.5 h-2.5 rounded-full bg-violet-500 shadow-[0_0_6px_rgba(139,92,246,0.8)]"></span> Violet
-            </button>
-            <button data-theme-set="emerald" class="theme-opt-btn w-full text-left px-3 py-1.5 text-xs text-white/80 hover:text-white rounded-xl hover:bg-white/15 flex items-center gap-2 transition-colors">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"></span> Emerald
-            </button>
-            <button data-theme-set="solar" class="theme-opt-btn w-full text-left px-3 py-1.5 text-xs text-white/80 hover:text-white rounded-xl hover:bg-white/15 flex items-center gap-2 transition-colors">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.8)]"></span> Solar
-            </button>
-            <button data-theme-set="velvet" class="theme-opt-btn w-full text-left px-3 py-1.5 text-xs text-white/80 hover:text-white rounded-xl hover:bg-white/15 flex items-center gap-2 transition-colors">
-              <span class="w-2.5 h-2.5 rounded-full bg-fuchsia-500 shadow-[0_0_6px_rgba(217,70,239,0.8)]"></span> Velvet
-            </button>
-          </div>
-        </div>
 
         <!-- Mobile Menu Toggle Button -->
         <button 
@@ -88,7 +57,7 @@
       </div>
     </div>
 
-    <!-- HEADER BOTTOM WHITE CAT RUNNER PROGRESS BAR (Matches Old Portfolio Structure) -->
+    <!-- HEADER BOTTOM WHITE CAT RUNNER PROGRESS BAR -->
     <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-white/5 border-t border-white/10 overflow-visible">
       <!-- Fill Line -->
       <div id="header-line-fill" class="h-full bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 w-0 transition-all duration-75 shadow-[0_0_10px_rgba(139,92,246,0.8)]"></div>
@@ -162,31 +131,6 @@
 
   window.addEventListener('scroll', updateScrollProgress);
   document.addEventListener('DOMContentLoaded', updateScrollProgress);
-
-  // Theme Switcher Script
-  const themeButtons = document.querySelectorAll('.theme-opt-btn');
-  const themeLabel = document.getElementById('theme-label');
-
-  function applyTheme(themeName) {
-    document.documentElement.dataset.theme = themeName;
-    localStorage.setItem('portfolio-theme', themeName);
-    if (themeLabel) {
-      themeLabel.textContent = themeName;
-    }
-  }
-
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'nebula';
-  applyTheme(savedTheme);
-
-  themeButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const target = e.currentTarget;
-      const theme = target.dataset.themeSet;
-      if (theme) {
-        applyTheme(theme);
-      }
-    });
-  });
 
   // Mobile Menu Script
   const mobileBtn = document.getElementById('mobile-menu-btn');
