@@ -5,34 +5,53 @@
 
   <!-- Section Title -->
   <div class="text-center mb-12">
-    <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">03 // Portfolio Showcase</h2>
+    <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">03 // OPEN SOURCE SHOWCASE</h2>
     <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
-      Featured <span class="bg-gradient-to-r from-cyan-300 via-indigo-200 to-fuchsia-300 bg-clip-text text-transparent">Engineering Work</span>
+      HERE IS MY <span class="bg-gradient-to-r from-cyan-300 via-indigo-200 to-fuchsia-300 bg-clip-text text-transparent">PROJECTS</span>
     </h3>
   </div>
 
-  <!-- Filter Pills -->
-  <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
-    <button data-filter="all" class="filter-btn active-filter px-5 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button bg-white/20 text-white border-white/40">
-      All Projects
-    </button>
-    <button data-filter="ui" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
-      Glass UI & Visuals
-    </button>
-    <button data-filter="fullstack" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
-      Full-Stack & APIs
-    </button>
-    <button data-filter="tools" class="filter-btn px-5 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
-      Dev Tools
-    </button>
+  <!-- Search & Filter Controls -->
+  <div class="glass-panel p-6 rounded-[2rem] border border-white/20 shadow-2xl mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- Search Input -->
+    <div class="w-full md:w-1/2">
+      <input 
+        type="text" 
+        id="project-search-input" 
+        placeholder="🔍 Search Peaush's repositories..." 
+        class="w-full px-5 py-3 rounded-2xl bg-white/5 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all shadow-inner backdrop-blur-md"
+      />
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-center">
+      <button data-lang="all" class="filter-btn active-filter px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button bg-white/20 text-white border-white/40">
+        ALL
+      </button>
+      <button data-lang="TypeScript" class="filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
+        TypeScript
+      </button>
+      <button data-lang="Go" class="filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
+        Go
+      </button>
+      <button data-lang="Python" class="filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
+        Python
+      </button>
+      <button data-lang="C++" class="filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
+        C++
+      </button>
+      <button data-lang="Dart" class="filter-btn px-4 py-2 rounded-full text-xs font-mono font-medium transition-all duration-300 glass-pill-button text-white/70 hover:text-white">
+        Dart
+      </button>
+    </div>
   </div>
 
-  <!-- Projects Container -->
+  <!-- Projects Grid Container -->
   <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Static Featured Project Cards + Dynamic GitHub Cards Loaded via JS -->
+    <!-- Static Featured Project Cards -->
 
     <!-- Card 1 -->
-    <div data-category="ui" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Astro" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent"></div>
 
       <div>
@@ -42,18 +61,18 @@
         </div>
 
         <div class="flex items-center justify-between mb-3">
-          <span class="text-[10px] font-mono text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full border border-cyan-400/30">Astro / CSS</span>
-          <span class="text-xs font-mono text-white/50">★ 142</span>
+          <span class="text-[10px] font-mono text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full border border-cyan-400/30">Astro / Glass</span>
+          <span class="text-xs font-mono text-white/50">★ 12</span>
         </div>
 
-        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">VisionOS Liquid Glass UI</h4>
+        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">PORTFOLIO-2.0</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Full liquid glassmorphism component system built with native backdrop-blur, specular rim highlights, and dynamic lighting.
+          VisionOS & iOS 27 inspired Liquid Glassmorphism Portfolio built with Astro v7, Tailwind CSS, and Lenis 120Hz smooth scroll engine.
         </p>
       </div>
 
       <div class="flex items-center justify-between pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
+        <a href="https://github.com/peaush07/PORTFOLIO-2.0" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
           <span>GitHub</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
@@ -64,7 +83,7 @@
     </div>
 
     <!-- Card 2 -->
-    <div data-category="fullstack" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Go" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-fuchsia-400/70 to-transparent"></div>
 
       <div>
@@ -74,18 +93,18 @@
         </div>
 
         <div class="flex items-center justify-between mb-3">
-          <span class="text-[10px] font-mono text-fuchsia-300 bg-fuchsia-500/20 px-3 py-1 rounded-full border border-fuchsia-400/30">Node.js / React</span>
-          <span class="text-xs font-mono text-white/50">★ 96</span>
+          <span class="text-[10px] font-mono text-fuchsia-300 bg-fuchsia-500/20 px-3 py-1 rounded-full border border-fuchsia-400/30">Go / Distributed</span>
+          <span class="text-xs font-mono text-white/50">★ 48</span>
         </div>
 
-        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-fuchsia-300 transition-colors">Quantum State Engine</h4>
+        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-fuchsia-300 transition-colors">raft-consensus-engine</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          High-performance distributed state manager engineered for real-time multiplayer application data synchronization.
+          High-performance distributed Raft consensus node and key-value storage engine engineered in C++ & Go.
         </p>
       </div>
 
       <div class="flex items-center justify-between pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
           <span>GitHub</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
@@ -96,7 +115,7 @@
     </div>
 
     <!-- Card 3 -->
-    <div data-category="tools" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="TypeScript" class="project-card glass-panel rounded-[2rem] p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-white/40 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent"></div>
 
       <div>
@@ -106,18 +125,18 @@
         </div>
 
         <div class="flex items-center justify-between mb-3">
-          <span class="text-[10px] font-mono text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">TypeScript / AI</span>
-          <span class="text-xs font-mono text-white/50">★ 215</span>
+          <span class="text-[10px] font-mono text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">TypeScript / MCP</span>
+          <span class="text-xs font-mono text-white/50">★ 34</span>
         </div>
 
-        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Multi-Agent Code Assistant</h4>
+        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">mcp-server-suite</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Autonomous workspace refactoring plugin with live AST analysis and zero-latency prompt orchestration.
+          Model Context Protocol (MCP) server suite providing autonomous workflow execution for AI developer tools.
         </p>
       </div>
 
       <div class="flex items-center justify-between pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-white/80 hover:text-white flex items-center gap-1">
           <span>GitHub</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
         </a>
@@ -127,6 +146,26 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- GitHub Stats Banner -->
+  <div class="mt-16 glass-panel p-8 rounded-[2.5rem] border border-white/20 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <div id="stat-repos-count" class="text-3xl sm:text-4xl font-black text-white font-mono">12+</div>
+      <div class="text-xs text-white/60 font-mono mt-1">Public Repositories</div>
+    </div>
+    <div>
+      <div id="stat-stars-count" class="text-3xl sm:text-4xl font-black text-cyan-300 font-mono">100+</div>
+      <div class="text-xs text-white/60 font-mono mt-1">Total Stars Earned</div>
+    </div>
+    <div>
+      <div id="stat-followers-count" class="text-3xl sm:text-4xl font-black text-fuchsia-300 font-mono">24</div>
+      <div class="text-xs text-white/60 font-mono mt-1">GitHub Followers</div>
+    </div>
+    <div>
+      <div id="stat-top-lang" class="text-3xl sm:text-4xl font-black text-emerald-300 font-mono">Go / TS</div>
+      <div class="text-xs text-white/60 font-mono mt-1">Primary Languages</div>
+    </div>
   </div>
 
   <!-- Quick View Modal -->
@@ -149,14 +188,33 @@
 </section>
 
 <script>
-  // Project Filtering
+  import { fetchGitHubRepos } from '../scripts/github-api.js';
+
+  const searchInput = document.getElementById('project-search-input');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.project-card');
 
+  // Search Filter
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+        const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
+        if (title.includes(term) || desc.includes(term)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // Category/Language Filter
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget;
-      const filter = target.dataset.filter;
+      const lang = target.dataset.lang;
 
       filterBtns.forEach(b => {
         b.classList.remove('bg-white/20', 'text-white', 'border-white/40', 'active-filter');
@@ -167,7 +225,7 @@
       target.classList.remove('text-white/70');
 
       cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
+        if (lang === 'all' || card.dataset.lang === lang) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -176,7 +234,7 @@
     });
   });
 
-  // Modal Functionality
+  // Modal Script
   const modal = document.getElementById('project-modal');
   const closeBtn = document.getElementById('close-modal-btn');
   const modalTitle = document.getElementById('modal-title');
@@ -191,8 +249,8 @@
 
       const title = card.querySelector('h4')?.textContent || 'Project';
       const desc = card.querySelector('p')?.textContent || '';
-      const badge = card.querySelector('span')?.textContent || 'Web App';
-      const ghLink = card.querySelector('a')?.getAttribute('href') || 'https://github.com/peaush';
+      const badge = card.querySelector('span')?.textContent || 'Repository';
+      const ghLink = card.querySelector('a')?.getAttribute('href') || 'https://github.com/peaush07';
 
       if (modalTitle) modalTitle.textContent = title;
       if (modalDesc) modalDesc.textContent = desc;

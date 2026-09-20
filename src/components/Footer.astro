@@ -1,30 +1,136 @@
 ---
 ---
 
-<footer class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-  <div class="glass-panel p-8 rounded-[2rem] border border-white/20 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-white/70">
+<footer id="footer" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+  <div class="glass-panel p-8 sm:p-12 rounded-[2.5rem] border border-white/20 shadow-2xl space-y-8">
     
-    <!-- Left: Brand & Status -->
-    <div class="flex items-center gap-3">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></span>
-      <span class="font-mono text-white/90 font-medium">All Glass Systems Operational</span>
-      <span class="text-white/30">•</span>
-      <span class="font-mono text-white/60">Astro v7 Engine</span>
+    <!-- Top 3 Columns Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10 text-xs text-white/70">
+      
+      <!-- Column 1: Brand & Copyright -->
+      <div>
+        <h4 class="text-sm font-bold text-white uppercase mb-3 font-mono tracking-wider">PEAUSH PAUL • PORTFOLIO</h4>
+        <p class="leading-relaxed mb-4 text-white/70">
+          Full Stack & Systems Developer pursuing BCA at Techno Main Salt Lake, Kolkata. Building high-performance distributed systems, AI tools, and open-source applications.
+        </p>
+        <p class="font-mono text-white/90 font-semibold">
+          © <span id="current-year">2026</span> Peaush Paul (@peaush07). All rights reserved.
+        </p>
+      </div>
+
+      <!-- Column 2: Terms & Privacy Modals Trigger -->
+      <div>
+        <h4 class="text-sm font-bold text-white uppercase mb-3 font-mono tracking-wider">TERMS & LEGAL NOTICE</h4>
+        <p class="leading-relaxed mb-4 text-white/70">
+          All open-source projects showcased on this site are distributed under their respective open-source licenses (MIT/Apache 2.0). Personal assets, bio, and custom graphics are copyrighted.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <button id="open-terms-btn" type="button" class="glass-pill-button px-3.5 py-1.5 text-xs font-mono text-amber-300 hover:text-white">
+            📜 TERMS & CONDITIONS
+          </button>
+          <button id="open-privacy-btn" type="button" class="glass-pill-button px-3.5 py-1.5 text-xs font-mono text-cyan-300 hover:text-white">
+            🔒 PRIVACY POLICY
+          </button>
+        </div>
+      </div>
+
+      <!-- Column 3: Location & Back to top -->
+      <div class="flex flex-col justify-between items-start">
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase mb-3 font-mono tracking-wider">LOCATION & AVAILABILITY</h4>
+          <p class="leading-relaxed text-white/80 font-medium mb-2">
+            📍 Kolkata, West Bengal, India 🇮🇳<br/>
+            💼 Open for Internship & Engineering Opportunities
+          </p>
+        </div>
+
+        <a 
+          href="#hero" 
+          class="mt-4 glass-pill-button py-2 px-4 text-xs font-mono text-white/90 hover:text-white inline-flex items-center gap-1.5"
+        >
+          <span>↑ BACK TO TOP</span>
+        </a>
+      </div>
+
     </div>
 
-    <!-- Center: Copyright -->
-    <div class="font-mono text-white/60 text-center">
-      © 2026 Peaush. Built with 100% Pure Liquid Glass.
+    <!-- Bottom Tagline -->
+    <div class="text-center text-xs font-mono text-white/50">
+      Designed & Engineered with Liquid Glass Aesthetics by <strong class="text-white">Peaush Paul</strong>.
     </div>
-
-    <!-- Right: Back to top -->
-    <a 
-      href="#hero" 
-      class="glass-pill-button py-2 px-4 text-xs font-mono text-white/80 hover:text-white inline-flex items-center gap-1.5"
-    >
-      <span>Back to Top</span>
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-    </a>
 
   </div>
+
+  <!-- TERMS & CONDITIONS MODAL OVERLAY -->
+  <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl opacity-0 invisible transition-all duration-300">
+    <div class="glass-panel p-8 rounded-[2rem] max-w-xl w-full border border-white/30 shadow-2xl relative translate-y-4 transition-transform duration-300 max-h-[85vh] overflow-y-auto">
+      <button id="close-terms-modal" class="absolute top-4 right-4 text-white/60 hover:text-white p-2 text-lg">✕</button>
+      <span class="text-xs font-mono text-amber-300 bg-amber-500/20 px-3 py-1 rounded-full border border-amber-400/30 inline-block mb-3">LEGAL STATEMENT</span>
+      <h3 class="text-2xl font-bold text-white mb-4">Terms & Conditions</h3>
+      
+      <div class="space-y-4 text-xs text-white/80 leading-relaxed font-sans mb-6">
+        <p><strong class="text-white">1. Acceptance of Terms:</strong> By accessing and viewing this developer portfolio (peaush.is-a.dev / PORTFOLIO-2.0), you agree to comply with all copyright, open-source license, and usage terms outlined herein.</p>
+        <p><strong class="text-white">2. Intellectual Property & Copyright:</strong> All custom code, design layouts, graphics, branding, and written content contained in this website are © 2026 Peaush Paul (@peaush07). Unauthorized duplication or scraping without attribution is prohibited.</p>
+        <p><strong class="text-white">3. Open-Source Code & Repositories:</strong> Source code featured in the projects section is licensed under their respective repository licenses (MIT / Apache 2.0 / GPL). You are free to inspect, fork, and contribute to public repositories in accordance with their respective open-source licenses.</p>
+        <p><strong class="text-white">4. Disclaimer of Liability:</strong> All projects, demos, and code samples provided on this portfolio are offered for educational and demonstration purposes. No guarantee or warranty is provided for third-party production deployments.</p>
+      </div>
+
+      <button id="accept-terms-btn" class="w-full py-3 rounded-2xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 font-mono text-xs border border-amber-400/40">
+        I UNDERSTAND & AGREE 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL OVERLAY -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl opacity-0 invisible transition-all duration-300">
+    <div class="glass-panel p-8 rounded-[2rem] max-w-xl w-full border border-white/30 shadow-2xl relative translate-y-4 transition-transform duration-300 max-h-[85vh] overflow-y-auto">
+      <button id="close-privacy-modal" class="absolute top-4 right-4 text-white/60 hover:text-white p-2 text-lg">✕</button>
+      <span class="text-xs font-mono text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full border border-cyan-400/30 inline-block mb-3">PRIVACY STATEMENT</span>
+      <h3 class="text-2xl font-bold text-white mb-4">Privacy & Data Disclosure</h3>
+      
+      <div class="space-y-4 text-xs text-white/80 leading-relaxed font-sans mb-6">
+        <p><strong class="text-white">1. Data Collection:</strong> This portfolio does not place tracking cookies, run invasive third-party telemetry, or monetize user browsing data.</p>
+        <p><strong class="text-white">2. Contact Form Submissions:</strong> When you send a message through the contact form, your name, email, and message content are securely processed solely for the purpose of communicating with Peaush Paul.</p>
+        <p><strong class="text-white">3. Hosting & Infrastructure:</strong> This website is hosted on modern cloud edge infrastructure. Standard web server access logs are processed strictly for security and operational diagnostics.</p>
+      </div>
+
+      <button id="accept-privacy-btn" class="w-full py-3 rounded-2xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 font-mono text-xs border border-cyan-400/40">
+        CLOSE PRIVACY NOTICE 🔒
+      </button>
+    </div>
+  </div>
+
 </footer>
+
+<script>
+  // Terms & Privacy Modal Logic
+  const termsBtn = document.getElementById('open-terms-btn');
+  const termsModal = document.getElementById('terms-modal');
+  const closeTerms = document.getElementById('close-terms-modal');
+  const acceptTerms = document.getElementById('accept-terms-btn');
+
+  const privacyBtn = document.getElementById('open-privacy-btn');
+  const privacyModal = document.getElementById('privacy-modal');
+  const closePrivacy = document.getElementById('close-privacy-modal');
+  const acceptPrivacy = document.getElementById('accept-privacy-btn');
+
+  function openM(m) {
+    if (!m) return;
+    m.classList.remove('opacity-0', 'invisible');
+    m.classList.add('opacity-100', 'visible');
+  }
+
+  function closeM(m) {
+    if (!m) return;
+    m.classList.remove('opacity-100', 'visible');
+    m.classList.add('opacity-0', 'invisible');
+  }
+
+  if (termsBtn && termsModal) termsBtn.addEventListener('click', () => openM(termsModal));
+  if (closeTerms && termsModal) closeTerms.addEventListener('click', () => closeM(termsModal));
+  if (acceptTerms && termsModal) acceptTerms.addEventListener('click', () => closeM(termsModal));
+
+  if (privacyBtn && privacyModal) privacyBtn.addEventListener('click', () => openM(privacyModal));
+  if (closePrivacy && privacyModal) closePrivacy.addEventListener('click', () => closeM(privacyModal));
+  if (acceptPrivacy && privacyModal) acceptPrivacy.addEventListener('click', () => closeM(privacyModal));
+</script>

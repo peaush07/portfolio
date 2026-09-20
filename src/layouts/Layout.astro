@@ -7,8 +7,8 @@ export interface Props {
 }
 
 const { 
-  title = "Peaush — Liquid Glass Portfolio | Full-Stack & Glass UI Architect",
-  description = "Next-Gen 100% Pure Liquid Glassmorphism Portfolio for Peaush. VisionOS & iOS 27 design system, 120Hz smooth scroll, and robust full-stack web engineering."
+  title = "Peaush Paul | Full Stack & Systems Developer Portfolio",
+  description = "Peaush Paul (peaush07) - Full Stack & Systems Developer portfolio showcasing open-source projects, cloud native tools, AI dashboards, and software engineering."
 } = Astro.props;
 ---
 
@@ -17,19 +17,21 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="https://github.com/peaush07.png?size=64" />
+    <link rel="apple-touch-icon" href="https://github.com/peaush07.png" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Peaush, Liquid Glass, Portfolio, Astro, React, Glassmorphism, Web Development, UI Architecture" />
+    <meta name="keywords" content="Peaush Paul, peaush07, Developer, Open Source, Portfolio, JavaScript, React, Python, Go, C++, Web Developer, Full Stack" />
     <meta name="theme-color" content="#030712" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="Peaush Paul | Developer Portfolio" />
+    <meta property="og:description" content="Showcasing projects, skills, and open-source contributions by Peaush Paul (@peaush07)." />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/231284231?v=4" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +60,6 @@ const {
       import Lenis from 'lenis';
       import { initAmbientSquaresCanvas } from '../scripts/squares-canvas.js';
 
-      // 120Hz Lenis Smooth Scroll
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -74,7 +75,6 @@ const {
 
       requestAnimationFrame(raf);
 
-      // Initialize ambient square grid canvas
       initAmbientSquaresCanvas('squares-canvas');
     </script>
 
