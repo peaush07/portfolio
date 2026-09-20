@@ -1,0 +1,120 @@
+---
+---
+
+<!-- CLASSY LIQUID GLASS PRELOADER SCREEN -->
+<div 
+  id="preloader" 
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#030712] transition-all duration-700 ease-in-out select-none"
+>
+  <!-- Background Ambient Fluid Orbs -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-cyan-500/30 via-indigo-500/30 to-fuchsia-500/30 blur-3xl animate-pulse"></div>
+  </div>
+
+  <!-- Central Liquid Glass Preloader Box -->
+  <div 
+    id="preloader-box"
+    class="glass-panel p-8 sm:p-12 rounded-[2.5rem] max-w-lg w-full border border-white/30 shadow-[0_16px_48px_0_rgba(0,0,0,0.6)] backdrop-blur-3xl relative text-center flex flex-col items-center transition-all duration-700"
+  >
+    <!-- Specular Rim Light Top Highlight -->
+    <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent"></div>
+
+    <!-- Top Badge & Live Percentage -->
+    <div class="w-full flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+      <span class="text-xs font-mono font-bold text-cyan-300 bg-cyan-500/20 px-3.5 py-1.5 rounded-full border border-cyan-400/40 shadow-[0_0_10px_rgba(34,211,238,0.3)]">
+        PEAUSH.IS-A.DEV
+      </span>
+      <span id="preloader-percent" class="text-2xl font-black font-mono text-white bg-gradient-to-r from-cyan-300 via-white to-fuchsia-300 bg-clip-text text-transparent">
+        0%
+      </span>
+    </div>
+
+    <!-- Cat Runner Track Wrapper -->
+    <div class="w-full relative mb-8">
+      
+      <!-- Running Cat Sprite (Moves along the track) -->
+      <div 
+        id="preloader-cat-runner" 
+        class="absolute -top-8 left-0 transition-all duration-100 -translate-x-1/2 z-10"
+      >
+        <div class="relative text-2xl animate-bounce">
+          🐱
+          <!-- Sparkle Trail -->
+          <span class="absolute -left-2 top-1 text-xs opacity-75 animate-ping">✨</span>
+        </div>
+      </div>
+
+      <!-- Progress Track Container -->
+      <div class="w-full h-3 rounded-full bg-white/10 border border-white/20 p-0.5 overflow-hidden shadow-inner backdrop-blur-md">
+        <div 
+          id="preloader-fill" 
+          class="h-full rounded-full bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-400 w-0 transition-all duration-100 shadow-[0_0_15px_rgba(34,211,238,0.8)]"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Dynamic Status Message -->
+    <div class="w-full h-8 flex items-center justify-center">
+      <p id="preloader-status-text" class="text-xs font-mono text-white/80 tracking-wider">
+        [00:01] INITIALIZING LIQUID GLASS GRAPHICS...
+      </p>
+    </div>
+
+    <!-- Footnote -->
+    <div class="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-white/40 uppercase tracking-widest">
+      PEAUSH PAUL • PORTFOLIO 2.0
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.body.classList.add('overflow-hidden');
+
+  const preloader = document.getElementById('preloader');
+  const preloaderBox = document.getElementById('preloader-box');
+  const percentText = document.getElementById('preloader-percent');
+  const fillBar = document.getElementById('preloader-fill');
+  const catRunner = document.getElementById('preloader-cat-runner');
+  const statusText = document.getElementById('preloader-status-text');
+
+  const statusMessages = [
+    "[00:01] INITIALIZING LIQUID GLASS GRAPHICS...",
+    "[00:02] LOADING PEAUSH PAUL @peaush07 DATA...",
+    "[00:03] SYNCING GITHUB REPOSITORIES & METRICS...",
+    "[00:04] CALIBRATING 120Hz LENIS SMOOTH SCROLL...",
+    "[00:05] GLASS SYSTEM OPERATIONAL • 100%"
+  ];
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.floor(Math.random() * 8) + 4;
+    if (progress > 100) progress = 100;
+
+    if (percentText) percentText.textContent = `${progress}%`;
+    if (fillBar) fillBar.style.width = `${progress}%`;
+    if (catRunner) catRunner.style.left = `${progress}%`;
+
+    // Update status text based on progress stage
+    const msgIdx = Math.min(Math.floor((progress / 100) * statusMessages.length), statusMessages.length - 1);
+    if (statusText) statusText.textContent = statusMessages[msgIdx];
+
+    if (progress === 100) {
+      clearInterval(interval);
+      
+      // Delay slightly at 100% for impact, then classy exit animation
+      setTimeout(() => {
+        if (preloaderBox) {
+          preloaderBox.classList.add('scale-110', 'opacity-0');
+        }
+        if (preloader) {
+          preloader.classList.add('opacity-0', 'pointer-events-none', '-translate-y-8');
+          setTimeout(() => {
+            preloader.style.display = 'none';
+            document.body.classList.remove('overflow-hidden');
+          }, 700);
+        }
+      }, 500);
+    }
+  }, 60);
+</script>
