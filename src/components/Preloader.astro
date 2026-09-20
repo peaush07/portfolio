@@ -1,14 +1,14 @@
 ---
 ---
 
-<!-- CLASSY LIQUID GLASS PRELOADER SCREEN -->
+<!-- CLASSY LIQUID GLASS PRELOADER SCREEN WITH WHITE CAT SVG RUNNER -->
 <div 
   id="preloader" 
   class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#030712] transition-all duration-700 ease-in-out select-none"
 >
   <!-- Background Ambient Fluid Orbs -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-cyan-500/30 via-indigo-500/30 to-fuchsia-500/30 blur-3xl animate-pulse"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-cyan-500/20 via-indigo-500/20 to-fuchsia-500/20 blur-[120px] animate-pulse"></div>
   </div>
 
   <!-- Central Liquid Glass Preloader Box -->
@@ -20,7 +20,7 @@
     <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent"></div>
 
     <!-- Top Badge & Live Percentage -->
-    <div class="w-full flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+    <div class="w-full flex items-center justify-between mb-10 pb-4 border-b border-white/10">
       <span class="text-xs font-mono font-bold text-cyan-300 bg-cyan-500/20 px-3.5 py-1.5 rounded-full border border-cyan-400/40 shadow-[0_0_10px_rgba(34,211,238,0.3)]">
         PEAUSH.IS-A.DEV
       </span>
@@ -30,18 +30,31 @@
     </div>
 
     <!-- Cat Runner Track Wrapper -->
-    <div class="w-full relative mb-8">
+    <div class="w-full relative mb-8 pt-4">
       
-      <!-- Running Cat Sprite (Moves along the track) -->
+      <!-- WHITE CAT SVG RUNNER -->
       <div 
         id="preloader-cat-runner" 
-        class="absolute -top-8 left-0 transition-all duration-100 -translate-x-1/2 z-10"
+        class="absolute -top-7 left-0 transition-all duration-100 -translate-x-1/2 z-10 pointer-events-none"
       >
-        <div class="relative text-2xl animate-bounce">
-          🐱
-          <!-- Sparkle Trail -->
-          <span class="absolute -left-2 top-1 text-xs opacity-75 animate-ping">✨</span>
-        </div>
+        <svg class="cat-svg" viewBox="0 0 64 40" width="52" height="34">
+          <!-- White Cat Body -->
+          <path class="cat-torso" d="M14 18 C14 12, 38 12, 44 18 C48 22, 44 28, 38 28 C28 28, 18 28, 14 24 Z" fill="#FFFFFF" />
+          <!-- White Cat Head -->
+          <path class="cat-head" d="M42 14 C42 8, 54 8, 54 14 C54 20, 44 22, 42 14 Z" fill="#FFFFFF" />
+          <!-- Gold Ears -->
+          <polygon points="44,9 48,2 50,9" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
+          <polygon points="50,9 54,3 56,10" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
+          <!-- Cat Eye -->
+          <circle cx="50" cy="12" r="1.5" fill="#030712" />
+          <!-- White Cat Tail -->
+          <path class="cat-tail" d="M14 19 C8 17, 6 9, 10 5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" />
+          <!-- Running Legs -->
+          <line class="cat-leg leg-f1" x1="44" y1="26" x2="48" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          <line class="cat-leg leg-f2" x1="40" y1="26" x2="36" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          <line class="cat-leg leg-b1" x1="22" y1="26" x2="26" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          <line class="cat-leg leg-b2" x1="18" y1="26" x2="14" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+        </svg>
       </div>
 
       <!-- Progress Track Container -->
@@ -68,6 +81,20 @@
   </div>
 </div>
 
+<style>
+  /* White Cat Running Legs Animations */
+  @keyframes catLeg1 {
+    0%, 100% { transform: rotate(-22deg); transform-origin: top center; }
+    50% { transform: rotate(22deg); transform-origin: top center; }
+  }
+  @keyframes catLeg2 {
+    0%, 100% { transform: rotate(22deg); transform-origin: top center; }
+    50% { transform: rotate(-22deg); transform-origin: top center; }
+  }
+  .leg-f1, .leg-b1 { animation: catLeg1 0.22s infinite ease-in-out; }
+  .leg-f2, .leg-b2 { animation: catLeg2 0.22s infinite ease-in-out; }
+</style>
+
 <script>
   document.body.classList.add('overflow-hidden');
 
@@ -88,21 +115,19 @@
 
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 8) + 4;
+    progress += Math.floor(Math.random() * 7) + 3;
     if (progress > 100) progress = 100;
 
     if (percentText) percentText.textContent = `${progress}%`;
     if (fillBar) fillBar.style.width = `${progress}%`;
     if (catRunner) catRunner.style.left = `${progress}%`;
 
-    // Update status text based on progress stage
     const msgIdx = Math.min(Math.floor((progress / 100) * statusMessages.length), statusMessages.length - 1);
     if (statusText) statusText.textContent = statusMessages[msgIdx];
 
     if (progress === 100) {
       clearInterval(interval);
       
-      // Delay slightly at 100% for impact, then classy exit animation
       setTimeout(() => {
         if (preloaderBox) {
           preloaderBox.classList.add('scale-110', 'opacity-0');
