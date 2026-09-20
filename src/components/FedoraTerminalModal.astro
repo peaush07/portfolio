@@ -4,63 +4,75 @@
 <!-- Fedora Linux Fastfetch CLI Sandbox Terminal Modal Overlay -->
 <div 
   id="fedora-terminal-modal" 
-  class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300 pointer-events-none"
+  class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md opacity-0 invisible transition-all duration-300 pointer-events-none"
   aria-hidden="true"
 >
   <!-- Modal Glass Box -->
-  <div class="relative w-full max-w-4xl max-h-[85vh] rounded-2xl glass-panel border border-emerald-500/30 shadow-[0_0_50px_rgba(16,185,129,0.2)] bg-[#0c0f17]/95 overflow-hidden flex flex-col transition-all duration-300 scale-95" id="fedora-terminal-content">
+  <div class="relative w-full max-w-4xl max-h-[90vh] rounded-2xl glass-panel border border-purple-500/30 shadow-[0_0_50px_rgba(139,92,246,0.25)] bg-[#0a0d14]/95 overflow-hidden flex flex-col transition-all duration-300 scale-95" id="fedora-terminal-content">
     
-    <!-- Window Title Bar -->
+    <!-- Window Title Bar (Konsole Dark Theme) -->
     <div class="px-4 py-3 bg-[#121624] border-b border-white/10 flex items-center justify-between select-none shrink-0">
       <div class="flex items-center gap-2">
         <button id="close-terminal-btn-x" class="w-3.5 h-3.5 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors flex items-center justify-center text-[8px] font-bold text-black" title="Close Terminal">✕</button>
         <div class="w-3.5 h-3.5 rounded-full bg-yellow-500/80"></div>
         <div class="w-3.5 h-3.5 rounded-full bg-green-500/80"></div>
-        <span class="ml-3 text-xs font-mono text-emerald-400 font-bold tracking-wide">peaush@fedora: ~ (zsh) — CLI_SANDBOX</span>
+        <span class="ml-3 text-xs font-mono text-cyan-400 font-bold tracking-wide flex items-center gap-1.5">
+          <span>peaush@fedora: ~ (zsh) — CLI_SANDBOX</span>
+        </span>
       </div>
       <div class="flex items-center gap-3">
-        <span class="text-[10px] font-mono text-white/50 hidden sm:inline">Fedora Linux 44 (x86_64)</span>
+        <span class="text-[10px] font-mono text-purple-300/60 hidden sm:inline">Fedora Linux 44 (x86_64)</span>
         <button id="close-terminal-btn-txt" class="text-xs font-mono text-white/70 hover:text-white px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 transition-all">CLOSE ✕</button>
       </div>
     </div>
 
     <!-- Terminal Body Scroll Container -->
-    <div class="p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm text-slate-200 space-y-4 leading-relaxed custom-scrollbar flex-1" id="terminal-scroll-body">
+    <div class="p-3 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm text-slate-200 space-y-4 leading-relaxed custom-scrollbar flex-1" id="terminal-scroll-body">
       
-      <!-- Initial Fastfetch Command Output -->
-      <div class="text-emerald-400 font-bold mb-2">
-        <span class="text-blue-400 font-bold">peaush@fedora</span>:<span class="text-purple-400">~</span>$ fastfetch
+      <!-- Initial Zsh Prompt & Fastfetch Exec Command (Matching Image 2 Prompt) -->
+      <div class="space-y-0.5 font-mono text-xs sm:text-sm">
+        <div class="text-blue-400">
+          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        </div>
+        <div class="text-blue-400 flex items-center gap-2">
+          <span>└─<span class="text-white font-bold">$</span></span>
+          <span class="text-emerald-400 font-bold">fastfetch</span>
+        </div>
       </div>
 
       <!-- Fastfetch ASCII & System Info Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start text-xs sm:text-sm">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start text-xs sm:text-sm pt-1">
         
-        <!-- Left: Fedora Logo ASCII Art (Matching User's Photo) -->
-        <div class="md:col-span-5 text-blue-400 font-mono text-xs leading-none select-none font-bold">
-          <pre class="overflow-x-auto leading-[1.15]">
-             <span class="text-blue-400">,':;::;::;.</span>
-           <span class="text-blue-400">.';ccccccccccccc;..</span>
-         <span class="text-blue-400">.;cccccccccccccccccccccc;.</span>
-       <span class="text-blue-400">.:cccccccccccccccccccccccccc:.</span>
-     <span class="text-blue-400">.;cccccccccccc;..ddd1..;ccccccc;.</span>
-    <span class="text-blue-400">.:ccccccccccccc;OwMKOOXMwd;ccccccc:.</span>
-   <span class="text-blue-400">.:ccccccccccccKMMc;cc;xMMc;ccccccc:.</span>
-   <span class="text-blue-400">.:ccccccccccccMMM.;cc;hW;;ccccccc:.</span>
-   <span class="text-blue-400">.:ccccccc;ox000o;MMM000k.;ccccccc:.</span>
-   <span class="text-blue-400">.:ccccc;0MMKxdd;MMMKddc.;ccccccc:.</span>
-   <span class="text-blue-400">.:cccc;XMO';cccc;MMM.;ccccccc'</span>
-   <span class="text-blue-400">.:cccc;MMo;ccccc;MMW.;cccccccccccc;</span>
-   <span class="text-blue-400">.:cccc;0MNc.ccc.xMMd;cccccccccc;</span>
-   <span class="text-blue-400">.:ccccc;dNMWXXXWM0;;cccccccccc;,</span>
-   <span class="text-blue-400">.:ccccccc;.:odl:.;cccccccccccc;,</span>
-   <span class="text-blue-400">.:ccccccccccccccccccccccccc;,..</span>
-   <span class="text-blue-400">':ccccccccccccccccc;;,..</span>
+        <!-- Left: Fedora Logo ASCII Art (High Precision 2-Tone Color Highlighting from User Image 3) -->
+        <div class="md:col-span-5 font-mono text-[11px] sm:text-xs leading-[1.12] select-none overflow-x-auto whitespace-pre">
+          <pre class="font-mono leading-[1.12]">
+<span class="text-blue-500">           .',;::::;'.</span>
+<span class="text-blue-500">       .';cccccccccccc;'.</span>
+<span class="text-blue-500">     .;cccccccccccccccccc;.</span>
+<span class="text-blue-500">   .:cccccccccccccccccccccc:.</span>
+<span class="text-blue-500"> .;ccccccccccccc;.</span><span class="text-white font-bold">:dddl:</span><span class="text-blue-500">.;cccccc;.</span>
+<span class="text-blue-500">.:ccccccccccccc;</span><span class="text-white font-bold">OWMKOOXMWd</span><span class="text-blue-500">;cccccc:.</span>
+<span class="text-blue-500">.:cccccccccccc;</span><span class="text-white font-bold">KMMc</span><span class="text-blue-500">;cc;</span><span class="text-white font-bold">xMMc</span><span class="text-blue-500">;cccccc:.</span>
+<span class="text-blue-500">,cccccccccccccc;</span><span class="text-white font-bold">MMM.</span><span class="text-blue-500">;cc;;</span><span class="text-white font-bold">WW:</span><span class="text-blue-500">;ccccccc,</span>
+<span class="text-blue-500">:cccccccccccccc;</span><span class="text-white font-bold">MMM.</span><span class="text-blue-500">;cccccccccccccc:</span>
+<span class="text-blue-500">:ccccccc;</span><span class="text-white font-bold">ox000o</span><span class="text-blue-500">;</span><span class="text-white font-bold">MMM000k.</span><span class="text-blue-500">;cccccccccc:</span>
+<span class="text-blue-500">ccccccc;</span><span class="text-white font-bold">0MMKxdd:</span><span class="text-blue-500">;</span><span class="text-white font-bold">MMMkddc.</span><span class="text-blue-500">;ccccccccc;</span>
+<span class="text-blue-500">ccccc;</span><span class="text-white font-bold">XMO'</span><span class="text-blue-500">;cccc;</span><span class="text-white font-bold">MMM.</span><span class="text-blue-500">;cccccccccccccc'</span>
+<span class="text-blue-500">ccccc;</span><span class="text-white font-bold">MMo</span><span class="text-blue-500">;ccccc;</span><span class="text-white font-bold">MMW.</span><span class="text-blue-500">;cccccccccccccc;</span>
+<span class="text-blue-500">ccccc;</span><span class="text-white font-bold">0MNc</span><span class="text-blue-500">.ccc.</span><span class="text-white font-bold">xMMd</span><span class="text-blue-500">;ccccccccccccccc;</span>
+<span class="text-blue-500">ccccc;</span><span class="text-white font-bold">dNMWXXXWM0:</span><span class="text-blue-500">;cccccccccccccc;,</span>
+<span class="text-blue-500">ccccccc;</span><span class="text-white font-bold">.:odl:.</span><span class="text-blue-500">;cccccccccccccc;,</span>
+<span class="text-blue-500">ccccccccccccccccccccccccccccc:'.</span>
+<span class="text-blue-500">:cccccccccccccccccc;,..</span>
+<span class="text-blue-500"> ':cccccccccccccc::;,</span>
           </pre>
         </div>
 
         <!-- Right: Exact Fedora System Specifications (Sanitized Sensitive Specs) -->
-        <div class="md:col-span-7 space-y-1 text-slate-300 font-mono">
-          <div class="text-blue-400 font-bold border-b border-blue-400/30 pb-1 mb-2">peaush<span class="text-white">@</span>fedora</div>
+        <div class="md:col-span-7 space-y-1 text-slate-300 font-mono text-xs sm:text-sm">
+          <div class="text-blue-400 font-bold border-b border-blue-400/30 pb-1 mb-2 tracking-wide">
+            peaush<span class="text-white">@</span>fedora
+          </div>
 
           <div><span class="text-blue-400 font-bold">OS:</span> Fedora Linux 44 (Forty Four) x86_64</div>
           <div><span class="text-blue-400 font-bold">Host:</span> Victus by HP Gaming Laptop 15-fa1xxx</div>
@@ -81,50 +93,55 @@
           <div><span class="text-blue-400 font-bold">CPU:</span> 13th Gen Intel(R) Core(TM) i5-13420H (8+4) @ 4.60 GHz</div>
           <div><span class="text-blue-400 font-bold">GPU 1:</span> NVIDIA GeForce RTX 4050 Max-Q / Mobile [Discrete]</div>
           <div><span class="text-blue-400 font-bold">GPU 2:</span> Intel UHD Graphics @ 1.40 GHz [Integrated]</div>
-          <div><span class="text-blue-400 font-bold">Memory:</span> 8.15 GiB / 15.25 GiB (<span class="text-yellow-400">53%</span>)</div>
+          <div><span class="text-blue-400 font-bold">Memory:</span> 8.15 GiB / 15.25 GiB (<span class="text-yellow-400 font-bold">53%</span>)</div>
           <div><span class="text-blue-400 font-bold">Swap:</span> 3.70 MiB / 8.00 GiB (0%)</div>
-          <div><span class="text-blue-400 font-bold">Disk (/):</span> 105.03 GiB / 474.35 GiB (<span class="text-emerald-400">22%</span>) - btrfs</div>
-          <div><span class="text-blue-400 font-bold">Local IP (wlo1):</span> <span class="text-emerald-400">127.0.0.1 / [PROTECTED_VIRTUAL_LAN]</span></div>
-          <div><span class="text-blue-400 font-bold">Battery (Primary):</span> <span class="text-emerald-400">100%</span> [AC Connected]</div>
+          <div><span class="text-blue-400 font-bold">Disk (/):</span> 105.03 GiB / 474.35 GiB (<span class="text-emerald-400 font-bold">22%</span>) - btrfs</div>
+          <div><span class="text-blue-400 font-bold">Local IP (wlo1):</span> <span class="text-emerald-400 font-bold">127.0.0.1 / [PROTECTED_VIRTUAL_LAN]</span></div>
+          <div><span class="text-blue-400 font-bold">Battery (Primary):</span> <span class="text-emerald-400 font-bold">100%</span> [AC Connected]</div>
           <div><span class="text-blue-400 font-bold">Locale:</span> en_US.UTF-8</div>
 
-          <!-- Color Palette Blocks -->
-          <div class="pt-3 flex gap-1.5">
-            <span class="w-4 h-4 bg-black border border-white/20"></span>
-            <span class="w-4 h-4 bg-red-500"></span>
-            <span class="w-4 h-4 bg-green-500"></span>
-            <span class="w-4 h-4 bg-yellow-400"></span>
-            <span class="w-4 h-4 bg-blue-500"></span>
-            <span class="w-4 h-4 bg-purple-500"></span>
-            <span class="w-4 h-4 bg-cyan-400"></span>
-            <span class="w-4 h-4 bg-white"></span>
+          <!-- Color Palette Blocks (8 Fastfetch Color Blocks) -->
+          <div class="pt-3 flex items-center gap-1.5 select-none">
+            <span class="w-4 h-4 rounded-xs bg-slate-900 border border-white/20 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-red-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-green-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-yellow-400 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-blue-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-purple-500 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-cyan-400 inline-block shadow-sm"></span>
+            <span class="w-4 h-4 rounded-xs bg-white inline-block shadow-sm"></span>
           </div>
         </div>
 
       </div>
 
-      <!-- Command History Container -->
-      <div id="cli-history" class="space-y-3 pt-2"></div>
+      <!-- Command History Output Buffer -->
+      <div id="cli-history" class="space-y-3 pt-3"></div>
 
-      <!-- Interactive Input Line -->
-      <form id="cli-form" class="flex items-center gap-2 pt-2">
-        <span class="text-blue-400 font-bold shrink-0">peaush@fedora</span>:<span class="text-purple-400 font-bold shrink-0">~</span><span class="text-white shrink-0">$</span>
-        <input 
-          type="text" 
-          id="cli-input" 
-          autocomplete="off" 
-          spellcheck="false" 
-          placeholder="Type 'help', 'skills', 'projects', 'clear' or 'exit'..." 
-          class="w-full bg-transparent border-none text-emerald-300 focus:outline-none font-mono text-xs sm:text-sm placeholder-white/30"
-        />
+      <!-- Interactive 2-Line Zsh Input Prompt (Matching Image 2) -->
+      <form id="cli-form" class="space-y-0.5 pt-3">
+        <div class="text-blue-400 select-none">
+          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-blue-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
+          <input 
+            type="text" 
+            id="cli-input" 
+            autocomplete="off" 
+            spellcheck="false" 
+            placeholder="Type 'help', 'skills', 'projects', 'clear' or 'exit'..." 
+            class="w-full bg-transparent border-none text-emerald-300 focus:outline-none font-mono text-xs sm:text-sm placeholder-white/30"
+          />
+        </div>
       </form>
 
     </div>
 
-    <!-- Terminal Footer -->
+    <!-- Terminal Footer Status Bar -->
     <div class="px-4 py-2 bg-[#080b12] border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/50 select-none shrink-0">
-      <div>Type <span class="text-emerald-400">help</span> to list available commands</div>
-      <div>PEAUSH_PAUL // FEDORA_CLI_SANDBOX v2.0</div>
+      <div>Type <span class="text-emerald-400 font-bold">help</span> to list available commands</div>
+      <div class="tracking-wider">PEAUSH_PAUL // FEDORA_CLI_SANDBOX v2.0</div>
     </div>
 
   </div>
@@ -196,10 +213,18 @@
       const cmd = cliInput.value.trim().toLowerCase();
       if (!cmd) return;
 
-      // Echo User Command
+      // Echo User Command with 2-line Zsh prompt (matching Image 2)
       const cmdLine = document.createElement('div');
-      cmdLine.className = 'text-emerald-400 font-bold pt-2';
-      cmdLine.innerHTML = `<span class="text-blue-400">peaush@fedora</span>:<span class="text-purple-400">~</span>$ ${cliInput.value}`;
+      cmdLine.className = 'space-y-0.5 pt-2';
+      cmdLine.innerHTML = `
+        <div class="text-blue-400 select-none">
+          ┌──(<span class="text-cyan-400 italic font-bold">peaush</span><span class="mx-1 px-1.5 py-0.2 rounded-full bg-blue-600 text-white text-[9px] font-bold">f</span><span class="text-cyan-400 italic font-bold">fedora</span>)<span class="text-blue-400">-</span>[<span class="text-purple-400 font-bold">~</span>]
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-blue-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
+          <span class="text-emerald-400 font-bold">${cliInput.value}</span>
+        </div>
+      `;
       cliHistory.appendChild(cmdLine);
 
       const respLine = document.createElement('div');
@@ -274,3 +299,4 @@
     });
   }
 </script>
+
