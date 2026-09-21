@@ -131,8 +131,8 @@
 .fluid-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.45;
+  filter: blur(55px);
+  opacity: 0.65;
   will-change: transform;
   transform: translateZ(0);
 }
@@ -140,28 +140,28 @@
 .fluid-orb-1 {
   top: -10%;
   left: 15%;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background: radial-gradient(circle, var(--orb-1, #8B5CF6) 0%, rgba(139,92,246,0) 70%);
-  animation: fluidOrb1 20s infinite ease-in-out;
+  animation: fluidOrb1 18s infinite ease-in-out;
 }
 
 .fluid-orb-2 {
-  top: 45%;
-  right: 10%;
-  width: 550px;
-  height: 550px;
+  top: 40%;
+  right: 5%;
+  width: 650px;
+  height: 650px;
   background: radial-gradient(circle, var(--orb-2, #A78BFA) 0%, rgba(167,139,250,0) 70%);
-  animation: fluidOrb2 25s infinite ease-in-out;
+  animation: fluidOrb2 22s infinite ease-in-out;
 }
 
 .fluid-orb-3 {
   bottom: -10%;
-  left: 30%;
-  width: 550px;
-  height: 550px;
+  left: 25%;
+  width: 650px;
+  height: 650px;
   background: radial-gradient(circle, var(--orb-3, #C084FC) 0%, rgba(192,132,252,0) 70%);
-  animation: fluidOrb3 22s infinite ease-in-out;
+  animation: fluidOrb3 20s infinite ease-in-out;
 }
 
 /* Background Theme Showcase Presets */

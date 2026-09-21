@@ -9,9 +9,9 @@ export function initAmbientSquaresCanvas(canvasId) {
   let dpr = 1;
   let animationFrameId;
 
-  const squareSize = 56;
-  const speedX = 0.25;
-  const speedY = 0.25;
+  const squareSize = 52;
+  const speedX = 0.45;
+  const speedY = 0.45;
 
   let gridOffsetX = 0;
   let gridOffsetY = 0;
@@ -20,7 +20,7 @@ export function initAmbientSquaresCanvas(canvasId) {
   let ripples = [];
 
   // Floating Cyber Constellation Particles
-  const numParticles = 20;
+  const numParticles = 30;
   const particles = [];
 
   function resize() {
@@ -40,10 +40,10 @@ export function initAmbientSquaresCanvas(canvasId) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.5 + 1,
-        alpha: Math.random() * 0.35 + 0.15
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        radius: Math.random() * 2 + 1.2,
+        alpha: Math.random() * 0.45 + 0.35
       });
     }
   }
@@ -61,8 +61,8 @@ export function initAmbientSquaresCanvas(canvasId) {
       x: e.clientX,
       y: e.clientY,
       radius: 10,
-      maxRadius: 240,
-      alpha: 0.7
+      maxRadius: 280,
+      alpha: 0.85
     });
   }, { passive: true });
 
@@ -85,25 +85,25 @@ export function initAmbientSquaresCanvas(canvasId) {
 
     ctx.clearRect(0, 0, width, height);
 
-    // --- 1. Draw Shockwave Ripples (Zero ShadowBlur overhead) ---
+    // --- 1. Draw Shockwave Ripples ---
     for (let i = ripples.length - 1; i >= 0; i--) {
       const r = ripples[i];
       r.radius += 10;
-      r.alpha = (1 - r.radius / r.maxRadius) * 0.7;
+      r.alpha = (1 - r.radius / r.maxRadius) * 0.85;
 
       if (r.radius >= r.maxRadius) {
         ripples.splice(i, 1);
       } else {
         ctx.strokeStyle = `rgba(192, 132, 252, ${r.alpha})`;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.stroke();
       }
     }
 
-    // --- 2. BATCHED GRID DRAWING (Reduced 1500 draw calls down to 2) ---
-    ctx.strokeStyle = 'rgba(167, 139, 250, 0.04)';
+    // --- 2. BATCHED GRID DRAWING (Highly Visible Cyber Lines) ---
+    ctx.strokeStyle = 'rgba(167, 139, 250, 0.14)';
     ctx.lineWidth = 1;
     ctx.beginPath();
 
@@ -122,7 +122,7 @@ export function initAmbientSquaresCanvas(canvasId) {
 
     // --- 3. Targeted Mouse Hover Glow ---
     if (mouse.x > 0 && mouse.y > 0) {
-      const maxHoverDist = 200;
+      const maxHoverDist = 240;
       const startCol = Math.max(0, Math.floor((mouse.x - maxHoverDist) / squareSize));
       const endCol = Math.min(Math.ceil(width / squareSize), Math.ceil((mouse.x + maxHoverDist) / squareSize));
       const startRow = Math.max(0, Math.floor((mouse.y - maxHoverDist) / squareSize));
@@ -140,12 +140,12 @@ export function initAmbientSquaresCanvas(canvasId) {
           if (distSq < maxHoverDist * maxHoverDist) {
             const dist = Math.sqrt(distSq);
             const factor = 1 - dist / maxHoverDist;
-            ctx.fillStyle = `rgba(139, 92, 246, ${factor * 0.12})`;
+            ctx.fillStyle = `rgba(139, 92, 246, ${factor * 0.38})`;
             ctx.fillRect(gx + 1, gy + 1, squareSize - 2, squareSize - 2);
 
-            ctx.fillStyle = `rgba(192, 132, 252, ${factor * 0.7})`;
+            ctx.fillStyle = `rgba(192, 132, 252, ${factor * 0.95})`;
             ctx.beginPath();
-            ctx.arc(gx, gy, 2, 0, Math.PI * 2);
+            ctx.arc(gx, gy, 2.5, 0, Math.PI * 2);
             ctx.fill();
           }
         }
@@ -163,7 +163,7 @@ export function initAmbientSquaresCanvas(canvasId) {
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      ctx.fillStyle = `rgba(167, 139, 250, ${p.alpha})`;
+      ctx.fillStyle = `rgba(192, 132, 252, ${p.alpha})`;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -175,11 +175,11 @@ export function initAmbientSquaresCanvas(canvasId) {
         const pdy = p.y - p2.y;
         const pdistSq = pdx * pdx + pdy * pdy;
 
-        if (pdistSq < 10000) {
+        if (pdistSq < 14400) {
           const pdist = Math.sqrt(pdistSq);
-          const linkAlpha = (1 - pdist / 100) * 0.18;
+          const linkAlpha = (1 - pdist / 120) * 0.42;
           ctx.strokeStyle = `rgba(192, 132, 252, ${linkAlpha})`;
-          ctx.lineWidth = 0.8;
+          ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
