@@ -32,6 +32,8 @@ jobs:
 
       - name: Build Site
         run: npm run build
+        env:
+          BASE_PATH: /portfolio/
 
       - name: Upload Build Artifacts
         uses: actions/upload-pages-artifact@v3
