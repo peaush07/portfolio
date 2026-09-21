@@ -3,6 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://peaush.is-a.dev',
-  base: '/',
+  site: 'https://peaush07.github.io',
+  base: '/portfolio/',
 });
