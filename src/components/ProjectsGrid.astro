@@ -588,7 +588,22 @@
         </div>
       </div>
 
-      <!-- Section 3: Tech Stack Matrix -->
+      <!-- Section 3: Interactive Live Demo Canvas / Simulator -->
+      <div id="modal-demo-container" class="space-y-3">
+        <div class="flex items-center justify-between text-fuchsia-300 font-mono font-bold text-sm tracking-wide border-b border-purple-500/20 pb-2">
+          <span class="flex items-center gap-2">🎮 INTERACTIVE LIVE DEMO & SANDBOX</span>
+          <span class="text-[10px] text-fuchsia-400 font-normal">Live In-Browser Simulation</span>
+        </div>
+        
+        <div class="relative bg-slate-950 p-4 sm:p-5 rounded-2xl border border-fuchsia-500/30 min-h-[160px] flex flex-col items-center justify-center overflow-hidden">
+          <canvas id="modal-demo-canvas" class="w-full h-44 rounded-xl bg-slate-900/90 border border-white/10 hidden cursor-crosshair"></canvas>
+          <div id="modal-demo-interactive" class="w-full text-center space-y-3">
+            <!-- Dynamic interactive widget content -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Tech Stack Matrix -->
       <div class="space-y-2">
         <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">TECHS & DEPENDENCIES</div>
         <div id="modal-tech-stack" class="flex flex-wrap gap-2 pt-1">
@@ -618,7 +633,15 @@
 </div>
 
 <script>
+  import { soundFX } from '../scripts/sound-fx.js';
+
+  // Attach hover sounds to project cards and details buttons
+  document.querySelectorAll('.project-card, .open-details-btn, .filter-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => soundFX.playHover());
+  });
+
   // Project Details Knowledge Base
+
   const projectDetailsMap = {
     'nextjs-ai-analytics': {
       title: 'Nextjs ai analytics dashboard',
@@ -914,6 +937,8 @@ python manage.py runserver
     const details = projectDetailsMap[projectId];
     if (!details) return;
 
+    soundFX.playModalOpen();
+
     modalTitle.textContent = details.title;
     modalCategory.textContent = details.category;
     modalTagline.textContent = details.tagline;
@@ -932,6 +957,9 @@ python manage.py runserver
       modalTechStack.appendChild(span);
     });
 
+    // Populate Interactive Live Demo Simulation
+    renderInteractiveDemo(projectId, details);
+
     backdrop.classList.remove('hidden');
     requestAnimationFrame(() => {
       backdrop.classList.remove('opacity-0');
@@ -942,7 +970,186 @@ python manage.py runserver
     document.body.style.overflow = 'hidden';
   }
 
+  function renderInteractiveDemo(projectId, details) {
+    const demoInteractive = document.getElementById('modal-demo-interactive');
+    const demoCanvas = document.getElementById('modal-demo-canvas') as HTMLCanvasElement;
+    if (!demoInteractive || !demoCanvas) return;
+
+    demoInteractive.innerHTML = '';
+    demoCanvas.classList.add('hidden');
+
+    if (projectId === 'aim-trainer') {
+      // Interactive Aim Trainer Target Game Widget
+      demoInteractive.innerHTML = `
+        <div class="space-y-2">
+          <p class="text-xs text-fuchsia-300 font-mono">🎯 AIM TRAINER MINI-GAME: Click targets to test your reaction speed!</p>
+          <div class="flex items-center justify-center gap-4 text-xs font-mono text-white">
+            <span>SCORE: <strong id="aim-score" class="text-emerald-400">0</strong></span>
+            <span>ACCURACY: <strong id="aim-acc" class="text-violet-400">100%</strong></span>
+          </div>
+        </div>
+      `;
+      demoCanvas.classList.remove('hidden');
+      initAimTrainerCanvas(demoCanvas);
+    } else if (projectId === 'cyber-neon-runner' || projectId === 'retro-game') {
+      // Interactive Cyber Neon 2D Arcade Runner Widget
+      demoInteractive.innerHTML = `
+        <div class="space-y-2">
+          <p class="text-xs text-fuchsia-300 font-mono">🏃 2D ARCADE RUNNER: Click or Press [SPACE] to Jump over obstacles!</p>
+          <div class="flex items-center justify-center gap-4 text-xs font-mono text-white">
+            <span>DISTANCE: <strong id="runner-score" class="text-fuchsia-400">0m</strong></span>
+            <span>SPEED: <strong class="text-purple-400">60 FPS</strong></span>
+          </div>
+        </div>
+      `;
+      demoCanvas.classList.remove('hidden');
+      initRunnerCanvas(demoCanvas);
+    } else {
+      // Live Telemetry / Terminal Widget Simulation
+      demoInteractive.innerHTML = `
+        <div class="space-y-3 p-4 bg-slate-900/80 rounded-xl border border-white/10 font-mono text-left">
+          <div class="flex items-center justify-between text-xs text-violet-300 border-b border-white/10 pb-2">
+            <span>[SYS_TELEMETRY] ${details.title}</span>
+            <span class="text-emerald-400 text-[10px]">● ACTIVE RUNTIME</span>
+          </div>
+          <p class="text-xs text-slate-300">${details.tagline}</p>
+          <div class="flex items-center gap-3 pt-1">
+            <a href="${details.repoUrl || 'https://github.com/peaush07'}" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-lg bg-fuchsia-600/30 hover:bg-fuchsia-600/50 text-fuchsia-200 text-xs border border-fuchsia-400/40 flex items-center gap-1 transition-all">
+              <span>🚀 LAUNCH REPOSITORY</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function initAimTrainerCanvas(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    canvas.width = canvas.parentElement?.clientWidth || 400;
+    canvas.height = 160;
+
+    let score = 0, clicks = 0;
+    let target = { x: canvas.width / 2, y: canvas.height / 2, radius: 22 };
+
+    function spawnTarget() {
+      target.x = Math.random() * (canvas.width - 60) + 30;
+      target.y = Math.random() * (canvas.height - 60) + 30;
+      target.radius = 22;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Target outer aura
+      ctx.fillStyle = 'rgba(232, 121, 249, 0.2)';
+      ctx.beginPath();
+      ctx.arc(target.x, target.y, target.radius + 6, 0, Math.PI * 2);
+      ctx.fill();
+      // Target center
+      ctx.fillStyle = '#C084FC';
+      ctx.beginPath();
+      ctx.arc(target.x, target.y, target.radius, 0, Math.PI * 2);
+      ctx.fill();
+      // Bullseye
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(target.x, target.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    canvas.onclick = (e) => {
+      soundFX.playClick();
+      clicks++;
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      const dist = Math.hypot(clickX - target.x, clickY - target.y);
+      if (dist <= target.radius) {
+        soundFX.playSuccess();
+        score++;
+        spawnTarget();
+      }
+      const scoreEl = document.getElementById('aim-score');
+      const accEl = document.getElementById('aim-acc');
+      if (scoreEl) scoreEl.textContent = score.toString();
+      if (accEl) accEl.textContent = `${Math.round((score / clicks) * 100)}%`;
+      draw();
+    };
+
+    draw();
+  }
+
+  function initRunnerCanvas(canvas: HTMLCanvasElement) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    canvas.width = canvas.parentElement?.clientWidth || 400;
+    canvas.height = 160;
+
+    let playerY = 110, vy = 0, isJumping = false, score = 0;
+    let obstacleX = canvas.width + 50;
+
+    function loop() {
+      if (canvas.classList.contains('hidden')) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Floor line
+      ctx.strokeStyle = '#8B5CF6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, 135);
+      ctx.lineTo(canvas.width, 135);
+      ctx.stroke();
+
+      // Jump Physics
+      vy += 0.8;
+      playerY += vy;
+      if (playerY >= 110) {
+        playerY = 110;
+        vy = 0;
+        isJumping = false;
+      }
+
+      // Player Box
+      ctx.fillStyle = '#C084FC';
+      ctx.fillRect(40, playerY, 20, 25);
+
+      // Obstacle
+      obstacleX -= 4;
+      if (obstacleX < -20) {
+        obstacleX = canvas.width + Math.random() * 100;
+        score += 10;
+        const scoreEl = document.getElementById('runner-score');
+        if (scoreEl) scoreEl.textContent = `${score}m`;
+      }
+
+      ctx.fillStyle = '#F43F5E';
+      ctx.fillRect(obstacleX, 115, 15, 20);
+
+      requestAnimationFrame(loop);
+    }
+
+    const jump = () => {
+      if (!isJumping) {
+        soundFX.playClick();
+        vy = -12;
+        isJumping = true;
+      }
+    };
+
+    canvas.onclick = jump;
+    window.onkeydown = (e) => {
+      if (e.code === 'Space' && !canvas.classList.contains('hidden')) {
+        e.preventDefault();
+        jump();
+      }
+    };
+
+    loop();
+  }
+
   function closeProjectModal() {
+    soundFX.playClick();
     backdrop.classList.add('opacity-0');
     modalCard.classList.remove('scale-100');
     modalCard.classList.add('scale-95');
@@ -955,6 +1162,7 @@ python manage.py runserver
   // Trigger buttons
   document.querySelectorAll('.open-details-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
+      soundFX.playClick();
       const id = e.currentTarget.dataset.modalTrigger;
       openProjectModal(id);
     });
@@ -986,6 +1194,7 @@ python manage.py runserver
 
       try {
         await navigator.clipboard.writeText(codeText);
+        soundFX.playSuccess();
         
         // Highlight & Success Feedback Animation
         copyTerminalBtn.classList.remove('bg-violet-600/30', 'text-violet-200', 'border-violet-400/60');

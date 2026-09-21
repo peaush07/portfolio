@@ -31,6 +31,28 @@
 
       <!-- Actions & Widgets -->
       <div class="flex items-center gap-2">
+        <!-- Cmd+K Spotlight Search Button -->
+        <button 
+          id="cmd-palette-trigger-btn"
+          type="button" 
+          class="hidden sm:flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white border-violet-500/40 bg-violet-500/10 items-center gap-1.5 shadow-[0_0_12px_rgba(139,92,246,0.3)] hover:scale-105 transition-all"
+          title="Open Command Palette (Cmd + K)"
+        >
+          <span class="text-violet-400 font-bold">🔍</span>
+          <span class="font-bold text-[11px]">⌘K</span>
+        </button>
+
+        <!-- Web Audio Sound FX Toggle -->
+        <button 
+          id="header-sound-btn"
+          type="button" 
+          class="glass-pill-button py-1 px-3 text-xs font-mono text-emerald-300 hover:text-white border-emerald-500/40 bg-emerald-500/10 flex items-center gap-1.5 shadow-[0_0_12px_rgba(52,211,153,0.3)] hover:scale-105 transition-all"
+          title="Toggle Web Audio SFX"
+        >
+          <span id="header-sound-icon">🔊</span>
+          <span id="header-sound-label" class="font-bold text-[11px]">SFX: ON</span>
+        </button>
+
         <!-- CLI_SANDBOX Fedora Terminal Trigger Button (Purple Glass Aesthetic) -->
         <button 
           id="fedora-cli-trigger-btn"
@@ -47,7 +69,7 @@
           href="https://github.com/peaush07" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="hidden sm:inline-flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white items-center gap-1.5 transition-all"
+          class="hidden lg:inline-flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white items-center gap-1.5 transition-all"
           title="GitHub Profile @peaush07"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -127,6 +149,8 @@
 </style>
 
 <script>
+  import { soundFX } from '../scripts/sound-fx.js';
+
   // White Cat Scroll Tracker Script
   const lineFill = document.getElementById('header-line-fill');
   const catRunner = document.getElementById('header-cat-runner');
@@ -143,10 +167,48 @@
   window.addEventListener('scroll', updateScrollProgress);
   document.addEventListener('DOMContentLoaded', updateScrollProgress);
 
+  // Sound FX Toggle Listener
+  const soundBtn = document.getElementById('header-sound-btn');
+  const soundIcon = document.getElementById('header-sound-icon');
+  const soundLabel = document.getElementById('header-sound-label');
+
+  function updateSoundUI() {
+    if (soundFX.isMuted) {
+      if (soundIcon) soundIcon.textContent = '🔇';
+      if (soundLabel) soundLabel.textContent = 'SFX: OFF';
+      soundBtn?.classList.remove('text-emerald-300', 'border-emerald-500/40', 'bg-emerald-500/10');
+      soundBtn?.classList.add('text-rose-300', 'border-rose-500/40', 'bg-rose-500/10');
+    } else {
+      if (soundIcon) soundIcon.textContent = '🔊';
+      if (soundLabel) soundLabel.textContent = 'SFX: ON';
+      soundBtn?.classList.remove('text-rose-300', 'border-rose-500/40', 'bg-rose-500/10');
+      soundBtn?.classList.add('text-emerald-300', 'border-emerald-500/40', 'bg-emerald-500/10');
+    }
+  }
+
+  if (soundBtn) {
+    updateSoundUI();
+    soundBtn.addEventListener('click', () => {
+      const isMuted = soundFX.toggleMute();
+      updateSoundUI();
+      if (!isMuted) soundFX.playClick();
+    });
+  }
+
+  // Cmd+K Spotlight Trigger
+  const cmdBtn = document.getElementById('cmd-palette-trigger-btn');
+  if (cmdBtn) {
+    cmdBtn.addEventListener('click', () => {
+      soundFX.playClick();
+      if ((window as any).openCommandPalette) (window as any).openCommandPalette();
+    });
+  }
+
   // CLI SANDBOX Fedora Terminal Trigger Script
   const cliTriggerBtn = document.getElementById('fedora-cli-trigger-btn');
   if (cliTriggerBtn) {
     cliTriggerBtn.addEventListener('click', () => {
+      soundFX.playClick();
       window.dispatchEvent(new CustomEvent('open-fedora-terminal'));
     });
   }
@@ -158,6 +220,7 @@
 
   if (mobileBtn && mobileDrawer) {
     mobileBtn.addEventListener('click', () => {
+      soundFX.playClick();
       const isVisible = mobileDrawer.classList.contains('opacity-100');
       if (isVisible) {
         mobileDrawer.classList.remove('opacity-100', 'visible', 'translate-y-0');

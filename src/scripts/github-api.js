@@ -29,8 +29,8 @@ export async function fetchGitHubUserData(username = GITHUB_USERNAME) {
       login: username,
       avatar_url: 'https://avatars.githubusercontent.com/u/231284231?v=4',
       bio: 'Full Stack & Systems Developer pursuing BCA at Techno Main Salt Lake',
-      public_repos: 12,
-      followers: 24,
+      public_repos: 22,
+      followers: 66,
       following: 18,
       location: 'Kolkata, West Bengal, India 🇮🇳',
       html_url: `https://github.com/${username}`
@@ -87,26 +87,65 @@ export async function fetchGitHubRepos(username = GITHUB_USERNAME) {
       },
       {
         id: 2,
-        name: 'raft-consensus-engine',
-        description: 'Distributed Raft consensus node and key-value storage engine in C++ & Go.',
+        name: 'go-distributed-kvstore',
+        description: 'Distributed Raft consensus node and key-value storage engine in Go.',
         stars: 48,
         forks: 11,
         language: 'Go',
         url: 'https://github.com/peaush07',
         homepage: null,
         updated_at: 'Aug 2026'
-      },
-      {
-        id: 3,
-        name: 'mcp-server-suite',
-        description: 'Model Context Protocol (MCP) tool server suite for multi-agent autonomous dev environments.',
-        stars: 34,
-        forks: 7,
-        language: 'TypeScript',
-        url: 'https://github.com/peaush07',
-        homepage: null,
-        updated_at: 'Sep 2026'
       }
     ];
   }
+}
+
+export async function fetchRecentCommits(limit = 5, username = GITHUB_USERNAME) {
+  const cacheKey = `gh_events_${username}`;
+  const cached = localStorage.getItem(cacheKey);
+  if (cached) {
+    const { timestamp, data } = JSON.parse(cached);
+    if (Date.now() - timestamp < 15 * 60 * 1000) {
+      return data;
+    }
+  }
+
+  try {
+    const res = await fetch(`https://api.github.com/users/${username}/events/public`);
+    if (!res.ok) throw new Error(`GitHub Events HTTP ${res.status}`);
+    const events = await res.json();
+    
+    const pushEvents = events.filter((e) => e.type === 'PushEvent');
+    const commits = [];
+
+    pushEvents.forEach((event) => {
+      const repoName = event.repo.name.replace(`${username}/`, '');
+      const eventCommits = event.payload?.commits || [];
+      eventCommits.forEach((c) => {
+        if (commits.length < limit) {
+          commits.push({
+            repo: repoName,
+            message: c.message,
+            date: new Date(event.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+          });
+        }
+      });
+    });
+
+    if (commits.length > 0) {
+      localStorage.setItem(cacheKey, JSON.stringify({
+        timestamp: Date.now(),
+        data: commits
+      }));
+      return commits;
+    }
+  } catch (err) {
+    console.warn('Using fallback commit activity stream:', err);
+  }
+
+  return null;
+}
+
+export async function fetchGithubProfileStats(username = GITHUB_USERNAME) {
+  return fetchGitHubUserData(username);
 }

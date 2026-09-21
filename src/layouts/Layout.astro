@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CommandPalette from '../components/CommandPalette.astro';
 
 export interface Props {
   title?: string;
@@ -50,6 +51,9 @@ const {
     <!-- Interactive Canvas Grid -->
     <canvas id="squares-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-85"></canvas>
 
+    <!-- Command Palette (Cmd + K) Modal -->
+    <CommandPalette />
+
     <!-- Main App Content -->
     <div class="relative z-10">
       <slot />
@@ -60,6 +64,7 @@ const {
       import Lenis from 'lenis';
       import { initAmbientSquaresCanvas } from '../scripts/squares-canvas.js';
       import { initCatCursor } from '../scripts/cat-cursor.js';
+      import { init3DTiltEffect } from '../scripts/tilt-effect.js';
 
       const lenis = new Lenis({
         duration: 0.85,
@@ -79,6 +84,7 @@ const {
 
       initAmbientSquaresCanvas('squares-canvas');
       initCatCursor();
+      init3DTiltEffect();
     </script>
 
   </body>

@@ -176,21 +176,25 @@
 </style>
 
 <script>
+  import { soundFX } from '../scripts/sound-fx.js';
+
   const modal = document.getElementById('fedora-terminal-modal');
   const modalContent = document.getElementById('fedora-terminal-content');
   const closeBtnX = document.getElementById('close-terminal-btn-x');
   const closeBtnTxt = document.getElementById('close-terminal-btn-txt');
   const minBtn = document.getElementById('min-terminal-btn');
   const maxBtn = document.getElementById('max-terminal-btn');
-  const cliForm = document.getElementById('cli-form');
-  const cliInput = document.getElementById('cli-input') as HTMLInputElement;
-  const cliHistory = document.getElementById('cli-history');
+  const cliInput = document.getElementById('cli-input-field') as HTMLInputElement;
+  const cliForm = document.getElementById('cli-input-form');
+  const cliHistory = document.getElementById('cli-history-container');
   const scrollBody = document.getElementById('terminal-scroll-body');
 
   function openTerminalModal() {
     if (!modal || !modalContent) return;
+    soundFX.playModalOpen();
     modal.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
     modal.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+    modal.setAttribute('aria-hidden', 'false');
     modalContent.classList.remove('scale-95');
     modalContent.classList.add('scale-100');
     if (cliInput) setTimeout(() => cliInput.focus(), 100);
@@ -198,37 +202,31 @@
 
   function closeTerminalModal() {
     if (!modal || !modalContent) return;
-    modal.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
-    modal.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+    soundFX.playClick();
     modalContent.classList.remove('scale-100');
     modalContent.classList.add('scale-95');
+    modal.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+    modal.setAttribute('aria-hidden', 'true');
   }
 
-  // Listen for open events triggered from Header button
   window.addEventListener('open-fedora-terminal', openTerminalModal);
 
   if (closeBtnX) closeBtnX.addEventListener('click', closeTerminalModal);
   if (closeBtnTxt) closeBtnTxt.addEventListener('click', closeTerminalModal);
 
-  // Yellow Button: Clear history & reset prompt buffer
-  if (minBtn) {
+  if (minBtn && cliHistory) {
     minBtn.addEventListener('click', () => {
-      if (cliHistory) cliHistory.innerHTML = '';
-      if (cliInput) cliInput.value = '';
+      soundFX.playClick();
+      cliHistory.innerHTML = '';
     });
   }
 
-  // Purple Button: Toggle Fullscreen / Maximize Mode
   if (maxBtn && modalContent) {
     maxBtn.addEventListener('click', () => {
+      soundFX.playClick();
+      modalContent.classList.toggle('max-w-7xl');
       modalContent.classList.toggle('max-w-4xl');
-      modalContent.classList.toggle('max-h-[90vh]');
-      modalContent.classList.toggle('rounded-2xl');
-      modalContent.classList.toggle('w-full');
-      modalContent.classList.toggle('h-full');
-      modalContent.classList.toggle('max-w-none');
-      modalContent.classList.toggle('max-h-none');
-      modalContent.classList.toggle('rounded-none');
     });
   }
 
@@ -238,19 +236,16 @@
     });
   }
 
-  // Escape key closes modal
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('opacity-100')) {
-      closeTerminalModal();
-    }
-  });
+  if (cliInput && cliForm && cliHistory && scrollBody) {
+    cliInput.addEventListener('keydown', () => soundFX.playKeypress());
 
-  // Handle CLI Input Commands
-  if (cliForm && cliInput && cliHistory && scrollBody) {
     cliForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const cmd = cliInput.value.trim().toLowerCase();
+      const rawCmd = cliInput.value.trim();
+      const cmd = rawCmd.toLowerCase();
       if (!cmd) return;
+
+      soundFX.playClick();
 
       // Echo User Command with 2-line Zsh prompt
       const cmdLine = document.createElement('div');
@@ -261,7 +256,7 @@
         </div>
         <div class="flex items-center gap-2">
           <span class="text-purple-400 shrink-0 select-none">└─<span class="text-white font-bold">$</span></span>
-          <span class="text-purple-200 font-bold">${cliInput.value}</span>
+          <span class="text-purple-200 font-bold">${rawCmd}</span>
         </div>
       `;
       cliHistory.appendChild(cmdLine);
@@ -272,23 +267,38 @@
       if (cmd === 'help') {
         respLine.innerHTML = `
           <div class="text-purple-300 font-bold">AVAILABLE CLI COMMANDS:</div>
-          <div><span class="text-purple-300 font-bold">fastfetch</span> - Display Fedora Linux system specifications</div>
-          <div><span class="text-purple-300 font-bold">git jan doctor</span> - Run repository health & integrity check</div>
+          <div><span class="text-purple-300 font-bold">fastfetch / neofetch</span> - Display Fedora Linux system specifications</div>
           <div><span class="text-purple-300 font-bold">skills</span> - List developer skill matrix & tech stack</div>
           <div><span class="text-purple-300 font-bold">projects</span> - Output open-source GitHub repositories</div>
-          <div><span class="text-purple-300 font-bold">whoami</span> - Display developer profile summary</div>
+          <div><span class="text-purple-300 font-bold">whoami / about</span> - Display developer profile summary</div>
+          <div><span class="text-purple-300 font-bold">sudo hire</span> - Executive recruiter direct hire mode</div>
+          <div><span class="text-purple-300 font-bold">matrix</span> - Digital cyber rain stream animation</div>
           <div><span class="text-purple-300 font-bold">contact</span> - Output email & social handles</div>
           <div><span class="text-purple-300 font-bold">clear</span> - Clear terminal output buffer</div>
           <div><span class="text-purple-300 font-bold">exit</span> - Close terminal window</div>
         `;
+      } else if (cmd === 'sudo hire' || cmd.includes('hire')) {
+        soundFX.playSuccess();
+        respLine.innerHTML = `
+          <div class="text-emerald-400 font-bold">ACCESS GRANTED! [SUDO_HIRE_MODE ACTIVE]</div>
+          <div>🚀 Thank you for considering Peaush Paul!</div>
+          <div>• Email: <span class="text-white underline">peaushpaul99@gmail.com</span></div>
+          <div>• Direct Contact: Reach out on LinkedIn @peaush07 or via GitHub</div>
+          <div class="text-purple-300 font-bold pt-1">[STATUS: Available for Software Engineer & Systems Architect Roles]</div>
+        `;
+      } else if (cmd === 'matrix') {
+        respLine.innerHTML = `
+          <div class="text-emerald-400 font-bold">STARTING CYBER MATRIX STREAM...</div>
+          <div class="text-emerald-500 font-mono text-[10px] animate-pulse">01001000 01100101 01101100 01101100 01101111 00101100 00100000 01010111 01101111 01110010 01101100 01100100 00100001</div>
+          <div class="text-emerald-400 text-xs font-mono">System initialized at 120Hz locked frame budget.</div>
+        `;
       } else if (cmd.includes('doctor') || cmd.includes('jan')) {
         respLine.innerHTML = `
           <div class="text-purple-300 font-bold">[DOCTOR] Inspecting repository internals:</div>
-          <div>HEAD: refs/heads/main → <span class="text-purple-400 font-bold">e55f2fe...</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
+          <div>HEAD: refs/heads/main → <span class="text-purple-400 font-bold">d200101...</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
           <div>Packed refs: <span class="text-purple-300 font-bold">42 references resolved</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
           <div>Index entries: <span class="text-violet-300 font-bold">1,842 tracked files</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
-          <div>Object DB: <span class="text-fuchsia-300 font-bold">0 corrupt objects, 0 dangling loose blobs</span> [<span class="text-purple-300 font-bold">OK</span>]</div>
-          <div>Integrity: <span class="text-purple-300 font-bold">100% verified</span> (Direct disk read, zero-exec, zero crate dependencies)</div>
+          <div>Integrity: <span class="text-purple-300 font-bold">100% verified</span> (Direct disk read, zero-exec)</div>
         `;
       } else if (cmd === 'skills') {
         respLine.innerHTML = `
@@ -339,7 +349,7 @@
           <div>RAM: 15.25 GiB DDR5 | Kernel: 7.2.5-200.fc44</div>
         `;
       } else {
-        respLine.innerHTML = `<span class="text-red-400">zsh: command not found: ${cmd}</span>. Type <span class="text-purple-300 font-bold">help</span> for command list.`;
+        respLine.innerHTML = `<span class="text-red-400">zsh: command not found: ${rawCmd}</span>. Type <span class="text-purple-300 font-bold">help</span> for command list.`;
       }
 
       cliHistory.appendChild(respLine);
@@ -348,5 +358,3 @@
     });
   }
 </script>
-
-
