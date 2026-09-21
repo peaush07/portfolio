@@ -1057,12 +1057,12 @@ python manage.py runserver
       ctx.fill();
     }
 
-    canvas.onclick = (e) => {
+    const handleAim = (clientX: number, clientY: number) => {
       soundFX.playClick();
       clicks++;
       const rect = canvas.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const clickY = e.clientY - rect.top;
+      const clickX = clientX - rect.left;
+      const clickY = clientY - rect.top;
 
       const dist = Math.hypot(clickX - target.x, clickY - target.y);
       if (dist <= target.radius) {
@@ -1075,6 +1075,14 @@ python manage.py runserver
       if (scoreEl) scoreEl.textContent = score.toString();
       if (accEl) accEl.textContent = `${Math.round((score / clicks) * 100)}%`;
       draw();
+    };
+
+    canvas.onclick = (e) => handleAim(e.clientX, e.clientY);
+    canvas.ontouchstart = (e) => {
+      if (e.touches.length > 0) {
+        e.preventDefault();
+        handleAim(e.touches[0].clientX, e.touches[0].clientY);
+      }
     };
 
     draw();
@@ -1138,6 +1146,10 @@ python manage.py runserver
     };
 
     canvas.onclick = jump;
+    canvas.ontouchstart = (e) => {
+      e.preventDefault();
+      jump();
+    };
     window.onkeydown = (e) => {
       if (e.code === 'Space' && !canvas.classList.contains('hidden')) {
         e.preventDefault();

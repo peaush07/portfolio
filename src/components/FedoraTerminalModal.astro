@@ -151,6 +151,17 @@
         </div>
       </form>
 
+      <!-- Mobile Quick Command Bar -->
+      <div class="pt-2 flex items-center gap-1.5 overflow-x-auto pb-1 select-none custom-scrollbar">
+        <span class="text-[10px] text-purple-400 font-bold shrink-0">QUICK COMMANDS:</span>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="help">help</button>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="matrix">matrix</button>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="neofetch">neofetch</button>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="skills">skills</button>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="projects">projects</button>
+        <button type="button" class="quick-cmd-btn px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-400/30 text-[11px] font-mono shrink-0 active:scale-95 transition-all" data-cmd="clear">clear</button>
+      </div>
+
     </div>
 
     <!-- Terminal Footer Status Bar -->
@@ -355,6 +366,18 @@
       cliHistory.appendChild(respLine);
       cliInput.value = '';
       scrollBody.scrollTop = scrollBody.scrollHeight;
+    });
+
+    // Quick Command Buttons Handler for Mobile/Desktop
+    document.querySelectorAll('.quick-cmd-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        soundFX.playClick();
+        const targetCmd = (e.currentTarget as HTMLElement).getAttribute('data-cmd');
+        if (targetCmd && cliInput) {
+          cliInput.value = targetCmd;
+          cliForm.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+      });
     });
   }
 </script>
