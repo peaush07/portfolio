@@ -51,11 +51,10 @@
   <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
     <!-- Card 1: Nextjs ai analytics dashboard -->
-    <div data-lang="TypeScript" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="TypeScript" data-id="nextjs-ai-analytics" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-900/60 border border-violet-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -67,10 +66,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">Nextjs ai analytics dashboard</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Real-time AI analytics dashboard built with Next.js, React, and Tailwind CSS. Features automated data anomaly detection and...
+          Real-time AI analytics dashboard built with Next.js, React, and Tailwind CSS. Features automated data anomaly detection and live telemetry charting.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">TypeScript</span>
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">nextjs</span>
@@ -78,9 +76,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
+      <!-- Card Action Buttons (CODE + DETAILS) -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="nextjs-ai-analytics" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
           <svg class="w-4 h-4 text-violet-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -88,11 +89,10 @@
     </div>
 
     <!-- Card 2: Go distributed kv store -->
-    <div data-lang="Go" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Go" data-id="go-distributed-kv" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-purple-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-purple-600/40 via-violet-600/40 to-indigo-900/60 border border-purple-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -104,10 +104,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Go distributed kv store</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          High-throughput distributed key-value storage engine in Go. Utilizes Raft consensus protocol for fault tolerance, LSM-tree disk...
+          High-throughput distributed key-value storage engine in Go. Utilizes Raft consensus protocol for fault tolerance and LSM-tree disk compaction.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">Go</span>
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">golang</span>
@@ -115,9 +114,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
+      <!-- Card Action Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="go-distributed-kv" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
           <svg class="w-4 h-4 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -125,11 +127,10 @@
     </div>
 
     <!-- Card 3: Flutter microservices wallet -->
-    <div data-lang="Dart" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Dart" data-id="flutter-wallet" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-violet-600/40 via-fuchsia-600/40 to-purple-900/60 border border-violet-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -141,10 +142,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">Flutter microservices wallet</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Cross-platform crypto wallet & financial management app built with Flutter and Dart. Integrates microservices backend architectu...
+          Cross-platform crypto wallet & financial management app built with Flutter and Dart. Integrates microservices backend architecture.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">Dart</span>
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">flutter</span>
@@ -152,9 +152,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
+      <!-- Card Action Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="flutter-wallet" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
           <svg class="w-4 h-4 text-violet-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -162,11 +165,10 @@
     </div>
 
     <!-- Card 4: Cyber neon runner -->
-    <div data-lang="Python" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Python" data-id="cyber-neon-runner" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-purple-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-purple-600/40 via-fuchsia-600/40 to-violet-900/60 border border-purple-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -178,10 +180,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Cyber neon runner</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Fast-paced retro 2D arcade runner game engine written in Python. Features custom physics engine, particle FX system, and retro...
+          Fast-paced retro 2D arcade runner game engine written in Python. Features custom physics engine and 60fps particle FX.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">Python</span>
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">python</span>
@@ -189,9 +190,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
+      <!-- Card Action Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="cyber-neon-runner" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
           <svg class="w-4 h-4 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -199,11 +203,10 @@
     </div>
 
     <!-- Card 5: Cpp async engine -->
-    <div data-lang="C++" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="C++" data-id="cpp-async-engine" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-violet-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-indigo-900/60 border border-violet-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -215,10 +218,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">Cpp async engine</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          High-performance asynchronous networking & event loop framework written in modern C++20. Employs non-blocking sockets and...
+          High-performance asynchronous networking & event loop framework written in modern C++20 with non-blocking sockets.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">C++</span>
           <span class="text-[10px] font-mono font-medium text-violet-200 bg-violet-500/20 px-2.5 py-1 rounded-md border border-violet-400/30">cpp</span>
@@ -226,9 +228,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
+      <!-- Card Action Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="cpp-async-engine" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(139,92,246,0.25)] transition-all">
           <svg class="w-4 h-4 text-violet-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -236,11 +241,10 @@
     </div>
 
     <!-- Card 6: Tuf eli5 demo -->
-    <div data-lang="Python" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
+    <div data-lang="Python" data-id="tuf-eli5-demo" class="project-card glass-panel rounded-[2rem] p-5 sm:p-6 border border-white/20 shadow-2xl relative flex flex-col justify-between group hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02]">
       <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-purple-400/80 to-transparent"></div>
 
       <div>
-        <!-- Liquid Gradient Header Banner -->
         <div class="w-full h-32 sm:h-40 rounded-2xl bg-gradient-to-br from-purple-600/40 via-fuchsia-600/40 to-violet-900/60 border border-purple-400/30 mb-5 sm:mb-6 p-4 relative overflow-hidden flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
           <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg class="purple-tech-logo w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
@@ -252,10 +256,9 @@
 
         <h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Tuf eli5 demo</h4>
         <p class="text-xs text-white/70 leading-relaxed mb-6">
-          Software supply chain security implementation demonstrating The Update Framework (TUF). Illustrates cryptographic...
+          Software supply chain security implementation demonstrating The Update Framework (TUF). Illustrates cryptographic signing.
         </p>
 
-        <!-- Tech Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">Python</span>
           <span class="text-[10px] font-mono font-medium text-purple-200 bg-purple-500/20 px-2.5 py-1 rounded-md border border-purple-400/30">tuf</span>
@@ -263,9 +266,12 @@
         </div>
       </div>
 
-      <!-- Code Button -->
-      <div class="pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
+      <!-- Card Action Buttons -->
+      <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+        <button data-modal-trigger="tuf-eli5-demo" class="open-details-btn flex-1 py-3 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-mono text-xs font-bold border border-purple-400/50 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">
+          <span>📖 DETAILS</span>
+        </button>
+        <a href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-mono text-xs border border-purple-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.25)] transition-all">
           <svg class="w-4 h-4 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>CODE</span>
         </a>
@@ -298,7 +304,208 @@
 
 </section>
 
+<!-- ==========================================================================
+     INTERACTIVE PROJECT DESCRIPTION & QUICKSTART MODAL (WHAT WE DONE & HOW TO USE IT)
+     ========================================================================== -->
+<div id="project-modal-backdrop" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+  <div id="project-modal-card" class="bg-[#0b0e17] border border-purple-500/30 rounded-[2.5rem] w-full max-w-3xl overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.3)] transform scale-95 transition-transform duration-300 relative text-white my-auto">
+    
+    <!-- Top Header Bar -->
+    <div class="p-6 sm:p-8 bg-gradient-to-r from-purple-950/80 via-violet-950/60 to-slate-950 border-b border-purple-500/20 relative flex items-start justify-between">
+      <div class="space-y-2 pr-8">
+        <span id="modal-category" class="text-[10px] font-mono font-bold uppercase tracking-widest text-violet-300 bg-violet-500/20 px-3 py-1 rounded-full border border-violet-400/40">CATEGORY</span>
+        <h3 id="modal-title" class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">Project Title</h3>
+        <p id="modal-tagline" class="text-xs sm:text-sm text-purple-200/80">Project Tagline</p>
+      </div>
+      <button id="close-modal-btn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-red-500/30 text-white/70 hover:text-white flex items-center justify-center transition-all border border-white/20 hover:border-red-400 shrink-0" title="Close (Esc)">
+        ✕
+      </button>
+    </div>
+
+    <!-- Scrollable Modal Content -->
+    <div class="p-6 sm:p-8 max-h-[70vh] overflow-y-auto space-y-6 text-sm text-slate-300">
+      
+      <!-- Section 1: What We Done (Engineering & Features) -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-violet-300 font-mono font-bold text-sm tracking-wide border-b border-purple-500/20 pb-2">
+          <span>⚡ WHAT WE DONE (OVERVIEW & FEATURES)</span>
+        </div>
+        <p id="modal-what-we-done" class="text-xs sm:text-sm leading-relaxed text-slate-200 bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10">
+          Detailed description of what was built...
+        </p>
+      </div>
+
+      <!-- Section 2: How To Use It (Terminal Quickstart) -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-purple-300 font-mono font-bold text-sm tracking-wide border-b border-purple-500/20 pb-2">
+          <span>💻 HOW TO USE IT (TERMINAL QUICKSTART)</span>
+          <span class="text-[10px] text-purple-400 font-normal">Copy & Run in Terminal</span>
+        </div>
+        
+        <div class="relative group">
+          <pre id="modal-how-to-use" class="bg-slate-950 p-4 sm:p-5 rounded-2xl border border-purple-500/30 text-purple-300 font-mono text-xs overflow-x-auto leading-relaxed whitespace-pre selection:bg-purple-600 selection:text-white">
+# Terminal commands
+          </pre>
+        </div>
+      </div>
+
+      <!-- Section 3: Tech Stack Matrix -->
+      <div class="space-y-2">
+        <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">TECHS & DEPENDENCIES</div>
+        <div id="modal-tech-stack" class="flex flex-wrap gap-2 pt-1">
+          <!-- Dynamically populated tags -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Bar with GitHub Action Button -->
+    <div class="p-4 sm:p-6 bg-slate-950/80 border-t border-purple-500/20 flex items-center justify-between gap-4">
+      <div class="text-xs text-white/50 font-mono hidden sm:block">
+        Press <kbd class="px-1.5 py-0.5 rounded bg-white/10 border border-white/20 text-white">Esc</kbd> to exit
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+        <button id="modal-close-footer" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-semibold transition-all">
+          Close
+        </button>
+        <a id="modal-github-link" href="https://github.com/peaush07" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-mono text-xs font-bold border border-violet-400/50 shadow-[0_0_20px_rgba(139,92,246,0.4)] flex items-center gap-2 transition-all">
+          <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>VIEW GITHUB REPO</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
+  // Project Details Knowledge Base
+  const projectDetailsMap = {
+    'nextjs-ai-analytics': {
+      title: 'Nextjs ai analytics dashboard',
+      category: 'AI DASHBOARD',
+      tagline: 'Real-time telemetry and anomaly detection dashboard powered by Next.js & React 19',
+      whatWeDone: 'Engineered a high-performance, real-time AI analytics platform using Next.js App Router, React 19, and Tailwind CSS. Implemented automated data anomaly detection pipelines, streaming chart telemetry visualizers, serverless API routes, and glassmorphic UI components with zero cumulative layout shift (CLS).',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/nextjs-ai-analytics.git
+cd nextjs-ai-analytics
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment variables
+echo "NEXT_PUBLIC_AI_API_KEY=your_api_key_here" > .env.local
+
+# 4. Launch local development server
+npm run dev
+# Open http://localhost:3000 in your browser`,
+      techs: ['TypeScript', 'Next.js 15', 'React 19', 'Tailwind CSS', 'Recharts', 'AI Telemetry']
+    },
+    'go-distributed-kv': {
+      title: 'Go distributed kv store',
+      category: 'DISTRIBUTED SYSTEMS',
+      tagline: 'High-throughput fault-tolerant distributed key-value storage engine in Go',
+      whatWeDone: 'Designed and built a distributed, strongly consistent key-value database in Go. Implemented the Raft consensus algorithm for leader election and replicated log state, LSM-tree (Log-Structured Merge-tree) disk compaction, WAL write-ahead logging for crash safety, and gRPC/protobuf client endpoints handling 100k+ QPS.',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/go-distributed-kvstore.git
+cd go-distributed-kvstore
+
+# 2. Build cluster binary
+go build -o kvnode ./cmd/kvnode
+
+# 3. Launch a 3-node distributed Raft cluster
+./kvnode --id=1 --addr=127.0.0.1:8001 --peers=127.0.0.1:8002,127.0.0.1:8003 &
+./kvnode --id=2 --addr=127.0.0.1:8002 --peers=127.0.0.1:8001,127.0.0.1:8003 &
+./kvnode --id=3 --addr=127.0.0.1:8003 --peers=127.0.0.1:8001,127.0.0.1:8002 &
+
+# 4. Put & Get key-value queries using CLI
+go run ./cmd/kvcli set "user:peaush" "systems-developer"
+go run ./cmd/kvcli get "user:peaush"`,
+      techs: ['Go', 'Raft Consensus', 'LSM Tree', 'gRPC', 'Protobuf', 'Concurrency']
+    },
+    'flutter-wallet': {
+      title: 'Flutter microservices wallet',
+      category: 'MOBILE APP',
+      tagline: 'Cross-platform financial crypto wallet & transaction manager built with Flutter & Dart',
+      whatWeDone: 'Developed a cross-platform mobile wallet and asset manager using Flutter and Dart. Architected with BLoC state management pattern, biometric security (FaceID/Fingerprint), AES-256 local storage encryption, real-time WebSocket market price feeds, and microservices backend API synchronization.',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/flutter-microservices-wallet.git
+cd flutter-microservices-wallet
+
+# 2. Install Flutter packages
+flutter pub get
+
+# 3. Run unit & widget test suite
+flutter test
+
+# 4. Launch app on connected device / Chrome
+flutter run -d chrome # Or: flutter run -d iphone`,
+      techs: ['Dart', 'Flutter', 'BLoC Pattern', 'Biometrics', 'Microservices', 'WebSockets']
+    },
+    'cyber-neon-runner': {
+      title: 'Cyber neon runner',
+      category: 'GAME ENGINE',
+      tagline: 'Retro 2D arcade runner game engine written in Python & Pygame with custom physics',
+      whatWeDone: 'Engineered a 60fps retro 2D arcade runner game engine in Python using Pygame. Designed a custom AABB (Axis-Aligned Bounding Box) collision detection physics system, particle explosion FX, dynamic obstacle wave generation, spatial audio mixer, and JSON high-score persistence.',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/cyber-neon-runner.git
+cd cyber-neon-runner
+
+# 2. Create virtual environment & install Pygame
+python3 -m venv venv
+source venv/bin/activate
+pip install pygame
+
+# 3. Start the game engine
+python main.py
+# Controls: [SPACE] or [UP] to Jump, [ESC] to Pause`,
+      techs: ['Python 3', 'Pygame', 'Physics Engine', 'Particle FX', '2D Engine', 'Arcade']
+    },
+    'cpp-async-engine': {
+      title: 'Cpp async engine',
+      category: 'C++ SYSTEMS',
+      tagline: 'Zero-cost asynchronous networking & event loop framework written in C++20',
+      whatWeDone: 'Architected a high-performance asynchronous networking engine in C++20. Leveraged Linux epoll / kqueue non-blocking socket I/O, custom lock-free ring queues, thread pool work stealing, and zerocopy HTTP/1.1 parsing capable of supporting 500,000+ concurrent client socket connections.',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/cpp-async-engine.git
+cd cpp-async-engine
+
+# 2. Build with CMake & GCC/Clang (C++20 required)
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make -j$(nproc)
+
+# 3. Run async HTTP server benchmark
+./async_server --port=8080 --threads=8
+
+# 4. Benchmark performance with wrk
+wrk -t8 -c400 -d10s http://127.0.0.1:8080/`,
+      techs: ['C++20', 'Linux epoll', 'Lock-Free Queues', 'Async I/O', 'CMake', 'Systems']
+    },
+    'tuf-eli5-demo': {
+      title: 'Tuf eli5 demo',
+      category: 'SECURITY FRAMEWORK',
+      tagline: 'Software supply chain security implementation demonstrating The Update Framework (TUF)',
+      whatWeDone: 'Created a software supply chain security demonstration illustrating TUF (The Update Framework) principles in Python. Implemented cryptographic metadata signing across Root, Targets, Snapshot, and Timestamp roles, key rotation protocols, compromise resilience against MITM attacks, and automated artifact validation.',
+      howToUse: `# 1. Clone the repository
+git clone https://github.com/peaush07/tuf-eli5-demo.git
+cd tuf-eli5-demo
+
+# 2. Install security dependencies
+pip install securesystemslib tuf cryptography
+
+# 3. Run TUF repository initialization & client verification
+python demo_repository.py --init
+python demo_client.py --update
+
+# 4. Run malicious tamper attack test simulation
+python attack_simulation.py --tamper-target
+python demo_client.py --update # Detects & blocks tampered package!`,
+      techs: ['Python 3', 'TUF Security', 'Cryptography', 'Supply Chain', 'Ed25519', 'Security']
+    }
+  };
+
+  // Search & Filter Logic
   const searchInput = document.getElementById('project-search-input');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.project-card');
@@ -339,5 +546,81 @@
         }
       });
     });
+  });
+
+  // Modal Functionality
+  const backdrop = document.getElementById('project-modal-backdrop');
+  const modalCard = document.getElementById('project-modal-card');
+  const closeBtn = document.getElementById('close-modal-btn');
+  const closeFooterBtn = document.getElementById('modal-close-footer');
+
+  const modalTitle = document.getElementById('modal-title');
+  const modalCategory = document.getElementById('modal-category');
+  const modalTagline = document.getElementById('modal-tagline');
+  const modalWhatWeDone = document.getElementById('modal-what-we-done');
+  const modalHowToUse = document.getElementById('modal-how-to-use');
+  const modalTechStack = document.getElementById('modal-tech-stack');
+  const modalGithubLink = document.getElementById('modal-github-link');
+
+  function openProjectModal(projectId) {
+    const details = projectDetailsMap[projectId];
+    if (!details) return;
+
+    modalTitle.textContent = details.title;
+    modalCategory.textContent = details.category;
+    modalTagline.textContent = details.tagline;
+    modalWhatWeDone.textContent = details.whatWeDone;
+    modalHowToUse.textContent = details.howToUse;
+    
+    // Populate tech stack badges
+    modalTechStack.innerHTML = '';
+    details.techs.forEach(tech => {
+      const span = document.createElement('span');
+      span.className = 'text-[11px] font-mono font-semibold text-purple-200 bg-purple-500/20 px-3 py-1 rounded-lg border border-purple-400/30';
+      span.textContent = tech;
+      modalTechStack.appendChild(span);
+    });
+
+    backdrop.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      backdrop.classList.remove('opacity-0');
+      modalCard.classList.remove('scale-95');
+      modalCard.classList.add('scale-100');
+    });
+
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal() {
+    backdrop.classList.add('opacity-0');
+    modalCard.classList.remove('scale-100');
+    modalCard.classList.add('scale-95');
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  // Trigger buttons
+  document.querySelectorAll('.open-details-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.currentTarget.dataset.modalTrigger;
+      openProjectModal(id);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeProjectModal);
+  if (closeFooterBtn) closeFooterBtn.addEventListener('click', closeProjectModal);
+
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeProjectModal();
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop && !backdrop.classList.contains('hidden')) {
+      closeProjectModal();
+    }
   });
 </script>
