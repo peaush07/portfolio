@@ -1,19 +1,17 @@
-// Clean, Elegant Cyber Grid Canvas with Pure 60 FPS Optimization
-// Features smooth continuous grid drift, subtle mouse hover glow,
-// constellation particles, and zero distracting pattern cascades.
+// High Performance 120Hz Cyber Grid Canvas with Batched Draw Calls & Visibility Pause
 
 export function initAmbientSquaresCanvas(canvasId) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
   let width = 0, height = 0;
   let dpr = 1;
   let animationFrameId;
 
-  const squareSize = 48;
-  const speedX = 0.35; // Smooth continuous horizontal drift
-  const speedY = 0.35; // Smooth continuous vertical drift
+  const squareSize = 56;
+  const speedX = 0.25;
+  const speedY = 0.25;
 
   let gridOffsetX = 0;
   let gridOffsetY = 0;
@@ -22,16 +20,16 @@ export function initAmbientSquaresCanvas(canvasId) {
   let ripples = [];
 
   // Floating Cyber Constellation Particles
-  const numParticles = 35;
+  const numParticles = 20;
   const particles = [];
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     width = window.innerWidth;
     height = window.innerHeight;
 
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
 
@@ -42,113 +40,119 @@ export function initAmbientSquaresCanvas(canvasId) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.45 + 0.25
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.5 + 1,
+        alpha: Math.random() * 0.35 + 0.15
       });
     }
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
   resize();
 
   window.addEventListener('mousemove', (e) => {
     mouse.targetX = e.clientX;
     mouse.targetY = e.clientY;
-  });
+  }, { passive: true });
 
-  // Click shockwave ripple
   window.addEventListener('click', (e) => {
     ripples.push({
       x: e.clientX,
       y: e.clientY,
       radius: 10,
-      maxRadius: 280,
-      alpha: 0.8
+      maxRadius: 240,
+      alpha: 0.7
     });
+  }, { passive: true });
+
+  let isPaused = false;
+  document.addEventListener('visibilitychange', () => {
+    isPaused = document.hidden;
+    if (!isPaused) draw();
   });
 
   function draw() {
-    // Smooth mouse target interpolation
-    mouse.x += (mouse.targetX - mouse.x) * 0.14;
-    mouse.y += (mouse.targetY - mouse.y) * 0.14;
+    if (isPaused) return;
 
-    // Continuous smooth grid drifting offset
+    // Interpolate mouse smoothly
+    mouse.x += (mouse.targetX - mouse.x) * 0.16;
+    mouse.y += (mouse.targetY - mouse.y) * 0.16;
+
+    // Drifting offsets
     gridOffsetX = (gridOffsetX + speedX) % squareSize;
     gridOffsetY = (gridOffsetY + speedY) % squareSize;
 
     ctx.clearRect(0, 0, width, height);
 
-    const time = Date.now() * 0.001;
-    const cols = Math.ceil(width / squareSize) + 2;
-    const rows = Math.ceil(height / squareSize) + 2;
-
-    // --- 1. Draw Shockwave Ripples ---
+    // --- 1. Draw Shockwave Ripples (Zero ShadowBlur overhead) ---
     for (let i = ripples.length - 1; i >= 0; i--) {
       const r = ripples[i];
-      r.radius += 9;
-      r.alpha = (1 - r.radius / r.maxRadius) * 0.8;
+      r.radius += 10;
+      r.alpha = (1 - r.radius / r.maxRadius) * 0.7;
 
       if (r.radius >= r.maxRadius) {
         ripples.splice(i, 1);
       } else {
-        ctx.save();
         ctx.strokeStyle = `rgba(192, 132, 252, ${r.alpha})`;
-        ctx.lineWidth = 2;
-        ctx.shadowColor = '#8B5CF6';
-        ctx.shadowBlur = 14;
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.stroke();
-        ctx.restore();
       }
     }
 
-    // --- 2. Optimized Grid Line Rendering & Subtle Mouse Glow ---
-    const maxHoverDist = 240;
+    // --- 2. BATCHED GRID DRAWING (Reduced 1500 draw calls down to 2) ---
+    ctx.strokeStyle = 'rgba(167, 139, 250, 0.04)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
 
-    for (let i = -1; i < cols; i++) {
-      for (let j = -1; j < rows; j++) {
-        const x = i * squareSize + gridOffsetX;
-        const y = j * squareSize + gridOffsetY;
+    const startX = -squareSize + gridOffsetX;
+    const startY = -squareSize + gridOffsetY;
 
-        const dx = mouse.x - (x + squareSize / 2);
-        const dy = mouse.y - (y + squareSize / 2);
-        const dist = Math.sqrt(dx * dx + dy * dy);
+    for (let x = startX; x < width + squareSize; x += squareSize) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+    }
+    for (let y = startY; y < height + squareSize; y += squareSize) {
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+    }
+    ctx.stroke();
 
-        let lineAlpha = 0.04;
-        let hoverGlow = 0;
+    // --- 3. Targeted Mouse Hover Glow ---
+    if (mouse.x > 0 && mouse.y > 0) {
+      const maxHoverDist = 200;
+      const startCol = Math.max(0, Math.floor((mouse.x - maxHoverDist) / squareSize));
+      const endCol = Math.min(Math.ceil(width / squareSize), Math.ceil((mouse.x + maxHoverDist) / squareSize));
+      const startRow = Math.max(0, Math.floor((mouse.y - maxHoverDist) / squareSize));
+      const endRow = Math.min(Math.ceil(height / squareSize), Math.ceil((mouse.y + maxHoverDist) / squareSize));
 
-        if (dist < maxHoverDist) {
-          const factor = 1 - dist / maxHoverDist;
-          lineAlpha = 0.04 + factor * 0.26;
-          hoverGlow = factor;
-        }
+      for (let i = startCol; i <= endCol; i++) {
+        for (let j = startRow; j <= endRow; j++) {
+          const gx = i * squareSize + gridOffsetX;
+          const gy = j * squareSize + gridOffsetY;
 
-        const wave = Math.sin(time * 1.8 + (i * 0.25 + j * 0.25)) * 0.012;
-        lineAlpha = Math.max(0.02, lineAlpha + wave);
+          const dx = mouse.x - (gx + squareSize / 2);
+          const dy = mouse.y - (gy + squareSize / 2);
+          const distSq = dx * dx + dy * dy;
 
-        // Draw Grid Line
-        ctx.strokeStyle = `rgba(167, 139, 250, ${lineAlpha})`;
-        ctx.lineWidth = 1;
-        ctx.strokeRect(x, y, squareSize, squareSize);
+          if (distSq < maxHoverDist * maxHoverDist) {
+            const dist = Math.sqrt(distSq);
+            const factor = 1 - dist / maxHoverDist;
+            ctx.fillStyle = `rgba(139, 92, 246, ${factor * 0.12})`;
+            ctx.fillRect(gx + 1, gy + 1, squareSize - 2, squareSize - 2);
 
-        // Soft Mouse Hover Fill Glow
-        if (hoverGlow > 0.04) {
-          ctx.fillStyle = `rgba(139, 92, 246, ${hoverGlow * 0.14})`;
-          ctx.fillRect(x + 1, y + 1, squareSize - 2, squareSize - 2);
-
-          // Glowing intersection node dots
-          ctx.fillStyle = `rgba(192, 132, 252, ${hoverGlow * 0.8})`;
-          ctx.beginPath();
-          ctx.arc(x, y, 2.2, 0, Math.PI * 2);
-          ctx.fill();
+            ctx.fillStyle = `rgba(192, 132, 252, ${factor * 0.7})`;
+            ctx.beginPath();
+            ctx.arc(gx, gy, 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
       }
     }
 
-    // --- 3. Draw Floating Cyber Constellation Particles & Links ---
+    // --- 4. Constellation Particles ---
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -159,22 +163,21 @@ export function initAmbientSquaresCanvas(canvasId) {
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      const pAlpha = p.alpha + Math.sin(time * 2.5 + i) * 0.12;
-
-      ctx.fillStyle = `rgba(167, 139, 250, ${Math.max(0.1, pAlpha)})`;
+      ctx.fillStyle = `rgba(167, 139, 250, ${p.alpha})`;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Connect near particles
+      // Connect nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const pdx = p.x - p2.x;
         const pdy = p.y - p2.y;
-        const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
+        const pdistSq = pdx * pdx + pdy * pdy;
 
-        if (pdist < 110) {
-          const linkAlpha = (1 - pdist / 110) * 0.22;
+        if (pdistSq < 10000) {
+          const pdist = Math.sqrt(pdistSq);
+          const linkAlpha = (1 - pdist / 100) * 0.18;
           ctx.strokeStyle = `rgba(192, 132, 252, ${linkAlpha})`;
           ctx.lineWidth = 0.8;
           ctx.beginPath();
@@ -182,20 +185,6 @@ export function initAmbientSquaresCanvas(canvasId) {
           ctx.lineTo(p2.x, p2.y);
           ctx.stroke();
         }
-      }
-
-      // Connect particle to mouse cursor
-      const mdx = mouse.x - p.x;
-      const mdy = mouse.y - p.y;
-      const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (mdist < 160) {
-        const mAlpha = (1 - mdist / 160) * 0.4;
-        ctx.strokeStyle = `rgba(167, 139, 250, ${mAlpha})`;
-        ctx.lineWidth = 1.0;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.stroke();
       }
     }
 
