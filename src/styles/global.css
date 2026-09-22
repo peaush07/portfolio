@@ -64,17 +64,20 @@
   --shadow-lg: 0 24px 50px rgba(0, 0, 0, 0.6);
 }
 
-/* 100% Purple Aesthetic Tech Logo Filter */
+/* Authentic High-Definition Tech Brand Logos */
+.tech-logo,
 .purple-tech-logo {
-  filter: brightness(0) saturate(100%) invert(65%) sepia(55%) saturate(2800%) hue-rotate(220deg) brightness(105%) contrast(98%) drop-shadow(0 0 6px rgba(192, 132, 252, 0.75)) !important;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease !important;
   will-change: transform;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(168, 85, 247, 0.35)) !important;
 }
 
+.group:hover .tech-logo,
 .group:hover .purple-tech-logo,
+.tech-logo:hover,
 .purple-tech-logo:hover {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(60%) saturate(3500%) hue-rotate(220deg) brightness(115%) contrast(100%) drop-shadow(0 0 12px rgba(192, 132, 252, 0.95)) !important;
-  transform: scale(1.08) !important;
+  transform: scale(1.15) !important;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 16px rgba(192, 132, 252, 0.85)) brightness(1.12) !important;
 }
 
 /* Ambient Fluid Gradient Mesh Animations (Optimized for GPU) */
