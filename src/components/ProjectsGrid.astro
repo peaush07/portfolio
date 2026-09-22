@@ -633,13 +633,6 @@
 </div>
 
 <script>
-  import { soundFX } from '../scripts/sound-fx.js';
-
-  // Attach hover sounds to project cards and details buttons
-  document.querySelectorAll('.project-card, .open-details-btn, .filter-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => soundFX.playHover());
-  });
-
   // Project Details Knowledge Base
 
   const projectDetailsMap = {
@@ -937,8 +930,6 @@ python manage.py runserver
     const details = projectDetailsMap[projectId];
     if (!details) return;
 
-    soundFX.playModalOpen();
-
     modalTitle.textContent = details.title;
     modalCategory.textContent = details.category;
     modalTagline.textContent = details.tagline;
@@ -1058,7 +1049,6 @@ python manage.py runserver
     }
 
     const handleAim = (clientX: number, clientY: number) => {
-      soundFX.playClick();
       clicks++;
       const rect = canvas.getBoundingClientRect();
       const clickX = clientX - rect.left;
@@ -1066,7 +1056,6 @@ python manage.py runserver
 
       const dist = Math.hypot(clickX - target.x, clickY - target.y);
       if (dist <= target.radius) {
-        soundFX.playSuccess();
         score++;
         spawnTarget();
       }
@@ -1139,7 +1128,6 @@ python manage.py runserver
 
     const jump = () => {
       if (!isJumping) {
-        soundFX.playClick();
         vy = -12;
         isJumping = true;
       }
@@ -1162,7 +1150,6 @@ python manage.py runserver
   }
 
   function closeProjectModal() {
-    soundFX.playClick();
     backdrop.classList.add('opacity-0');
     modalCard.classList.remove('scale-100');
     modalCard.classList.add('scale-95');
@@ -1175,8 +1162,7 @@ python manage.py runserver
   // Trigger buttons
   document.querySelectorAll('.open-details-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      soundFX.playClick();
-      const id = e.currentTarget.dataset.modalTrigger;
+      const id = (e.currentTarget as HTMLElement).dataset.modalTrigger;
       openProjectModal(id);
     });
   });
@@ -1207,7 +1193,6 @@ python manage.py runserver
 
       try {
         await navigator.clipboard.writeText(codeText);
-        soundFX.playSuccess();
         
         // Highlight & Success Feedback Animation
         copyTerminalBtn.classList.remove('bg-violet-600/30', 'text-violet-200', 'border-violet-400/60');

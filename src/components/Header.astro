@@ -42,17 +42,6 @@
           <span class="font-bold text-[11px]">⌘K</span>
         </button>
 
-        <!-- Web Audio Sound FX Toggle -->
-        <button 
-          id="header-sound-btn"
-          type="button" 
-          class="glass-pill-button py-1 px-2.5 sm:px-3 text-xs font-mono text-emerald-300 hover:text-white border-emerald-500/40 bg-emerald-500/10 flex items-center gap-1 shadow-[0_0_12px_rgba(52,211,153,0.3)] hover:scale-105 transition-all"
-          title="Toggle Web Audio SFX"
-        >
-          <span id="header-sound-icon">🔊</span>
-          <span id="header-sound-label" class="hidden xs:inline font-bold text-[11px]">SFX: ON</span>
-        </button>
-
         <!-- CLI_SANDBOX Fedora Terminal Trigger Button (Purple Glass Aesthetic) -->
         <button 
           id="fedora-cli-trigger-btn"
@@ -179,8 +168,6 @@
 </style>
 
 <script>
-  import { soundFX } from '../scripts/sound-fx.js';
-
   // White Cat Scroll Tracker Script
   const lineFill = document.getElementById('header-line-fill');
   const catRunner = document.getElementById('header-cat-runner');
@@ -209,40 +196,11 @@
   window.addEventListener('scroll', onScrollTick, { passive: true });
   document.addEventListener('DOMContentLoaded', updateScrollProgress);
 
-  // Sound FX Toggle Listener
-  const soundBtn = document.getElementById('header-sound-btn');
-  const soundIcon = document.getElementById('header-sound-icon');
-  const soundLabel = document.getElementById('header-sound-label');
-
-  function updateSoundUI() {
-    if (soundFX.isMuted) {
-      if (soundIcon) soundIcon.textContent = '🔇';
-      if (soundLabel) soundLabel.textContent = 'SFX: OFF';
-      soundBtn?.classList.remove('text-emerald-300', 'border-emerald-500/40', 'bg-emerald-500/10');
-      soundBtn?.classList.add('text-rose-300', 'border-rose-500/40', 'bg-rose-500/10');
-    } else {
-      if (soundIcon) soundIcon.textContent = '🔊';
-      if (soundLabel) soundLabel.textContent = 'SFX: ON';
-      soundBtn?.classList.remove('text-rose-300', 'border-rose-500/40', 'bg-rose-500/10');
-      soundBtn?.classList.add('text-emerald-300', 'border-emerald-500/40', 'bg-emerald-500/10');
-    }
-  }
-
-  if (soundBtn) {
-    updateSoundUI();
-    soundBtn.addEventListener('click', () => {
-      const isMuted = soundFX.toggleMute();
-      updateSoundUI();
-      if (!isMuted) soundFX.playClick();
-    });
-  }
-
   // Cmd+K Spotlight Trigger
   const cmdBtn = document.getElementById('cmd-palette-trigger-btn');
   const mobileCmdBtn = document.getElementById('mobile-cmd-trigger');
 
   function triggerCmdPalette() {
-    soundFX.playClick();
     if ((window as any).openCommandPalette) (window as any).openCommandPalette();
     if (mobileDrawer) {
       mobileDrawer.classList.remove('opacity-100', 'visible', 'translate-y-0');
@@ -258,7 +216,6 @@
   const mobileCliBtn = document.getElementById('mobile-cli-trigger');
 
   function triggerCliTerminal() {
-    soundFX.playClick();
     window.dispatchEvent(new CustomEvent('open-fedora-terminal'));
     if (mobileDrawer) {
       mobileDrawer.classList.remove('opacity-100', 'visible', 'translate-y-0');
@@ -276,7 +233,6 @@
 
   if (mobileBtn && mobileDrawer) {
     mobileBtn.addEventListener('click', () => {
-      soundFX.playClick();
       const isVisible = mobileDrawer.classList.contains('opacity-100');
       if (isVisible) {
         mobileDrawer.classList.remove('opacity-100', 'visible', 'translate-y-0');

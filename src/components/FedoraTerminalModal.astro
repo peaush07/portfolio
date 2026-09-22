@@ -187,8 +187,6 @@
 </style>
 
 <script>
-  import { soundFX } from '../scripts/sound-fx.js';
-
   const modal = document.getElementById('fedora-terminal-modal');
   const modalContent = document.getElementById('fedora-terminal-content');
   const closeBtnX = document.getElementById('close-terminal-btn-x');
@@ -202,7 +200,6 @@
 
   function openTerminalModal() {
     if (!modal || !modalContent) return;
-    soundFX.playModalOpen();
     modal.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
     modal.classList.add('opacity-100', 'visible', 'pointer-events-auto');
     modal.setAttribute('aria-hidden', 'false');
@@ -213,7 +210,6 @@
 
   function closeTerminalModal() {
     if (!modal || !modalContent) return;
-    soundFX.playClick();
     modalContent.classList.remove('scale-100');
     modalContent.classList.add('scale-95');
     modal.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
@@ -228,14 +224,12 @@
 
   if (minBtn && cliHistory) {
     minBtn.addEventListener('click', () => {
-      soundFX.playClick();
       cliHistory.innerHTML = '';
     });
   }
 
   if (maxBtn && modalContent) {
     maxBtn.addEventListener('click', () => {
-      soundFX.playClick();
       modalContent.classList.toggle('max-w-7xl');
       modalContent.classList.toggle('max-w-4xl');
     });
@@ -248,15 +242,11 @@
   }
 
   if (cliInput && cliForm && cliHistory && scrollBody) {
-    cliInput.addEventListener('keydown', () => soundFX.playKeypress());
-
     cliForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const rawCmd = cliInput.value.trim();
       const cmd = rawCmd.toLowerCase();
       if (!cmd) return;
-
-      soundFX.playClick();
 
       // Echo User Command with 2-line Zsh prompt
       const cmdLine = document.createElement('div');
@@ -289,7 +279,6 @@
           <div><span class="text-purple-300 font-bold">exit</span> - Close terminal window</div>
         `;
       } else if (cmd === 'sudo hire' || cmd.includes('hire')) {
-        soundFX.playSuccess();
         respLine.innerHTML = `
           <div class="text-emerald-400 font-bold">ACCESS GRANTED! [SUDO_HIRE_MODE ACTIVE]</div>
           <div>🚀 Thank you for considering Peaush Paul!</div>
@@ -371,7 +360,6 @@
     // Quick Command Buttons Handler for Mobile/Desktop
     document.querySelectorAll('.quick-cmd-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        soundFX.playClick();
         const targetCmd = (e.currentTarget as HTMLElement).getAttribute('data-cmd');
         if (targetCmd && cliInput) {
           cliInput.value = targetCmd;
