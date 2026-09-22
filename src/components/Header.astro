@@ -30,27 +30,31 @@
       </div>
 
       <!-- Actions & Widgets -->
-      <div class="flex items-center gap-1.5 sm:gap-2">
-        <!-- Cmd+K Spotlight Search Button (Visible on sm+) -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <!-- Cmd+K Spotlight Search Button -->
         <button 
           id="cmd-palette-trigger-btn"
           type="button" 
-          class="hidden sm:flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white border-violet-500/40 bg-violet-500/10 items-center gap-1.5 shadow-[0_0_12px_rgba(139,92,246,0.3)] hover:scale-105 transition-all"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-violet-500/20 via-purple-500/15 to-violet-500/20 hover:from-violet-500/30 hover:to-purple-500/30 border border-violet-400/40 hover:border-violet-300/80 text-violet-200 hover:text-white text-xs font-mono font-medium shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_22px_rgba(168,85,247,0.55)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95 group"
           title="Open Command Palette (Cmd + K)"
         >
-          <span class="text-violet-400 font-bold">🔍</span>
-          <span class="font-bold text-[11px]">⌘K</span>
+          <svg class="w-3.5 h-3.5 text-violet-400 group-hover:text-white group-hover:scale-110 transition-all" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span class="hidden md:inline font-bold tracking-tight">Search</span>
+          <span class="px-1.5 py-0.5 rounded-md bg-white/10 border border-white/20 text-[10px] font-bold font-mono text-violet-200 group-hover:bg-white/20 group-hover:text-white transition-all shadow-inner">⌘K</span>
         </button>
 
-        <!-- CLI_SANDBOX Fedora Terminal Trigger Button (Purple Glass Aesthetic) -->
+        <!-- CLI_SANDBOX Fedora Terminal Trigger Button -->
         <button 
           id="fedora-cli-trigger-btn"
           type="button" 
-          class="glass-pill-button py-1 px-2.5 sm:px-3 text-xs font-mono text-purple-300 hover:text-white border-purple-500/40 bg-purple-500/10 flex items-center gap-1 shadow-[0_0_12px_rgba(139,92,246,0.3)] hover:scale-105 transition-all"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-purple-500/20 via-fuchsia-500/15 to-purple-500/20 hover:from-purple-500/30 hover:to-fuchsia-500/30 border border-purple-400/40 hover:border-fuchsia-300/80 text-purple-200 hover:text-white text-xs font-mono font-medium shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_22px_rgba(217,70,239,0.55)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95 group"
           title="Open Fedora Fastfetch CLI Terminal"
         >
-          <span class="text-purple-400 font-bold tracking-tighter">&gt;_</span>
-          <span class="hidden xs:inline font-bold text-[11px]">CLI_SANDBOX</span>
+          <span class="flex items-center gap-1 font-mono font-black text-fuchsia-400 group-hover:text-white transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            &gt;_
+          </span>
+          <span class="font-bold text-[11px] tracking-tight">CLI</span>
         </button>
 
         <!-- GitHub Handle Pill -->
@@ -58,7 +62,7 @@
           href="https://github.com/peaush07" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="hidden lg:inline-flex glass-pill-button py-1 px-3 text-xs font-mono text-violet-300 hover:text-white items-center gap-1.5 transition-all"
+          class="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/20 hover:border-violet-400/50 text-xs font-mono text-violet-300 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_12px_rgba(255,255,255,0.08)]"
           title="GitHub Profile @peaush07"
         >
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -133,20 +137,22 @@
       <div class="h-[1px] bg-white/10 my-2"></div>
 
       <!-- Quick Action Mobile Buttons -->
-      <div class="grid grid-cols-2 gap-2 pt-1">
+      <div class="grid grid-cols-2 gap-2.5 pt-1">
         <button 
           id="mobile-cmd-trigger"
           type="button" 
-          class="px-3 py-2.5 rounded-xl bg-violet-500/20 border border-violet-400/40 text-violet-300 font-mono text-[11px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+          class="px-3.5 py-3 rounded-2xl bg-gradient-to-r from-violet-500/25 to-purple-500/20 border border-violet-400/50 text-violet-200 font-mono text-xs font-bold flex items-center justify-center gap-2 active:scale-95 transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)]"
         >
-          <span>🔍</span> <span>Search (⌘K)</span>
+          <svg class="w-4 h-4 text-violet-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span>Search (⌘K)</span>
         </button>
         <button 
           id="mobile-cli-trigger"
           type="button" 
-          class="px-3 py-2.5 rounded-xl bg-purple-500/20 border border-purple-400/40 text-purple-300 font-mono text-[11px] font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+          class="px-3.5 py-3 rounded-2xl bg-gradient-to-r from-purple-500/25 to-fuchsia-500/20 border border-purple-400/50 text-purple-200 font-mono text-xs font-bold flex items-center justify-center gap-2 active:scale-95 transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)]"
         >
-          <span>&gt;_</span> <span>Fedora CLI</span>
+          <span class="font-mono text-emerald-400 font-black">&gt;_</span>
+          <span>Fedora CLI</span>
         </button>
       </div>
     </div>
