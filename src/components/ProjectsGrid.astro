@@ -1145,17 +1145,18 @@ python manage.py runserver
       }
     };
 
-    canvas.onclick = jump;
-    canvas.ontouchstart = (e) => {
+    canvas.addEventListener('click', jump, { passive: true });
+    canvas.addEventListener('touchstart', (e) => {
       e.preventDefault();
       jump();
-    };
-    window.onkeydown = (e) => {
-      if (e.code === 'Space' && !canvas.classList.contains('hidden')) {
+    }, { passive: false });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && canvas && !canvas.classList.contains('hidden')) {
         e.preventDefault();
         jump();
       }
-    };
+    });
 
     loop();
   }

@@ -184,17 +184,29 @@
   // White Cat Scroll Tracker Script
   const lineFill = document.getElementById('header-line-fill');
   const catRunner = document.getElementById('header-cat-runner');
+  let isScrollTicking = false;
 
   function updateScrollProgress() {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (totalHeight <= 0) return;
+    if (totalHeight <= 0) {
+      isScrollTicking = false;
+      return;
+    }
     const progress = Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100));
 
     if (lineFill) lineFill.style.width = `${progress}%`;
     if (catRunner) catRunner.style.left = `${progress}%`;
+    isScrollTicking = false;
   }
 
-  window.addEventListener('scroll', updateScrollProgress);
+  function onScrollTick() {
+    if (!isScrollTicking) {
+      requestAnimationFrame(updateScrollProgress);
+      isScrollTicking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScrollTick, { passive: true });
   document.addEventListener('DOMContentLoaded', updateScrollProgress);
 
   // Sound FX Toggle Listener

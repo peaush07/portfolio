@@ -4,6 +4,7 @@ class SoundFXManager {
   constructor() {
     this.audioCtx = null;
     this.isMuted = false;
+    this.lastHoverTime = 0;
     this.init();
   }
 
@@ -31,9 +32,13 @@ class SoundFXManager {
     return this.isMuted;
   }
 
-  // Futuristic Soft Pitch Hover Sound
+  // Futuristic Soft Pitch Hover Sound (Throttled for 120fps smoothness)
   playHover() {
     if (this.isMuted) return;
+    const now = Date.now();
+    if (now - this.lastHoverTime < 50) return;
+    this.lastHoverTime = now;
+
     const ctx = this.getAudioContext();
     if (!ctx) return;
 

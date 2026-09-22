@@ -152,7 +152,8 @@ export function initAmbientSquaresCanvas(canvasId) {
       }
     }
 
-    // --- 4. Constellation Particles ---
+    // --- 4. Constellation Particles (Optimized Dual Pass) ---
+    // Pass A: Update positions & draw particle dots
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -164,29 +165,26 @@ export function initAmbientSquaresCanvas(canvasId) {
       if (p.y > height) p.y = 0;
 
       ctx.fillStyle = `rgba(192, 132, 252, ${p.alpha})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fillRect(p.x - 1, p.y - 1, p.radius, p.radius);
+    }
 
-      // Connect nearby particles
+    // Pass B: Batched Constellation Lines Pass
+    ctx.strokeStyle = 'rgba(192, 132, 252, 0.22)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const pdx = p.x - p2.x;
         const pdy = p.y - p2.y;
-        const pdistSq = pdx * pdx + pdy * pdy;
-
-        if (pdistSq < 14400) {
-          const pdist = Math.sqrt(pdistSq);
-          const linkAlpha = (1 - pdist / 120) * 0.42;
-          ctx.strokeStyle = `rgba(192, 132, 252, ${linkAlpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
+        if (pdx * pdx + pdy * pdy < 14400) {
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.stroke();
         }
       }
     }
+    ctx.stroke();
 
     animationFrameId = requestAnimationFrame(draw);
   }

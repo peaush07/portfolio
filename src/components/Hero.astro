@@ -194,5 +194,9 @@ import avatarImg from '../assets/avatar.png';
     setTimeout(type, speed);
   }
 
-  document.addEventListener('DOMContentLoaded', type);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    type();
+  } else {
+    document.addEventListener('DOMContentLoaded', type);
+  }
 </script>

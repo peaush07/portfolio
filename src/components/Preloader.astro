@@ -142,4 +142,13 @@
       }, 500);
     }
   }, 60);
+
+  // Failsafe timeout to prevent trapped body scroll
+  setTimeout(() => {
+    clearInterval(interval);
+    if (preloader) {
+      preloader.style.display = 'none';
+      document.body.classList.remove('overflow-hidden');
+    }
+  }, 3500);
 </script>
