@@ -17,7 +17,21 @@ export function initCatCursor() {
     z-index: 99999;
     overflow: hidden;
     contain: strict;
+    transition: opacity 0.4s ease;
   `;
+
+  // Hide custom mouse cat cursor while preloader screen is active to avoid dual cat glitches
+  const preloader = document.getElementById('preloader');
+  if (preloader && preloader.style.display !== 'none' && !preloader.classList.contains('opacity-0')) {
+    cursorContainer.style.opacity = '0';
+    const checkPreloader = setInterval(() => {
+      const p = document.getElementById('preloader');
+      if (!p || p.style.display === 'none' || p.classList.contains('opacity-0')) {
+        cursorContainer.style.opacity = '1';
+        clearInterval(checkPreloader);
+      }
+    }, 100);
+  }
 
   const trailCanvas = document.createElement('canvas');
   trailCanvas.id = 'cat-trail-canvas';
