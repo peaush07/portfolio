@@ -23,11 +23,22 @@ export function init3DTiltEffect(selector = '.project-card, .bento-card, .about-
     let bounds;
     let ticking = false;
     let latestEvent = null;
+    let lastTime = 0;
+    const fpsInterval = 1000 / 60;
 
-    function updateTilt() {
+    function updateTilt(time) {
       if (!latestEvent || !bounds) {
         ticking = false;
         return;
+      }
+
+      if (time) {
+        const delta = time - lastTime;
+        if (delta < fpsInterval) {
+          requestAnimationFrame(updateTilt);
+          return;
+        }
+        lastTime = time - (delta % fpsInterval);
       }
 
       const mouseX = latestEvent.clientX - bounds.left;
