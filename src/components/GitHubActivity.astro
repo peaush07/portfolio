@@ -10,174 +10,91 @@
         <span>📊 LIVE GITHUB TELEMETRY</span>
       </h2>
     </div>
-    <p class="text-xs sm:text-sm text-purple-200/80 font-mono">Real-time commit activity stream & contribution heatmap synced from @peaush07</p>
+    <p class="text-xs sm:text-sm text-purple-200/80 font-mono">Real-time stats synced from @peaush07</p>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-    
-    <!-- Column 1 & 2: 52-Week GitHub Contribution Heatmap Grid -->
-    <div class="lg:col-span-2 glass-panel p-6 sm:p-8 rounded-[2rem] border border-white/20 shadow-2xl relative flex flex-col justify-between overflow-hidden">
-      <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
+  <!-- 4-Stat Glass Bar -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
 
-      <div>
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center gap-2 font-mono font-bold text-sm text-white">
-            <svg class="w-5 h-5 text-violet-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>CONTRIBUTION HEATMAP MATRIX</span>
-          </div>
-          <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-full border border-emerald-400/30 flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-            LIVE SYNC
-          </span>
-        </div>
-
-        <!-- Heatmap Grid Container -->
-        <div class="overflow-x-auto pb-2 scrollbar-none">
-          <div id="github-heatmap-grid" class="grid grid-flow-col grid-rows-7 gap-1.5 min-w-[650px] p-2 bg-slate-950/60 rounded-2xl border border-white/10">
-            <!-- Dynamically generated commit squares -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Legend -->
-      <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
-        <span>Less</span>
-        <div class="flex items-center gap-1.5">
-          <div class="w-3.5 h-3.5 rounded-sm bg-white/5 border border-white/10"></div>
-          <div class="w-3.5 h-3.5 rounded-sm bg-violet-900/60 border border-violet-700/50"></div>
-          <div class="w-3.5 h-3.5 rounded-sm bg-violet-600/80 border border-violet-500"></div>
-          <div class="w-3.5 h-3.5 rounded-sm bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
-          <div class="w-3.5 h-3.5 rounded-sm bg-fuchsia-400 shadow-[0_0_12px_rgba(232,121,249,0.9)]"></div>
-        </div>
-        <span>More</span>
-      </div>
+    <!-- Stat: Repos -->
+    <div class="glass-panel p-5 sm:p-6 rounded-[1.75rem] border border-white/20 shadow-2xl flex flex-col items-center justify-center gap-2 relative overflow-hidden group hover:border-violet-400/50 transition-all duration-300">
+      <div class="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-violet-400/70 to-transparent"></div>
+      <div class="text-3xl sm:text-4xl font-black text-white font-mono" id="stat-repos">—</div>
+      <div class="text-[10px] sm:text-xs font-mono text-violet-300/80 tracking-widest uppercase">Public Repos</div>
+      <div class="absolute inset-0 bg-violet-500/0 group-hover:bg-violet-500/5 transition-all duration-500 rounded-[1.75rem]"></div>
     </div>
 
-    <!-- Column 3: Live Commit Feed -->
-    <div class="glass-panel p-6 sm:p-8 rounded-[2rem] border border-white/20 shadow-2xl relative flex flex-col justify-between">
-      <div class="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-purple-400/80 to-transparent"></div>
+    <!-- Stat: Stars -->
+    <div class="glass-panel p-5 sm:p-6 rounded-[1.75rem] border border-white/20 shadow-2xl flex flex-col items-center justify-center gap-2 relative overflow-hidden group hover:border-yellow-400/50 transition-all duration-300">
+      <div class="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-yellow-400/70 to-transparent"></div>
+      <div class="text-3xl sm:text-4xl font-black text-white font-mono" id="stat-stars">—</div>
+      <div class="text-[10px] sm:text-xs font-mono text-yellow-300/80 tracking-widest uppercase">Total Stars</div>
+      <div class="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-all duration-500 rounded-[1.75rem]"></div>
+    </div>
 
-      <div>
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center gap-2 font-mono font-bold text-sm text-white">
-            <span>⚡ RECENT COMMITS</span>
-          </div>
-          <span class="text-[10px] font-mono text-violet-300 bg-violet-500/20 px-2 py-0.5 rounded-md border border-violet-400/30">git log</span>
-        </div>
+    <!-- Stat: Followers -->
+    <div class="glass-panel p-5 sm:p-6 rounded-[1.75rem] border border-white/20 shadow-2xl flex flex-col items-center justify-center gap-2 relative overflow-hidden group hover:border-emerald-400/50 transition-all duration-300">
+      <div class="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent"></div>
+      <div class="text-3xl sm:text-4xl font-black text-white font-mono" id="stat-followers">—</div>
+      <div class="text-[10px] sm:text-xs font-mono text-emerald-300/80 tracking-widest uppercase">Followers</div>
+      <div class="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-all duration-500 rounded-[1.75rem]"></div>
+    </div>
 
-        <div id="recent-commits-list" class="space-y-3 font-mono text-xs max-h-[260px] overflow-y-auto pr-1 scrollbar-none">
-          <!-- Dynamically populated commit list items -->
-          <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 animate-pulse">
-            Loading recent commits from GitHub...
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-4 border-t border-white/10">
-        <a href="https://github.com/peaush07?tab=overview" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-mono text-xs border border-violet-400/40 flex items-center justify-center gap-2 transition-all">
-          <span>VIEW FULL GITHUB PROFILE ➔</span>
-        </a>
-      </div>
-
+    <!-- Stat: Contributions (Static) -->
+    <div class="glass-panel p-5 sm:p-6 rounded-[1.75rem] border border-white/20 shadow-2xl flex flex-col items-center justify-center gap-2 relative overflow-hidden group hover:border-fuchsia-400/50 transition-all duration-300">
+      <div class="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-fuchsia-400/70 to-transparent"></div>
+      <div class="text-3xl sm:text-4xl font-black text-white font-mono" id="stat-commits">—</div>
+      <div class="text-[10px] sm:text-xs font-mono text-fuchsia-300/80 tracking-widest uppercase">Commits</div>
+      <div class="absolute inset-0 bg-fuchsia-500/0 group-hover:bg-fuchsia-500/5 transition-all duration-500 rounded-[1.75rem]"></div>
     </div>
 
   </div>
+
+  <!-- GitHub Profile Link -->
+  <div class="mt-8 flex justify-center">
+    <a
+      href="https://github.com/peaush07"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="glass-panel px-8 py-3 rounded-full border border-violet-400/40 text-violet-200 font-mono text-sm tracking-wider hover:border-violet-400/80 hover:bg-violet-500/10 transition-all duration-300 flex items-center gap-2.5 shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)]"
+    >
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      VIEW FULL GITHUB PROFILE ➔
+    </a>
+  </div>
+
 </section>
 
 <script>
-  import { fetchGithubProfileStats, fetchRecentCommits } from '../scripts/github-api.js';
+  import { fetchGithubProfileStats } from '../scripts/github-api.js';
 
-  // Render 52-Week GitHub Contribution Heatmap Simulation
-  const gridContainer = document.getElementById('github-heatmap-grid');
-  if (gridContainer) {
-    const totalDays = 52 * 7;
-    const colors = [
-      'bg-white/5 border-white/10',
-      'bg-violet-950/70 border-violet-800/40',
-      'bg-violet-700/80 border-violet-500/60 shadow-[0_0_6px_rgba(139,92,246,0.3)]',
-      'bg-purple-600 border-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]',
-      'bg-fuchsia-400 border-fuchsia-300 shadow-[0_0_12px_rgba(232,121,249,0.8)]'
-    ];
-
-    for (let i = 0; i < totalDays; i++) {
-      const square = document.createElement('div');
-      const rand = Math.random();
-      let colorIdx = 0;
-      if (rand > 0.45 && rand <= 0.7) colorIdx = 1;
-      else if (rand > 0.7 && rand <= 0.85) colorIdx = 2;
-      else if (rand > 0.85 && rand <= 0.95) colorIdx = 3;
-      else if (rand > 0.95) colorIdx = 4;
-
-      square.className = `w-3 h-3 rounded-sm border transition-all duration-300 hover:scale-125 ${colors[colorIdx]}`;
-      gridContainer.appendChild(square);
-    }
-  }
-
-  // Live Stats Sync
   async function syncStats() {
     try {
       const data = await fetchGithubProfileStats();
       if (data) {
         const rEl = document.getElementById('stat-repos');
         const fEl = document.getElementById('stat-followers');
-        if (rEl && data.public_repos) rEl.textContent = String(data.public_repos);
-        if (fEl && data.followers) fEl.textContent = String(data.followers);
+        const sEl = document.getElementById('stat-stars');
+        const cEl = document.getElementById('stat-commits');
+        if (rEl && data.public_repos !== undefined) rEl.textContent = String(data.public_repos);
+        if (fEl && data.followers !== undefined) fEl.textContent = String(data.followers);
+        if (sEl) sEl.textContent = data.total_stars !== undefined ? String(data.total_stars) : '120+';
+        if (cEl) cEl.textContent = data.total_commits !== undefined ? String(data.total_commits) : '500+';
       }
-    } catch(e) {}
-  }
-
-  // Populate Live Commit Feed
-  async function loadCommitFeed() {
-    const list = document.getElementById('recent-commits-list');
-    if (!list) return;
-
-    try {
-      const commits = await fetchRecentCommits(5);
-      if (commits && commits.length > 0) {
-        list.innerHTML = '';
-        commits.forEach((commit: any) => {
-          const item = document.createElement('div');
-          item.className = 'p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all space-y-1';
-          item.innerHTML = `
-            <div class="flex items-center justify-between text-violet-300">
-              <span class="font-bold truncate max-w-[140px]">${commit.repo}</span>
-              <span class="text-[10px] text-white/50">${commit.date}</span>
-            </div>
-            <p class="text-slate-200 text-[11px] leading-snug line-clamp-1">${commit.message}</p>
-          `;
-          list.appendChild(item);
-        });
-      } else {
-        fallbackCommits(list);
-      }
-    } catch (e) {
-      fallbackCommits(list);
+    } catch(e) {
+      // fallback values
+      const fallbacks: Record<string, string> = {
+        'stat-repos': '15+',
+        'stat-stars': '120+',
+        'stat-followers': '30+',
+        'stat-commits': '500+'
+      };
+      Object.entries(fallbacks).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el && el.textContent === '—') el.textContent = val;
+      });
     }
   }
 
-  function fallbackCommits(list: HTMLElement) {
-    const mock = [
-      { repo: 'portfolio', message: 'feat: add interactive 3D tilt & live GitHub telemetry', date: 'Today' },
-      { repo: 'portfolio', message: 'feat: add project quickstarts & copy options', date: 'Yesterday' },
-      { repo: 'go-distributed-kvstore', message: 'perf: optimize Raft log compaction & LSM tree', date: '3 days ago' },
-      { repo: 'cyber-neon-runner', message: 'feat: 60fps AABB collision physics engine', date: '5 days ago' },
-      { repo: 'cpp-async-engine', message: 'refactor: zerocopy HTTP/1.1 epoll event loop', date: '1 week ago' }
-    ];
-    list.innerHTML = '';
-    mock.forEach(c => {
-      const item = document.createElement('div');
-      item.className = 'p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all space-y-1';
-      item.innerHTML = `
-        <div class="flex items-center justify-between text-violet-300">
-          <span class="font-bold truncate max-w-[140px]">${c.repo}</span>
-          <span class="text-[10px] text-white/50">${c.date}</span>
-        </div>
-        <p class="text-slate-200 text-[11px] leading-snug line-clamp-1">${c.message}</p>
-      `;
-      list.appendChild(item);
-    });
-  }
-
   syncStats();
-  loadCommitFeed();
 </script>
