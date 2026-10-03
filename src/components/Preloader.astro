@@ -1,62 +1,101 @@
 ---
 ---
 
-<!-- MOB PSYCHO 100% ANIME-CYBER LIQUID GLASS LOADING SCREEN -->
+<!-- ULTIMATE COMBINATION: AFTER EFFECTS SCI-FI HUD + MOB PSYCHO 100% ANIME COUNTER + WHITE CAT RUNNER -->
 <div 
   id="preloader" 
   class="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#02050e] transition-all duration-700 select-none overflow-hidden"
 >
-  <!-- Anime Energy Aura Particle Canvas -->
+  <!-- Anime Energy Aura & Lightning Canvas -->
   <canvas id="preloader-aura-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-  <!-- Speed Lines Anime Radial Overlay (Activates at High Percentages) -->
+  <!-- Speed Lines Anime Radial Overlay -->
   <div id="preloader-speed-lines" class="absolute inset-0 pointer-events-none z-0 opacity-0 transition-opacity duration-300">
-    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(139,92,246,0.25)_100%)]"></div>
+    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(139,92,246,0.3)_100%)]"></div>
   </div>
 
-  <!-- Screen Shake Wrapper -->
+  <!-- Screen Shake & Motion Wrapper -->
   <div id="preloader-shake-wrapper" class="relative z-10 w-full max-w-2xl px-4 flex flex-col items-center justify-center transition-transform">
 
-    <!-- Main VisionOS Liquid Glass Card -->
+    <!-- Main VisionOS Liquid Glass Sci-Fi HUD Card -->
     <div 
       id="preloader-glass-card"
-      class="glass-panel p-8 sm:p-12 rounded-[2.5rem] w-full border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-3xl relative text-center flex flex-col items-center overflow-hidden transition-all duration-700 bg-[#090d1a]/80"
+      class="glass-panel p-6 sm:p-10 rounded-[2.5rem] w-full border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.85)] backdrop-blur-3xl relative text-center flex flex-col items-center overflow-hidden transition-all duration-700 bg-[#070b16]/85"
     >
-      <!-- Specular Top Highlight Beam -->
+      <!-- Specular Top Rim Light -->
       <div class="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-violet-400/90 to-transparent"></div>
-      
-      <!-- Top Status Header & Japanese Kanji Badge -->
-      <div class="w-full flex items-center justify-between mb-6 pb-3 border-b border-white/10 text-xs font-mono">
+
+      <!-- Sci-Fi Corner Brackets (After Effects HUD Style) -->
+      <div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-violet-400/60 pointer-events-none"></div>
+      <div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-violet-400/60 pointer-events-none"></div>
+      <div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-violet-400/60 pointer-events-none"></div>
+      <div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-violet-400/60 pointer-events-none"></div>
+
+      <!-- Top Header Telemetry & Japanese Kanji Badge -->
+      <div class="w-full flex items-center justify-between mb-4 pb-3 border-b border-white/10 text-xs font-mono">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span id="preloader-kanji" class="text-violet-300 font-bold tracking-widest text-sm sm:text-base font-sans">
-            「システム起動中」
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="preloader-kanji" class="text-violet-300 font-bold tracking-widest text-sm sm:text-base font-sans drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]">
+            「能力解放・初期化中」
           </span>
         </div>
-        <span id="preloader-phase-tag" class="px-3 py-1 rounded-full bg-violet-500/20 border border-violet-400/40 text-violet-200 font-bold uppercase tracking-wider text-[11px] shadow-[0_0_12px_rgba(139,92,246,0.3)]">
-          MOB ENGINE • INITIALIZING
+        <span id="preloader-phase-tag" class="px-3 py-1 rounded-full bg-violet-500/20 border border-violet-400/40 text-violet-200 font-bold uppercase tracking-wider text-[11px] shadow-[0_0_12px_rgba(139,92,246,0.35)]">
+          AFTER EFFECTS HUD • MOB 100%
         </span>
       </div>
 
-      <!-- GIANT MOB PSYCHO 100 PERCENTAGE COUNTER DISPLAY -->
-      <div class="relative my-4 flex items-center justify-center w-full min-h-[140px] sm:min-h-[180px]">
-        <!-- Glow Backdrop -->
-        <div id="preloader-counter-glow" class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-violet-600/30 blur-[80px] transition-all duration-300"></div>
+      <!-- CENTRAL AFTER EFFECTS ROTATING HUD RINGS & MOB COUNTER DISPLAY -->
+      <div class="relative my-2 flex items-center justify-center w-full min-h-[180px] sm:min-h-[220px]">
+        
+        <!-- Glowing Counter Background Aura -->
+        <div id="preloader-counter-glow" class="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-violet-600/30 blur-[90px] transition-all duration-300 pointer-events-none"></div>
 
-        <!-- Main Counter Number with Glitch Offsets -->
-        <div class="relative z-10 font-mono font-black tracking-tighter flex items-baseline justify-center">
+        <!-- Outer Rotating Sci-Fi Ring (After Effects Style) -->
+        <svg id="hud-ring-outer" class="absolute w-52 h-52 sm:w-64 sm:h-64 text-violet-400/40 animate-spin-slow pointer-events-none" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="12 12" />
+          <circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="40 10 5 10" />
+          <line x1="100" y1="5" x2="100" y2="15" stroke="currentColor" stroke-width="2" />
+          <line x1="100" y1="185" x2="100" y2="195" stroke="currentColor" stroke-width="2" />
+          <line x1="5" y1="100" x2="15" y2="100" stroke="currentColor" stroke-width="2" />
+          <line x1="185" y1="100" x2="195" y2="100" stroke="currentColor" stroke-width="2" />
+        </svg>
+
+        <!-- Inner Reverse Rotating Sci-Fi Ring -->
+        <svg id="hud-ring-inner" class="absolute w-40 h-40 sm:w-48 sm:h-48 text-fuchsia-400/50 animate-spin-reverse pointer-events-none" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="25 15" />
+          <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 6" />
+        </svg>
+
+        <!-- Main GIANT MOB PSYCHO 100% Counter Number -->
+        <div class="relative z-10 font-mono font-black tracking-tighter flex items-baseline justify-center select-none">
           <span 
             id="preloader-counter" 
-            class="text-7xl sm:text-9xl bg-gradient-to-b from-white via-violet-100 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.7)]"
+            class="text-7xl sm:text-9xl bg-gradient-to-b from-white via-violet-100 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.8)] glitch-numbers"
           >
             000
           </span>
-          <span class="text-3xl sm:text-5xl font-black text-violet-400 ml-1 drop-shadow-[0_0_15px_rgba(139,92,246,0.8)]">%</span>
+          <span class="text-3xl sm:text-5xl font-black text-violet-400 ml-1 drop-shadow-[0_0_15px_rgba(139,92,246,0.9)]">%</span>
         </div>
       </div>
 
+      <!-- AUDIO EQUALIZER SPECTRUM VISUALIZER BARS (AE Motion Graphics Style) -->
+      <div class="w-full flex items-center justify-center gap-1 sm:gap-1.5 h-6 mb-4">
+        <div class="equalizer-bar bar-1"></div>
+        <div class="equalizer-bar bar-2"></div>
+        <div class="equalizer-bar bar-3"></div>
+        <div class="equalizer-bar bar-4"></div>
+        <div class="equalizer-bar bar-5"></div>
+        <div class="equalizer-bar bar-6"></div>
+        <div class="equalizer-bar bar-7"></div>
+        <div class="equalizer-bar bar-8"></div>
+        <div class="equalizer-bar bar-9"></div>
+        <div class="equalizer-bar bar-10"></div>
+        <div class="equalizer-bar bar-11"></div>
+        <div class="equalizer-bar bar-12"></div>
+      </div>
+
       <!-- WHITE CAT SVG RUNNER TRACK -->
-      <div class="w-full relative mb-8 pt-6">
+      <div class="w-full relative mb-6 pt-6">
         <!-- WHITE CAT SVG RUNNER -->
         <div 
           id="preloader-cat-runner" 
@@ -82,7 +121,7 @@
           </svg>
         </div>
 
-        <!-- Liquid Glass Progress Bar Track -->
+        <!-- Liquid Glass Progress Track -->
         <div class="w-full h-3.5 rounded-full bg-white/10 border border-white/20 p-0.5 overflow-hidden shadow-inner backdrop-blur-md relative">
           <div 
             id="preloader-fill" 
@@ -93,15 +132,15 @@
         </div>
       </div>
 
-      <!-- DYNAMIC TELEMETRY STATUS & LOG MESSAGES -->
-      <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left font-mono text-[11px] text-white/70 border-t border-white/10">
+      <!-- DYNAMIC AFTER EFFECTS HUD TELEMETRY & LOG METRICS -->
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-left font-mono text-[11px] text-white/70 border-t border-white/10">
         <div class="flex items-center gap-2 bg-white/5 p-2 rounded-xl border border-white/10">
-          <span class="text-violet-400 font-bold">&gt; LOG:</span>
-          <span id="preloader-status-text" class="truncate text-slate-200 font-medium">INITIALIZING CORE...</span>
+          <span class="text-violet-400 font-bold">&gt; AE_HUD:</span>
+          <span id="preloader-status-text" class="truncate text-slate-200 font-medium">RENDERING MATRIX...</span>
         </div>
         <div class="flex items-center justify-between bg-white/5 p-2 rounded-xl border border-white/10">
-          <span class="text-violet-400 font-bold">&gt; STATUS:</span>
-          <span id="preloader-metrics" class="text-emerald-400 font-bold">FPS: 60 • MEM: OK</span>
+          <span class="text-violet-400 font-bold">&gt; METRICS:</span>
+          <span id="preloader-metrics" class="text-emerald-400 font-bold">60FPS • VULKAN_OK</span>
         </div>
       </div>
 
@@ -122,16 +161,51 @@
   .leg-f1, .leg-b2 { animation: preloaderLegRun1 0.12s infinite alternate ease-in-out; }
   .leg-f2, .leg-b1 { animation: preloaderLegRun2 0.12s infinite alternate ease-in-out; }
 
+  /* After Effects HUD Rotating Rings Animations */
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes spinReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+  .animate-spin-slow {
+    animation: spinSlow 12s linear infinite;
+  }
+  .animate-spin-reverse {
+    animation: spinReverse 8s linear infinite;
+  }
+
+  /* Audio Spectrum Equalizer Bars */
+  .equalizer-bar {
+    width: 4px;
+    background: linear-gradient(to top, #8B5CF6, #C084FC, #F472B6);
+    border-radius: 9999px;
+    animation: eqPulse 0.6s ease-in-out infinite alternate;
+  }
+  .bar-1 { height: 40%; animation-delay: 0.1s; }
+  .bar-2 { height: 75%; animation-delay: 0.3s; }
+  .bar-3 { height: 50%; animation-delay: 0.2s; }
+  .bar-4 { height: 90%; animation-delay: 0.5s; }
+  .bar-5 { height: 60%; animation-delay: 0.4s; }
+  .bar-6 { height: 100%; animation-delay: 0.1s; }
+  .bar-7 { height: 45%; animation-delay: 0.6s; }
+  .bar-8 { height: 80%; animation-delay: 0.25s; }
+  .bar-9 { height: 65%; animation-delay: 0.35s; }
+  .bar-10 { height: 95%; animation-delay: 0.15s; }
+  .bar-11 { height: 55%; animation-delay: 0.45s; }
+  .bar-12 { height: 70%; animation-delay: 0.05s; }
+
+  @keyframes eqPulse {
+    0% { transform: scaleY(0.2); }
+    100% { transform: scaleY(1.2); }
+  }
+
   /* Anime Screen Shake Keyframes */
-  .shake-level-1 {
-    animation: animeShake 0.1s infinite;
-  }
-  .shake-level-2 {
-    animation: animeShake 0.07s infinite;
-  }
-  .shake-level-3 {
-    animation: animeShakeVigorous 0.05s infinite;
-  }
+  .shake-level-1 { animation: animeShake 0.1s infinite; }
+  .shake-level-2 { animation: animeShake 0.07s infinite; }
+  .shake-level-3 { animation: animeShakeVigorous 0.05s infinite; }
 
   @keyframes animeShake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -166,6 +240,8 @@
   const metricsEl = document.getElementById('preloader-metrics');
   const counterGlow = document.getElementById('preloader-counter-glow');
   const speedLines = document.getElementById('preloader-speed-lines');
+  const hudRingOuter = document.getElementById('hud-ring-outer');
+  const hudRingInner = document.getElementById('hud-ring-inner');
 
   // --- Aura Canvas Setup ---
   const canvas = document.getElementById('preloader-aura-canvas') as HTMLCanvasElement;
@@ -182,7 +258,7 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 45; i++) {
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -195,13 +271,13 @@
     }
   }
 
-  // Phase Definitions matching Mob Psycho 100 threshold feel
+  // Phases combining Mob Psycho 100 percentage thresholds with AE Motion Graphics Telemetry
   const phases = [
-    { threshold: 0, kanji: "「システム起動中」", tag: "SYSTEM INITIALIZING", log: "BOOTING VISIONOS KERNEL..." },
-    { threshold: 25, kanji: "「同期率上昇中」", tag: "SYNCHRONIZING 25%", log: "CONNECTING REPOSITORIES & METRICS..." },
-    { threshold: 50, kanji: "「出力臨界突破」", tag: "OUTPUT CRITICAL 50%", log: "CALIBRATING 60Hz FLUID RENDERER..." },
-    { threshold: 75, kanji: "「能力解放・過負荷」", tag: "POWER UNLEASHED 75%", log: "OVERLOAD IMMINENT • STABILIZING..." },
-    { threshold: 95, kanji: "「100% 精神解放」", tag: "OVERLOAD 100% ACTIVE", log: "BURSTING LIQUID GLASS MATRIX..." }
+    { threshold: 0, kanji: "「能力解放・初期化中」", tag: "AFTER EFFECTS HUD • MOB 100%", log: "BOOTING AE HUD COMPOSITOR..." },
+    { threshold: 25, kanji: "「精神波・同期率 25%」", tag: "SYNCHRONIZING 25%", log: "INDEXING GRAPHICS & WORKSETS..." },
+    { threshold: 50, kanji: "「出力臨界・突破 50%」", tag: "OUTPUT CRITICAL 50%", log: "CALIBRATING 60Hz FLUID RENDERER..." },
+    { threshold: 75, kanji: "「過負荷・能力解放 75%」", tag: "POWER OVERLOAD 75%", log: "MAX ENERGY SURGE • PREPARING BURST..." },
+    { threshold: 95, kanji: "「100% 精神解放・完了」", tag: "OVERLOAD 100% ACTIVE", log: "EXPLODING LIQUID GLASS MATRIX..." }
   ];
 
   let currentPercent = 0;
@@ -209,7 +285,6 @@
   let lastTime = performance.now();
   const fpsInterval = 1000 / 60; // Locked 60Hz Frame Pacing
 
-  // Counter logic loop
   let startTime = performance.now();
 
   function renderAura(pct: number) {
@@ -219,8 +294,7 @@
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
-    // Draw central energy aura pulse
-    const pulseRadius = 100 + (pct / 100) * 150;
+    const pulseRadius = 110 + (pct / 100) * 160;
     const grad = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, pulseRadius);
     grad.addColorStop(0, `rgba(139, 92, 246, ${0.15 + (pct / 100) * 0.35})`);
     grad.addColorStop(0.6, `rgba(192, 132, 252, ${0.05 + (pct / 100) * 0.15})`);
@@ -228,7 +302,6 @@
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Particle update
     particles.forEach(p => {
       p.x += p.vx * (1 + (pct / 100) * 2);
       p.y += p.vy * (1 + (pct / 100) * 2);
@@ -245,13 +318,12 @@
       ctx!.fill();
     });
 
-    // High energy electric arcs near 80%+
-    if (pct > 70 && Math.random() < 0.4) {
+    if (pct > 70 && Math.random() < 0.45) {
       ctx.strokeStyle = '#F472B6';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.moveTo(centerX + (Math.random() - 0.5) * 200, centerY + (Math.random() - 0.5) * 200);
-      ctx.lineTo(centerX + (Math.random() - 0.5) * 250, centerY + (Math.random() - 0.5) * 250);
+      ctx.moveTo(centerX + (Math.random() - 0.5) * 220, centerY + (Math.random() - 0.5) * 220);
+      ctx.lineTo(centerX + (Math.random() - 0.5) * 280, centerY + (Math.random() - 0.5) * 280);
       ctx.stroke();
     }
   }
@@ -265,11 +337,10 @@
 
     const elapsed = now - startTime;
 
-    // Eased progress calculation: quick start, intense pause near 99%, explosion at 100%
     if (elapsed < 1600) {
       targetPercent = Math.min(99, Math.floor((elapsed / 1600) * 99));
     } else if (elapsed < 2000) {
-      targetPercent = 99; // Dramatic pause at 99%
+      targetPercent = 99; // Dramatic 99% suspense hold
     } else {
       targetPercent = 100;
     }
@@ -283,7 +354,7 @@
     if (fillBar) fillBar.style.width = `${currentPercent}%`;
     if (catRunner) catRunner.style.left = `${currentPercent}%`;
 
-    // Update Phase Metadata
+    // Phase Updates
     for (let i = phases.length - 1; i >= 0; i--) {
       if (currentPercent >= phases[i].threshold) {
         if (kanjiEl && kanjiEl.textContent !== phases[i].kanji) kanjiEl.textContent = phases[i].kanji;
@@ -293,7 +364,7 @@
       }
     }
 
-    // Dynamic Screen Shake & Visual Effects
+    // Screen Shake & AE HUD Ring Acceleration
     if (shakeWrapper) {
       shakeWrapper.className = 'relative z-10 w-full max-w-2xl px-4 flex flex-col items-center justify-center transition-transform ';
       if (currentPercent >= 90) {
@@ -303,6 +374,13 @@
       } else if (currentPercent >= 30) {
         shakeWrapper.classList.add('shake-level-1');
       }
+    }
+
+    if (hudRingOuter) {
+      hudRingOuter.style.animationDuration = `${Math.max(1, 12 - (currentPercent / 100) * 10)}s`;
+    }
+    if (hudRingInner) {
+      hudRingInner.style.animationDuration = `${Math.max(0.8, 8 - (currentPercent / 100) * 7)}s`;
     }
 
     if (counterGlow) {
@@ -315,18 +393,18 @@
     }
 
     if (metricsEl) {
-      metricsEl.textContent = `FPS: 60 • CAP: ${currentPercent}%`;
+      metricsEl.textContent = `60FPS • MATRIX: ${currentPercent}%`;
     }
 
     renderAura(currentPercent);
 
-    // Explosive 100% Shatter Reveal Sequence
+    // Explosive 100% Reveal
     if (currentPercent === 100) {
       cancelAnimationFrame(animFrameId);
 
       setTimeout(() => {
         if (glassCard) {
-          glassCard.classList.add('scale-125', 'opacity-0', 'blur-xl');
+          glassCard.classList.add('scale-125', 'opacity-0', 'blur-2xl');
         }
         if (preloader) {
           preloader.classList.add('opacity-0', 'pointer-events-none', 'scale-105');
@@ -341,7 +419,6 @@
 
   requestAnimationFrame(loop);
 
-  // Failsafe timeout to unlock scroll if needed
   setTimeout(() => {
     if (preloader && preloader.style.display !== 'none') {
       preloader.style.display = 'none';
