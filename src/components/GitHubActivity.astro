@@ -1,2 +1,75 @@
 ---
 ---
+
+<section id="github-activity" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+  
+  <!-- 4-Stat Glass Widget Bar (Matching Screencast Frame 20) -->
+  <div class="glass-panel p-6 sm:p-8 rounded-[2.5rem] border border-white/20 shadow-2xl relative overflow-hidden">
+    <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center font-mono">
+      
+      <!-- Stat 1: Public Repos -->
+      <div class="flex flex-col items-center justify-center p-3">
+        <span id="stat-repos" class="text-4xl sm:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]">
+          22
+        </span>
+        <span class="text-[11px] sm:text-xs text-purple-200/80 tracking-widest uppercase mt-2 font-bold">
+          PUBLIC REPOSITORIES
+        </span>
+      </div>
+
+      <!-- Stat 2: Total Stars -->
+      <div class="flex flex-col items-center justify-center p-3 border-l md:border-l border-white/10">
+        <span id="stat-stars" class="text-4xl sm:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_20px_rgba(234,179,8,0.5)]">
+          99
+        </span>
+        <span class="text-[11px] sm:text-xs text-yellow-200/80 tracking-widest uppercase mt-2 font-bold">
+          TOTAL STARS EARNED
+        </span>
+      </div>
+
+      <!-- Stat 3: Followers -->
+      <div class="flex flex-col items-center justify-center p-3 border-l md:border-l border-white/10">
+        <span id="stat-followers" class="text-4xl sm:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_20px_rgba(52,211,153,0.5)]">
+          66
+        </span>
+        <span class="text-[11px] sm:text-xs text-emerald-200/80 tracking-widest uppercase mt-2 font-bold">
+          GITHUB FOLLOWERS
+        </span>
+      </div>
+
+      <!-- Stat 4: Primary Languages -->
+      <div class="flex flex-col items-center justify-center p-3 border-l md:border-l border-white/10">
+        <span id="stat-language" class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-[0_0_20px_rgba(192,132,252,0.6)]">
+          Python
+        </span>
+        <span class="text-[11px] sm:text-xs text-fuchsia-200/80 tracking-widest uppercase mt-2 font-bold">
+          PRIMARY LANGUAGES
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+  import { fetchGithubProfileStats } from '../scripts/github-api.js';
+
+  async function syncStats() {
+    try {
+      const data = await fetchGithubProfileStats();
+      if (data) {
+        const rEl = document.getElementById('stat-repos');
+        const fEl = document.getElementById('stat-followers');
+        const sEl = document.getElementById('stat-stars');
+        if (rEl && data.public_repos !== undefined) rEl.textContent = String(data.public_repos);
+        if (fEl && data.followers !== undefined) fEl.textContent = String(data.followers);
+        if (sEl && data.total_stars !== undefined) sEl.textContent = String(data.total_stars);
+      }
+    } catch(e) {}
+  }
+
+  syncStats();
+</script>
