@@ -59,11 +59,10 @@ const {
       <slot />
     </div>
 
-    <!-- Lenis, Cat Cursor & Canvas Initialization Scripts -->
+    <!-- Lenis & Canvas Initialization Scripts -->
     <script>
       import Lenis from 'lenis';
       import { initAmbientSquaresCanvas } from '../scripts/squares-canvas.js';
-      import { initCatCursor } from '../scripts/cat-cursor.js';
       import { init3DTiltEffect } from '../scripts/tilt-effect.js';
 
       const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
@@ -85,7 +84,6 @@ const {
       }
 
       initAmbientSquaresCanvas('squares-canvas');
-      initCatCursor();
       init3DTiltEffect();
     </script>
 
