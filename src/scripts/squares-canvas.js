@@ -1,4 +1,4 @@
-// High Performance 120Hz Cyber Grid Canvas with Adaptive Mobile Throttling & Batched Draw Calls
+// High Performance Cyber Grid Canvas with Adaptive Idle Throttling & DPR Capping
 
 export function initAmbientSquaresCanvas(canvasId) {
   const canvas = document.getElementById(canvasId);
@@ -10,22 +10,22 @@ export function initAmbientSquaresCanvas(canvasId) {
   let animationFrameId;
 
   const isTouchDevice = typeof window !== 'undefined' && (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
-  const squareSize = isTouchDevice ? 64 : 52;
-  const speedX = 0.35;
-  const speedY = 0.35;
+  const squareSize = isTouchDevice ? 72 : 56;
+  const speedX = 0.25;
+  const speedY = 0.25;
 
   let gridOffsetX = 0;
   let gridOffsetY = 0;
 
   let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
   let ripples = [];
+  let lastMouseMoveTime = Date.now();
 
-  // Floating Cyber Constellation Particles (Adaptive Count for Mobile vs Desktop)
-  const numParticles = isTouchDevice ? 12 : 24;
+  const numParticles = isTouchDevice ? 8 : 16;
   const particles = [];
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, isTouchDevice ? 1.25 : 1.5);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     width = window.innerWidth;
     height = window.innerHeight;
 
@@ -41,10 +41,10 @@ export function initAmbientSquaresCanvas(canvasId) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 1.8 + 1.2,
-        alpha: Math.random() * 0.4 + 0.3
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.5 + 1,
+        alpha: Math.random() * 0.3 + 0.2
       });
     }
   }
@@ -56,16 +56,17 @@ export function initAmbientSquaresCanvas(canvasId) {
     window.addEventListener('mousemove', (e) => {
       mouse.targetX = e.clientX;
       mouse.targetY = e.clientY;
+      lastMouseMoveTime = Date.now();
     }, { passive: true });
 
     window.addEventListener('click', (e) => {
-      if (ripples.length < 5) {
+      if (ripples.length < 3) {
         ripples.push({
           x: e.clientX,
           y: e.clientY,
           radius: 10,
-          maxRadius: 240,
-          alpha: 0.8
+          maxRadius: 200,
+          alpha: 0.7
         });
       }
     }, { passive: true });
@@ -73,15 +74,18 @@ export function initAmbientSquaresCanvas(canvasId) {
 
   let isPaused = false;
   let lastFrameTime = 0;
-  const fpsInterval = 1000 / 60; // 60Hz Lock
+  const fpsInterval = 1000 / 60; // 60Hz Cap
 
   document.addEventListener('visibilitychange', () => {
     isPaused = document.hidden;
-    if (!isPaused) draw();
+    if (!isPaused && !animationFrameId) draw();
   });
 
   function draw(timestamp) {
-    if (isPaused) return;
+    if (isPaused) {
+      animationFrameId = null;
+      return;
+    }
     animationFrameId = requestAnimationFrame(draw);
 
     if (timestamp) {
@@ -90,37 +94,36 @@ export function initAmbientSquaresCanvas(canvasId) {
       lastFrameTime = timestamp - (delta % fpsInterval);
     }
 
-    // Smooth mouse target interpolation
+    // Smooth mouse interpolation
     if (!isTouchDevice && mouse.targetX > 0) {
-      mouse.x += (mouse.targetX - mouse.x) * 0.16;
-      mouse.y += (mouse.targetY - mouse.y) * 0.16;
+      mouse.x += (mouse.targetX - mouse.x) * 0.15;
+      mouse.y += (mouse.targetY - mouse.y) * 0.15;
     }
 
-    // Drifting offsets
     gridOffsetX = (gridOffsetX + speedX) % squareSize;
     gridOffsetY = (gridOffsetY + speedY) % squareSize;
 
     ctx.clearRect(0, 0, width, height);
 
-    // --- 1. Draw Shockwave Ripples ---
+    // 1. Shockwave Ripples
     for (let i = ripples.length - 1; i >= 0; i--) {
       const r = ripples[i];
-      r.radius += 8;
-      r.alpha = (1 - r.radius / r.maxRadius) * 0.8;
+      r.radius += 6;
+      r.alpha = (1 - r.radius / r.maxRadius) * 0.7;
 
       if (r.radius >= r.maxRadius) {
         ripples.splice(i, 1);
       } else {
         ctx.strokeStyle = `rgba(192, 132, 252, ${r.alpha})`;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
         ctx.stroke();
       }
     }
 
-    // --- 2. BATCHED GRID DRAWING ---
-    ctx.strokeStyle = 'rgba(167, 139, 250, 0.12)';
+    // 2. Batched Grid
+    ctx.strokeStyle = 'rgba(167, 139, 250, 0.08)';
     ctx.lineWidth = 1;
     ctx.beginPath();
 
@@ -137,9 +140,9 @@ export function initAmbientSquaresCanvas(canvasId) {
     }
     ctx.stroke();
 
-    // --- 3. Targeted Mouse Hover Glow (Desktop Only) ---
-    if (!isTouchDevice && mouse.x > 0 && mouse.y > 0) {
-      const maxHoverDist = 200;
+    // 3. Mouse Hover Glow
+    if (!isTouchDevice && mouse.x > 0 && mouse.y > 0 && Date.now() - lastMouseMoveTime < 2000) {
+      const maxHoverDist = 180;
       const startCol = Math.max(0, Math.floor((mouse.x - maxHoverDist) / squareSize));
       const endCol = Math.min(Math.ceil(width / squareSize), Math.ceil((mouse.x + maxHoverDist) / squareSize));
       const startRow = Math.max(0, Math.floor((mouse.y - maxHoverDist) / squareSize));
@@ -157,19 +160,14 @@ export function initAmbientSquaresCanvas(canvasId) {
           if (distSq < maxHoverDist * maxHoverDist) {
             const dist = Math.sqrt(distSq);
             const factor = 1 - dist / maxHoverDist;
-            ctx.fillStyle = `rgba(139, 92, 246, ${factor * 0.35})`;
+            ctx.fillStyle = `rgba(139, 92, 246, ${factor * 0.25})`;
             ctx.fillRect(gx + 1, gy + 1, squareSize - 2, squareSize - 2);
-
-            ctx.fillStyle = `rgba(192, 132, 252, ${factor * 0.9})`;
-            ctx.beginPath();
-            ctx.arc(gx, gy, 2, 0, Math.PI * 2);
-            ctx.fill();
           }
         }
       }
     }
 
-    // --- 4. Constellation Particles (Batched GPU Rendering) ---
+    // 4. Particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -183,31 +181,13 @@ export function initAmbientSquaresCanvas(canvasId) {
       ctx.fillStyle = `rgba(192, 132, 252, ${p.alpha})`;
       ctx.fillRect(p.x - 1, p.y - 1, p.radius, p.radius);
     }
-
-    // Batched Constellation Lines Pass
-    ctx.strokeStyle = 'rgba(192, 132, 252, 0.18)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    const maxLineDistSq = 12000;
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const pdx = p.x - p2.x;
-        const pdy = p.y - p2.y;
-        if (pdx * pdx + pdy * pdy < maxLineDistSq) {
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-        }
-      }
-    }
-    ctx.stroke();
   }
 
   draw();
 
   return () => {
-    cancelAnimationFrame(animationFrameId);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
     window.removeEventListener('resize', resize);
   };
 }
+

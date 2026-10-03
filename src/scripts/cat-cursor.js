@@ -179,6 +179,7 @@ export function initCatCursor() {
   let animationFrameId;
   let lastTime = 0;
   const fpsInterval = 1000 / 60;
+  let isSuspended = false;
 
   function loop(timestamp) {
     animationFrameId = requestAnimationFrame(loop);
@@ -189,12 +190,17 @@ export function initCatCursor() {
       lastTime = timestamp - (delta % fpsInterval);
     }
 
-    ctx.clearRect(0, 0, width, height);
-
     const dx = mouse.x - catPos.x;
     const dy = mouse.y - catPos.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
     const timeSinceMove = Date.now() - lastMoveTime;
+
+    if (dist < 0.5 && timeSinceMove > 2500 && paws.length === 0) {
+      // Idle pause to save 100% CPU/GPU when user is not moving mouse
+      return;
+    }
+
+    ctx.clearRect(0, 0, width, height);
 
     if (dist > 3 || timeSinceMove < 150) {
       if (!isMoving) {
@@ -208,7 +214,7 @@ export function initCatCursor() {
       }
     }
 
-    // Smooth position lerp (0.22)
+    // Smooth position lerp
     catPos.x += dx * 0.22;
     catPos.y += dy * 0.22;
 
@@ -225,7 +231,6 @@ export function initCatCursor() {
         addPawPrint(catPos.x, catPos.y, catPos.angle);
       }
     } else if (!isMoving) {
-      // Settle angle smoothly when stationary
       let diff = 0 - catPos.angle;
       while (diff < -Math.PI) diff += Math.PI * 2;
       while (diff > Math.PI) diff -= Math.PI * 2;
@@ -236,7 +241,7 @@ export function initCatCursor() {
 
     for (let i = paws.length - 1; i >= 0; i--) {
       const paw = paws[i];
-      paw.alpha -= 0.03;
+      paw.alpha -= 0.035;
       if (paw.alpha <= 0) {
         paws.splice(i, 1);
       } else {
@@ -248,7 +253,7 @@ export function initCatCursor() {
   loop();
 
   return () => {
-    cancelAnimationFrame(animationFrameId);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
     if (cursorContainer.parentNode) {
       cursorContainer.parentNode.removeChild(cursorContainer);
     }

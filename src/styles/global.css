@@ -48,22 +48,20 @@
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(192, 132, 252, 0.95)) brightness(1.15) !important;
 }
 
-/* Ambient Fluid Gradient Mesh Animations */
+/* Ambient Fluid Gradient Mesh Animations - GPU Hardware Accelerated */
 @keyframes fluidOrb1 {
-  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); }
-  33% { transform: translate3d(50px, -60px, 0) scale(1.1) rotate(120deg); }
-  66% { transform: translate3d(-40px, 40px, 0) scale(0.92) rotate(240deg); }
+  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(40px, -40px, 0) scale(1.08); }
 }
 
 @keyframes fluidOrb2 {
-  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); }
-  33% { transform: translate3d(-60px, 50px, 0) scale(1.15) rotate(-120deg); }
-  66% { transform: translate3d(45px, -50px, 0) scale(0.95) rotate(-240deg); }
+  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(-40px, 35px, 0) scale(1.06); }
 }
 
 @keyframes fluidOrb3 {
   0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
-  50% { transform: translate3d(60px, 40px, 0) scale(1.1); }
+  50% { transform: translate3d(35px, 30px, 0) scale(1.05); }
 }
 
 @keyframes floatLevitate {
@@ -84,40 +82,39 @@
 .fluid-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(65px);
-  opacity: 0.7;
-  will-change: transform;
+  filter: blur(35px);
+  opacity: 0.65;
   transform: translateZ(0);
 }
 
 .fluid-orb-1 {
   top: -10%;
   left: 15%;
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, #7C3AED 0%, rgba(124, 58, 237, 0) 70%);
-  animation: fluidOrb1 18s infinite ease-in-out;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.7) 0%, rgba(124, 58, 237, 0) 70%);
+  animation: fluidOrb1 22s infinite ease-in-out;
 }
 
 .fluid-orb-2 {
   top: 40%;
   right: 5%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, #9333EA 0%, rgba(147, 51, 234, 0) 70%);
-  animation: fluidOrb2 22s infinite ease-in-out;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.65) 0%, rgba(147, 51, 234, 0) 70%);
+  animation: fluidOrb2 26s infinite ease-in-out;
 }
 
 .fluid-orb-3 {
   bottom: -10%;
   left: 25%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, #C084FC 0%, rgba(192, 132, 252, 0) 70%);
-  animation: fluidOrb3 20s infinite ease-in-out;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.6) 0%, rgba(192, 132, 252, 0) 70%);
+  animation: fluidOrb3 24s infinite ease-in-out;
 }
 
-/* HIGH-TRANSPARENCY LIQUID GLASS WIDGETS (Matching User Screenshot) */
+/* HIGH-PERFORMANCE LIQUID GLASS WIDGETS */
 .glass-panel,
 .project-card,
 .bento-card,
@@ -126,17 +123,16 @@
 [data-style="liquid-glass"] .bento-card,
 [data-style="liquid-glass"] .about-card {
   background: rgba(12, 14, 28, 0.45) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(168, 85, 247, 0.28) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), 
-              0 14px 38px 0 rgba(0, 0, 0, 0.5),
-              0 0 24px 0 rgba(139, 92, 246, 0.12) !important;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease !important;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+              0 14px 38px 0 rgba(0, 0, 0, 0.4),
+              0 0 20px 0 rgba(139, 92, 246, 0.1) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease !important;
+  contain: paint layout;
   transform: translateZ(0);
 }
 
@@ -146,8 +142,8 @@
   .bento-card,
   .about-card {
     background: rgba(14, 16, 32, 0.65) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
   }
 }
 
@@ -155,26 +151,26 @@
 .project-card:hover,
 .bento-card:hover,
 .about-card:hover {
-  transform: translate3d(0, -4px, 0) scale(1.012) !important;
+  transform: translate3d(0, -3px, 0) !important;
   background: rgba(18, 20, 42, 0.6) !important;
   border-color: rgba(192, 132, 252, 0.65) !important;
   box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3), 
-              0 20px 48px 0 rgba(168, 85, 247, 0.35),
-              0 0 28px 0 rgba(192, 132, 252, 0.35) !important;
+              0 16px 40px 0 rgba(168, 85, 247, 0.3),
+              0 0 24px 0 rgba(192, 132, 252, 0.3) !important;
 }
 
 /* Glass Pill Buttons & Badges */
 .glass-pill-button {
   background: rgba(139, 92, 246, 0.2) !important;
   border: 1px solid rgba(168, 85, 247, 0.4) !important;
-  backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(8px) !important;
   border-radius: 9999px !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 .glass-pill-button:hover {
   background: rgba(168, 85, 247, 0.35) !important;
   border-color: rgba(217, 70, 239, 0.7) !important;
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.5) !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.4) !important;
 }
 
 /* iOS Active Tactile Tap Scale */
@@ -185,7 +181,6 @@ button:active, a:active {
 
 .float-levitate {
   animation: floatLevitate 5s infinite ease-in-out;
-  will-change: transform;
 }
 
 /* Custom Sleek Scrollbar */

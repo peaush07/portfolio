@@ -421,6 +421,7 @@
 
   setTimeout(() => {
     if (preloader && preloader.style.display !== 'none') {
+      if (animFrameId) cancelAnimationFrame(animFrameId);
       preloader.style.display = 'none';
       document.body.classList.remove('overflow-hidden');
     }
