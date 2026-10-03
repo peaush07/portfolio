@@ -1,150 +1,351 @@
 ---
 ---
 
-<!-- CLASSY LIQUID GLASS PRELOADER SCREEN WITH WHITE CAT SVG RUNNER -->
+<!-- MOB PSYCHO 100% ANIME-CYBER LIQUID GLASS LOADING SCREEN -->
 <div 
   id="preloader" 
-  class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#030712] transition-all duration-700 ease-in-out select-none"
+  class="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#02050e] transition-all duration-700 select-none overflow-hidden"
 >
-  <!-- Background Ambient Fluid Orbs -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-violet-600/20 via-purple-600/20 to-fuchsia-600/20 blur-[120px] animate-pulse"></div>
+  <!-- Anime Energy Aura Particle Canvas -->
+  <canvas id="preloader-aura-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Speed Lines Anime Radial Overlay (Activates at High Percentages) -->
+  <div id="preloader-speed-lines" class="absolute inset-0 pointer-events-none z-0 opacity-0 transition-opacity duration-300">
+    <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(139,92,246,0.25)_100%)]"></div>
   </div>
 
-  <!-- Central Liquid Glass Preloader Box -->
-  <div 
-    id="preloader-box"
-    class="glass-panel p-8 sm:p-12 rounded-[2.5rem] max-w-lg w-full border border-white/30 shadow-[0_16px_48px_0_rgba(0,0,0,0.6)] backdrop-blur-3xl relative text-center flex flex-col items-center transition-all duration-700"
-  >
-    <!-- Specular Rim Light Top Highlight -->
-    <div class="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-violet-400/80 to-transparent"></div>
+  <!-- Screen Shake Wrapper -->
+  <div id="preloader-shake-wrapper" class="relative z-10 w-full max-w-2xl px-4 flex flex-col items-center justify-center transition-transform">
 
-    <!-- Top Badge & Live Percentage -->
-    <div class="w-full flex items-center justify-between mb-10 pb-4 border-b border-white/10">
-      <span class="text-xs font-mono font-bold text-violet-300 bg-violet-500/20 px-3.5 py-1.5 rounded-full border border-violet-400/40 shadow-[0_0_10px_rgba(139,92,246,0.35)] uppercase tracking-wider">
-        LOADING...
-      </span>
-      <span id="preloader-percent" class="text-2xl font-black font-mono text-white bg-gradient-to-r from-violet-300 via-white to-fuchsia-300 bg-clip-text text-transparent">
-        0%
-      </span>
-    </div>
-
-    <!-- Cat Runner Track Wrapper -->
-    <div class="w-full relative mb-8 pt-4">
+    <!-- Main VisionOS Liquid Glass Card -->
+    <div 
+      id="preloader-glass-card"
+      class="glass-panel p-8 sm:p-12 rounded-[2.5rem] w-full border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-3xl relative text-center flex flex-col items-center overflow-hidden transition-all duration-700 bg-[#090d1a]/80"
+    >
+      <!-- Specular Top Highlight Beam -->
+      <div class="absolute top-0 left-12 right-12 h-[1px] bg-gradient-to-r from-transparent via-violet-400/90 to-transparent"></div>
       
-      <!-- WHITE CAT SVG RUNNER -->
-      <div 
-        id="preloader-cat-runner" 
-        class="absolute -top-8 left-0 transition-all duration-100 -translate-x-1/2 z-10 pointer-events-none"
-      >
-        <svg class="cat-svg" viewBox="0 0 64 40" width="52" height="34">
-          <!-- White Cat Body -->
-          <path class="cat-torso" d="M14 18 C14 12, 38 12, 44 18 C48 22, 44 28, 38 28 C28 28, 18 28, 14 24 Z" fill="#FFFFFF" />
-          <!-- White Cat Head -->
-          <path class="cat-head" d="M42 14 C42 8, 54 8, 54 14 C54 20, 44 22, 42 14 Z" fill="#FFFFFF" />
-          <!-- Gold Ears -->
-          <polygon points="44,9 48,2 50,9" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
-          <polygon points="50,9 54,3 56,10" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
-          <!-- Cat Eye -->
-          <circle cx="50" cy="12" r="1.5" fill="#030712" />
-          <!-- White Cat Tail -->
-          <path class="cat-tail" d="M14 19 C8 17, 6 9, 10 5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" />
-          <!-- Running Legs -->
-          <line class="cat-leg leg-f1" x1="44" y1="26" x2="48" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-          <line class="cat-leg leg-f2" x1="40" y1="26" x2="36" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-          <line class="cat-leg leg-b1" x1="22" y1="26" x2="26" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-          <line class="cat-leg leg-b2" x1="18" y1="26" x2="14" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-        </svg>
+      <!-- Top Status Header & Japanese Kanji Badge -->
+      <div class="w-full flex items-center justify-between mb-6 pb-3 border-b border-white/10 text-xs font-mono">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="preloader-kanji" class="text-violet-300 font-bold tracking-widest text-sm sm:text-base font-sans">
+            「システム起動中」
+          </span>
+        </div>
+        <span id="preloader-phase-tag" class="px-3 py-1 rounded-full bg-violet-500/20 border border-violet-400/40 text-violet-200 font-bold uppercase tracking-wider text-[11px] shadow-[0_0_12px_rgba(139,92,246,0.3)]">
+          MOB ENGINE • INITIALIZING
+        </span>
       </div>
 
-      <!-- Progress Track Container -->
-      <div class="w-full h-3 rounded-full bg-white/10 border border-white/20 p-0.5 overflow-hidden shadow-inner backdrop-blur-md">
+      <!-- GIANT MOB PSYCHO 100 PERCENTAGE COUNTER DISPLAY -->
+      <div class="relative my-4 flex items-center justify-center w-full min-h-[140px] sm:min-h-[180px]">
+        <!-- Glow Backdrop -->
+        <div id="preloader-counter-glow" class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-violet-600/30 blur-[80px] transition-all duration-300"></div>
+
+        <!-- Main Counter Number with Glitch Offsets -->
+        <div class="relative z-10 font-mono font-black tracking-tighter flex items-baseline justify-center">
+          <span 
+            id="preloader-counter" 
+            class="text-7xl sm:text-9xl bg-gradient-to-b from-white via-violet-100 to-fuchsia-300 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(168,85,247,0.7)]"
+          >
+            000
+          </span>
+          <span class="text-3xl sm:text-5xl font-black text-violet-400 ml-1 drop-shadow-[0_0_15px_rgba(139,92,246,0.8)]">%</span>
+        </div>
+      </div>
+
+      <!-- WHITE CAT SVG RUNNER TRACK -->
+      <div class="w-full relative mb-8 pt-6">
+        <!-- WHITE CAT SVG RUNNER -->
         <div 
-          id="preloader-fill" 
-          class="h-full rounded-full bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 w-0 transition-all duration-100 shadow-[0_0_15px_rgba(139,92,246,0.8)]"
-        ></div>
+          id="preloader-cat-runner" 
+          class="absolute -top-6 left-0 transition-all duration-75 -translate-x-1/2 z-20 pointer-events-none"
+        >
+          <svg class="cat-svg" viewBox="0 0 64 40" width="56" height="36">
+            <!-- White Cat Body -->
+            <path class="cat-torso" d="M14 18 C14 12, 38 12, 44 18 C48 22, 44 28, 38 28 C28 28, 18 28, 14 24 Z" fill="#FFFFFF" />
+            <!-- White Cat Head -->
+            <path class="cat-head" d="M42 14 C42 8, 54 8, 54 14 C54 20, 44 22, 42 14 Z" fill="#FFFFFF" />
+            <!-- Gold Ears -->
+            <polygon points="44,9 48,2 50,9" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
+            <polygon points="50,9 54,3 56,10" fill="#FBBF24" stroke="#FFFFFF" stroke-width="1" />
+            <!-- Cat Eye -->
+            <circle cx="50" cy="12" r="1.5" fill="#030712" />
+            <!-- White Cat Tail -->
+            <path class="cat-tail" d="M14 19 C8 17, 6 9, 10 5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" />
+            <!-- Running Legs -->
+            <line class="cat-leg leg-f1" x1="44" y1="26" x2="48" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+            <line class="cat-leg leg-f2" x1="40" y1="26" x2="36" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+            <line class="cat-leg leg-b1" x1="22" y1="26" x2="26" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+            <line class="cat-leg leg-b2" x1="18" y1="26" x2="14" y2="34" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Liquid Glass Progress Bar Track -->
+        <div class="w-full h-3.5 rounded-full bg-white/10 border border-white/20 p-0.5 overflow-hidden shadow-inner backdrop-blur-md relative">
+          <div 
+            id="preloader-fill" 
+            class="h-full rounded-full bg-gradient-to-r from-violet-500 via-purple-400 to-fuchsia-400 w-0 transition-all duration-75 shadow-[0_0_20px_rgba(168,85,247,0.9)] relative"
+          >
+            <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/80 blur-[2px] rounded-full animate-pulse"></div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Dynamic Status Message -->
-    <div class="w-full h-8 flex items-center justify-center">
-      <p id="preloader-status-text" class="text-xs font-mono text-white/80 tracking-wider">
-        [00:01] INITIALIZING GRAPHICS ENGINE...
-      </p>
-    </div>
+      <!-- DYNAMIC TELEMETRY STATUS & LOG MESSAGES -->
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left font-mono text-[11px] text-white/70 border-t border-white/10">
+        <div class="flex items-center gap-2 bg-white/5 p-2 rounded-xl border border-white/10">
+          <span class="text-violet-400 font-bold">&gt; LOG:</span>
+          <span id="preloader-status-text" class="truncate text-slate-200 font-medium">INITIALIZING CORE...</span>
+        </div>
+        <div class="flex items-center justify-between bg-white/5 p-2 rounded-xl border border-white/10">
+          <span class="text-violet-400 font-bold">&gt; STATUS:</span>
+          <span id="preloader-metrics" class="text-emerald-400 font-bold">FPS: 60 • MEM: OK</span>
+        </div>
+      </div>
 
+    </div>
   </div>
 </div>
 
 <style>
-  /* White Cat Running Legs Animations with Exact Hip Joint Pivots */
+  /* White Cat Running Legs Animations */
   @keyframes preloaderLegRun1 {
-    0% { transform: rotate(-25deg); transform-origin: 44px 26px; }
-    100% { transform: rotate(25deg); transform-origin: 44px 26px; }
+    0% { transform: rotate(-28deg); transform-origin: 44px 26px; }
+    100% { transform: rotate(28deg); transform-origin: 44px 26px; }
   }
   @keyframes preloaderLegRun2 {
-    0% { transform: rotate(25deg); transform-origin: 40px 26px; }
-    100% { transform: rotate(-25deg); transform-origin: 40px 26px; }
+    0% { transform: rotate(28deg); transform-origin: 40px 26px; }
+    100% { transform: rotate(-28deg); transform-origin: 40px 26px; }
   }
-  .leg-f1, .leg-b2 { animation: preloaderLegRun1 0.16s infinite alternate ease-in-out; }
-  .leg-f2, .leg-b1 { animation: preloaderLegRun2 0.16s infinite alternate ease-in-out; }
+  .leg-f1, .leg-b2 { animation: preloaderLegRun1 0.12s infinite alternate ease-in-out; }
+  .leg-f2, .leg-b1 { animation: preloaderLegRun2 0.12s infinite alternate ease-in-out; }
+
+  /* Anime Screen Shake Keyframes */
+  .shake-level-1 {
+    animation: animeShake 0.1s infinite;
+  }
+  .shake-level-2 {
+    animation: animeShake 0.07s infinite;
+  }
+  .shake-level-3 {
+    animation: animeShakeVigorous 0.05s infinite;
+  }
+
+  @keyframes animeShake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-2px, 0px) rotate(-0.5deg); }
+    40% { transform: translate(1px, -1px) rotate(0.5deg); }
+    60% { transform: translate(-1px, 1px) rotate(0deg); }
+    80% { transform: translate(2px, 1px) rotate(-0.5deg); }
+    100% { transform: translate(1px, -2px) rotate(0deg); }
+  }
+
+  @keyframes animeShakeVigorous {
+    0% { transform: translate(3px, 2px) rotate(1deg); }
+    25% { transform: translate(-3px, -2px) rotate(-1deg); }
+    50% { transform: translate(4px, -1px) rotate(1.5deg); }
+    75% { transform: translate(-4px, 3px) rotate(-1.5deg); }
+    100% { transform: translate(2px, -3px) rotate(0.5deg); }
+  }
 </style>
 
 <script>
   document.body.classList.add('overflow-hidden');
 
   const preloader = document.getElementById('preloader');
-  const preloaderBox = document.getElementById('preloader-box');
-  const percentText = document.getElementById('preloader-percent');
+  const shakeWrapper = document.getElementById('preloader-shake-wrapper');
+  const glassCard = document.getElementById('preloader-glass-card');
+  const counterEl = document.getElementById('preloader-counter');
   const fillBar = document.getElementById('preloader-fill');
   const catRunner = document.getElementById('preloader-cat-runner');
+  const kanjiEl = document.getElementById('preloader-kanji');
+  const phaseTagEl = document.getElementById('preloader-phase-tag');
   const statusText = document.getElementById('preloader-status-text');
+  const metricsEl = document.getElementById('preloader-metrics');
+  const counterGlow = document.getElementById('preloader-counter-glow');
+  const speedLines = document.getElementById('preloader-speed-lines');
 
-  const statusMessages = [
-    "[00:01] INITIALIZING GRAPHICS ENGINE...",
-    "[00:02] LOADING PORTFOLIO DATA...",
-    "[00:03] SYNCING REPOSITORIES & METRICS...",
-    "[00:04] CALIBRATING 120Hz LENIS SMOOTH SCROLL...",
-    "[00:05] SYSTEM OPERATIONAL • 100%"
+  // --- Aura Canvas Setup ---
+  const canvas = document.getElementById('preloader-aura-canvas') as HTMLCanvasElement;
+  let ctx: CanvasRenderingContext2D | null = null;
+  let particles: Array<{x: number; y: number; vx: number; vy: number; radius: number; alpha: number; color: string}> = [];
+  let animFrameId: number;
+
+  if (canvas) {
+    ctx = canvas.getContext('2d');
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        radius: Math.random() * 2.5 + 1,
+        alpha: Math.random() * 0.6 + 0.2,
+        color: Math.random() > 0.5 ? '#8B5CF6' : '#C084FC'
+      });
+    }
+  }
+
+  // Phase Definitions matching Mob Psycho 100 threshold feel
+  const phases = [
+    { threshold: 0, kanji: "「システム起動中」", tag: "SYSTEM INITIALIZING", log: "BOOTING VISIONOS KERNEL..." },
+    { threshold: 25, kanji: "「同期率上昇中」", tag: "SYNCHRONIZING 25%", log: "CONNECTING REPOSITORIES & METRICS..." },
+    { threshold: 50, kanji: "「出力臨界突破」", tag: "OUTPUT CRITICAL 50%", log: "CALIBRATING 60Hz FLUID RENDERER..." },
+    { threshold: 75, kanji: "「能力解放・過負荷」", tag: "POWER UNLEASHED 75%", log: "OVERLOAD IMMINENT • STABILIZING..." },
+    { threshold: 95, kanji: "「100% 精神解放」", tag: "OVERLOAD 100% ACTIVE", log: "BURSTING LIQUID GLASS MATRIX..." }
   ];
 
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 7) + 3;
-    if (progress > 100) progress = 100;
+  let currentPercent = 0;
+  let targetPercent = 0;
+  let lastTime = performance.now();
+  const fpsInterval = 1000 / 60; // Locked 60Hz Frame Pacing
 
-    if (percentText) percentText.textContent = `${progress}%`;
-    if (fillBar) fillBar.style.width = `${progress}%`;
-    if (catRunner) catRunner.style.left = `${progress}%`;
+  // Counter logic loop
+  let startTime = performance.now();
 
-    const msgIdx = Math.min(Math.floor((progress / 100) * statusMessages.length), statusMessages.length - 1);
-    if (statusText) statusText.textContent = statusMessages[msgIdx];
+  function renderAura(pct: number) {
+    if (!ctx || !canvas) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (progress === 100) {
-      clearInterval(interval);
-      
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+
+    // Draw central energy aura pulse
+    const pulseRadius = 100 + (pct / 100) * 150;
+    const grad = ctx.createRadialGradient(centerX, centerY, 10, centerX, centerY, pulseRadius);
+    grad.addColorStop(0, `rgba(139, 92, 246, ${0.15 + (pct / 100) * 0.35})`);
+    grad.addColorStop(0.6, `rgba(192, 132, 252, ${0.05 + (pct / 100) * 0.15})`);
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Particle update
+    particles.forEach(p => {
+      p.x += p.vx * (1 + (pct / 100) * 2);
+      p.y += p.vy * (1 + (pct / 100) * 2);
+
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx!.fillStyle = p.color;
+      ctx!.globalAlpha = p.alpha * (0.5 + (pct / 100) * 0.5);
+      ctx!.beginPath();
+      ctx!.arc(p.x, p.y, p.radius * (1 + (pct / 100) * 0.8), 0, Math.PI * 2);
+      ctx!.fill();
+    });
+
+    // High energy electric arcs near 80%+
+    if (pct > 70 && Math.random() < 0.4) {
+      ctx.strokeStyle = '#F472B6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(centerX + (Math.random() - 0.5) * 200, centerY + (Math.random() - 0.5) * 200);
+      ctx.lineTo(centerX + (Math.random() - 0.5) * 250, centerY + (Math.random() - 0.5) * 250);
+      ctx.stroke();
+    }
+  }
+
+  function loop(now: number) {
+    animFrameId = requestAnimationFrame(loop);
+
+    const delta = now - lastTime;
+    if (delta < fpsInterval) return;
+    lastTime = now - (delta % fpsInterval);
+
+    const elapsed = now - startTime;
+
+    // Eased progress calculation: quick start, intense pause near 99%, explosion at 100%
+    if (elapsed < 1600) {
+      targetPercent = Math.min(99, Math.floor((elapsed / 1600) * 99));
+    } else if (elapsed < 2000) {
+      targetPercent = 99; // Dramatic pause at 99%
+    } else {
+      targetPercent = 100;
+    }
+
+    if (currentPercent < targetPercent) {
+      currentPercent += 1;
+    }
+
+    const formattedStr = String(currentPercent).padStart(3, '0');
+    if (counterEl) counterEl.textContent = formattedStr;
+    if (fillBar) fillBar.style.width = `${currentPercent}%`;
+    if (catRunner) catRunner.style.left = `${currentPercent}%`;
+
+    // Update Phase Metadata
+    for (let i = phases.length - 1; i >= 0; i--) {
+      if (currentPercent >= phases[i].threshold) {
+        if (kanjiEl && kanjiEl.textContent !== phases[i].kanji) kanjiEl.textContent = phases[i].kanji;
+        if (phaseTagEl && phaseTagEl.textContent !== phases[i].tag) phaseTagEl.textContent = phases[i].tag;
+        if (statusText && statusText.textContent !== phases[i].log) statusText.textContent = phases[i].log;
+        break;
+      }
+    }
+
+    // Dynamic Screen Shake & Visual Effects
+    if (shakeWrapper) {
+      shakeWrapper.className = 'relative z-10 w-full max-w-2xl px-4 flex flex-col items-center justify-center transition-transform ';
+      if (currentPercent >= 90) {
+        shakeWrapper.classList.add('shake-level-3');
+      } else if (currentPercent >= 60) {
+        shakeWrapper.classList.add('shake-level-2');
+      } else if (currentPercent >= 30) {
+        shakeWrapper.classList.add('shake-level-1');
+      }
+    }
+
+    if (counterGlow) {
+      counterGlow.style.opacity = `${0.3 + (currentPercent / 100) * 0.7}`;
+      counterGlow.style.transform = `scale(${1 + (currentPercent / 100) * 0.5})`;
+    }
+
+    if (speedLines) {
+      speedLines.style.opacity = `${Math.max(0, (currentPercent - 50) / 50)}`;
+    }
+
+    if (metricsEl) {
+      metricsEl.textContent = `FPS: 60 • CAP: ${currentPercent}%`;
+    }
+
+    renderAura(currentPercent);
+
+    // Explosive 100% Shatter Reveal Sequence
+    if (currentPercent === 100) {
+      cancelAnimationFrame(animFrameId);
+
       setTimeout(() => {
-        if (preloaderBox) {
-          preloaderBox.classList.add('scale-110', 'opacity-0');
+        if (glassCard) {
+          glassCard.classList.add('scale-125', 'opacity-0', 'blur-xl');
         }
         if (preloader) {
-          preloader.classList.add('opacity-0', 'pointer-events-none', '-translate-y-8');
+          preloader.classList.add('opacity-0', 'pointer-events-none', 'scale-105');
           setTimeout(() => {
             preloader.style.display = 'none';
             document.body.classList.remove('overflow-hidden');
           }, 700);
         }
-      }, 500);
+      }, 400);
     }
-  }, 60);
+  }
 
-  // Failsafe timeout to prevent trapped body scroll
+  requestAnimationFrame(loop);
+
+  // Failsafe timeout to unlock scroll if needed
   setTimeout(() => {
-    clearInterval(interval);
-    if (preloader) {
+    if (preloader && preloader.style.display !== 'none') {
       preloader.style.display = 'none';
       document.body.classList.remove('overflow-hidden');
     }
-  }, 3500);
+  }, 4000);
 </script>
-
