@@ -175,37 +175,41 @@
   --orb-3: #C084FC;
 }
 
-/* GPU Hardware-Accelerated Glassmorphism Cards (iOS 120Hz Spring Feeling) */
+/* GPU Hardware-Accelerated Glassmorphism Cards (120Hz Liquid Glass) */
+.glass-panel,
 [data-style="liquid-glass"] .brutal-card,
 [data-style="liquid-glass"] .bento-card,
 [data-style="liquid-glass"] .about-card {
-  background: rgba(255, 255, 255, 0.07) !important;
-  backdrop-filter: blur(12px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  background: rgba(15, 18, 29, 0.75) !important;
+  backdrop-filter: blur(12px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(130%) !important;
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.32) !important;
-  border-radius: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.35) !important;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
-  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
+  .glass-panel,
   [data-style="liquid-glass"] .brutal-card,
   [data-style="liquid-glass"] .bento-card,
   [data-style="liquid-glass"] .about-card {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(15, 18, 29, 0.88) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
   }
 }
 
 [data-style="liquid-glass"] .brutal-card:hover,
 [data-style="liquid-glass"] .bento-card:hover,
-[data-style="liquid-glass"] .about-card:hover {
-  transform: translate3d(0, -6px, 0) scale(1.015) !important;
+[data-style="liquid-glass"] .about-card:hover,
+.glass-panel:hover {
+  transform: translate3d(0, -5px, 0) scale(1.012) !important;
   border-color: rgba(192, 132, 252, 0.65) !important;
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.4), 0 18px 40px 0 rgba(139, 92, 246, 0.28) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.4), 0 16px 36px 0 rgba(139, 92, 246, 0.25) !important;
 }
 
 [data-style="liquid-glass"] #main-nav {
