@@ -175,9 +175,20 @@ export function initCatCursor() {
     ctx.restore();
   }
 
+// Fast & Lightweight Animated White Cat Custom Mouse Cursor (60Hz Throttle Lock)
   let animationFrameId;
+  let lastTime = 0;
+  const fpsInterval = 1000 / 60;
 
-  function loop() {
+  function loop(timestamp) {
+    animationFrameId = requestAnimationFrame(loop);
+
+    if (timestamp) {
+      const delta = timestamp - lastTime;
+      if (delta < fpsInterval) return;
+      lastTime = timestamp - (delta % fpsInterval);
+    }
+
     ctx.clearRect(0, 0, width, height);
 
     const dx = mouse.x - catPos.x;
@@ -232,8 +243,6 @@ export function initCatCursor() {
         drawPawPrint(paw);
       }
     }
-
-    animationFrameId = requestAnimationFrame(loop);
   }
 
   loop();

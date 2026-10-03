@@ -72,13 +72,23 @@ export function initAmbientSquaresCanvas(canvasId) {
   }
 
   let isPaused = false;
+  let lastFrameTime = 0;
+  const fpsInterval = 1000 / 60; // 60Hz Lock
+
   document.addEventListener('visibilitychange', () => {
     isPaused = document.hidden;
     if (!isPaused) draw();
   });
 
-  function draw() {
+  function draw(timestamp) {
     if (isPaused) return;
+    animationFrameId = requestAnimationFrame(draw);
+
+    if (timestamp) {
+      const delta = timestamp - lastFrameTime;
+      if (delta < fpsInterval) return;
+      lastFrameTime = timestamp - (delta % fpsInterval);
+    }
 
     // Smooth mouse target interpolation
     if (!isTouchDevice && mouse.targetX > 0) {
@@ -192,8 +202,6 @@ export function initAmbientSquaresCanvas(canvasId) {
       }
     }
     ctx.stroke();
-
-    animationFrameId = requestAnimationFrame(draw);
   }
 
   draw();
