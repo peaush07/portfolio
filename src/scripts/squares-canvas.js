@@ -4,13 +4,18 @@ export function initAmbientSquaresCanvas(canvasId) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
 
+  const isTouchDevice = typeof window !== 'undefined' && (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
+  if (isTouchDevice) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
   let width = 0, height = 0;
   let dpr = 1;
   let animationFrameId;
 
-  const isTouchDevice = typeof window !== 'undefined' && (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
-  const squareSize = isTouchDevice ? 72 : 56;
+  const squareSize = 56;
   const speedX = 0.25;
   const speedY = 0.25;
 
